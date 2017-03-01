@@ -1,0 +1,15 @@
+language: scala
+
+sudo: required
+
+dist: trusty
+
+git:
+  depth: 9999
+
+matrix:
+  include:
+  - scala: 2.12.1
+    jdk: oraclejdk8
+  - scala: 2.11.8
+    jdk: oraclejdk7
