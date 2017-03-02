@@ -1,9 +1,8 @@
 package libra
 
-//TODO: make this parameterized on any type
-case class Quantity[I <: Singleton with Int, D <: Dimensions[_, _]](value: Double)
+case class Quantity[A, I <: Singleton with Int, D <: Dimensions[_, _]](value: A)
 
 object Quantity {
   import syntax.QuantityOps
-  implicit def quantityOps[P <: Singleton with Int, D <: Dimensions[_, _]](q: Quantity[P, D]): QuantityOps[P, D] = new QuantityOps(q)
+  implicit def quantityOps[A, P <: Singleton with Int, D <: Dimensions[_, _]](q: Quantity[A, P, D]): QuantityOps[A, P, D] = new QuantityOps(q)
 }

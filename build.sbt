@@ -28,6 +28,7 @@ lazy val commonSettings = Seq(
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "2.3.2",
       "eu.timepit" %% "singleton-ops" % "0.0.3",
+      "org.spire-math" %% "spire" % "0.13.0",
       "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     )
 ) ++ buildSettings
