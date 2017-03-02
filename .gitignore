@@ -15,3 +15,13 @@ project/plugins/project/
 # Scala-IDE specific
 .scala_dependencies
 .worksheet
+
+# Ensime specific
+.ensime
+.ensime_cache/
+
+# Unix specific
+*~
+
+# Emacs specific
+\#*#
