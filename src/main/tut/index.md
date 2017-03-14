@@ -6,7 +6,13 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 ## To Use
 
-TODO
+Add this to your `build.sbt`:
+
+```scala
+resolvers += Resolver.bintrayRepo("to-ithaca", "maven")
+
+libraryDependencies += "com.ithaca" %% "libra" % "0.1.0"
+```
 
 ## TLDR
 
