@@ -6,3 +6,14 @@
 Libra is a dimensional analysis library based on [shapeless](https://github.com/milessabin/shapeless), [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It contains out of the box support for SI units for all numeric types.
 
 Take a look at the [guide](https://to-ithaca.github.io/libra/) for what it is and how to use it.
+
+## How to help
+
+Take a look at the [guide on contributing](https://github.com/to-ithaca/libra/blob/master/CONTRIBUTING.md).
+
+## Project maintainers
+
+Libra is maintained by:
+
+ * [zainab-ali](https://github.com/zainab-ali) Zainab Ali
+ * [yilin-wei](https://github.com/yilinwei) Yilin Wei
