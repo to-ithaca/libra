@@ -9,70 +9,70 @@ class SISpec extends WordSpec {
 
   "length" should {
 
-    "mm baseValue" in {
-      assert(3.0.mm.baseValue === (0.003))
+    "mm value" in {
+      assert(3.0.mm.value === (0.003))
     }
 
-    "cm baseValue" in {
-      assert(3.0.cm.baseValue === (0.03))
+    "cm value" in {
+      assert(3.0.cm.value === (0.03))
     }
 
-    "m baseValue" in {
-      assert(3.0.m.baseValue === (3.0))
+    "m value" in {
+      assert(3.0.m.value === (3.0))
     }
 
-    "km baseValue" in {
-      assert(3.0.km.baseValue === (3000.0))
+    "km value" in {
+      assert(3.0.km.value === (3000.0))
     }
 
     "show" in {
-      assert(3.m.show === ("3 * 10^0 m^1 [L^1]"))
+      assert(3.m.show === ("3 m^1 [L^1]"))
     }
   }
 
   "mass" should {
 
-    "mg baseValue" in {
-      assert(3.0.mg.baseValue === (0.000003))
+    "mg value" in {
+      assert(3.0.mg.value === (0.000003))
     }
-    "g baseValue" in {
-      assert(3.0.g.baseValue === (0.003))
+    "g value" in {
+      assert(3.0.g.value === (0.003))
     }
 
-    "kg baseValue" in {
-      assert(3.0.kg.baseValue === (3.0))
+    "kg value" in {
+      assert(3.0.kg.value === (3.0))
     }
 
     "show" in {
-      assert(3.kg.show === ("3 * 10^0 kg^1 [M^1]"))
+      assert(3.kg.show === ("3 kg^1 [M^1]"))
     }
   }
 
   "time" should {
 
-    "ms baseValue" in {
-      assert(3.0.ms.baseValue === (0.003))
+    "ms value" in {
+      assert(3.0.ms.value === (0.003))
     }
-    "s baseValue" in {
-      assert(3.0.s.baseValue === (3.0))
+    "s value" in {
+      assert(3.0.s.value === (3.0))
     }
 
     "show" in {
-      assert(3.s.show === ("3 * 10^0 s^1 [T^1]"))
+      assert(3.s.show === ("3 s^1 [T^1]"))
     }
   }
 
   "current" should {
 
-    "mA baseValue" in {
-      assert(3.0.mA.baseValue === (0.003))
+    "mA value" in {
+      assert(3.0.mA.value === (0.003))
     }
-    "A baseValue" in {
-      assert(3.0.A.baseValue === (3.0))
+    "A value" in {
+      assert(3.0.A.value === (3.0))
     }
 
     "show" in {
-      assert(3.A.show === ("3 * 10^0 A^1 [I^1]"))
+      assert(3.A.show === ("3 A^1 [I^1]"))
     }
   }
 }
