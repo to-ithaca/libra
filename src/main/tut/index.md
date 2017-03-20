@@ -120,7 +120,7 @@ q.show
 Here's how you extract the value as a numeric in base units:
 
 ```tut
-3.km.baseValue
+3.km.value
 ```
 
 ## Rolling your own

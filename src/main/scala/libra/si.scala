@@ -1,6 +1,7 @@
 package libra
 
 import ops.base._
+import spire._, spire.algebra._, spire.math._, spire.implicits._
 
 /** SI units */
 package object si {
@@ -30,19 +31,19 @@ package object si {
 
   implicit final class BaseQuantityOps[A](val a: A) extends AnyVal {
 
-    def km: QuantityOf[A, 3, Length] = Quantity(a)
-    def m: QuantityOf[A, 0, Length] = Quantity(a)
-    def cm: QuantityOf[A, -2, Length] = Quantity(a)
-    def mm: QuantityOf[A, -3, Length] = Quantity(a)
+    def km()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Length] = Quantity(a * C.fromInt(1000))
+    def m: QuantityOf[A, Length] = Quantity(a)
+    def cm()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Length] = Quantity(a * C.fromDouble(0.01))
+    def mm()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Length] = Quantity(a * C.fromDouble(0.001))
 
-    def kg: QuantityOf[A, 0, Mass] = Quantity(a)
-    def g: QuantityOf[A, -3, Mass] = Quantity(a)
-    def mg: QuantityOf[A, -6, Mass] = Quantity(a)
+    def kg: QuantityOf[A, Mass] = Quantity(a)
+    def g()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Mass] = Quantity(a * C.fromDouble(0.001))
+    def mg()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Mass] = Quantity(a * C.fromDouble(0.000001))
 
-    def s: QuantityOf[A, 0, Time] = Quantity(a)
-    def ms: QuantityOf[A, -3, Time] = Quantity(a)
+    def s: QuantityOf[A, Time] = Quantity(a)
+    def ms()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Time] = Quantity(a * C.fromDouble(0.001))
 
-    def A: QuantityOf[A, 0, Current] = Quantity(a)
-    def mA: QuantityOf[A, -3, Current] = Quantity(a)
+    def A: QuantityOf[A, Current] = Quantity(a)
+    def mA()(implicit M: MultiplicativeSemigroup[A], C: ConvertableTo[A]): QuantityOf[A, Current] = Quantity(a * C.fromDouble(0.001))
   }
 }
