@@ -26,7 +26,7 @@ class SISpec extends WordSpec {
     }
 
     "show" in {
-      assert(3.m.show === ("3 m^1 [L^1]"))
+      assert(3.m.show === ("3 m [L]"))
     }
   }
 
@@ -44,7 +44,7 @@ class SISpec extends WordSpec {
     }
 
     "show" in {
-      assert(3.kg.show === ("3 kg^1 [M^1]"))
+      assert(3.kg.show === ("3 kg [M]"))
     }
   }
 
@@ -58,7 +58,7 @@ class SISpec extends WordSpec {
     }
 
     "show" in {
-      assert(3.s.show === ("3 s^1 [T^1]"))
+      assert(3.s.show === ("3 s [T]"))
     }
   }
 
@@ -72,7 +72,7 @@ class SISpec extends WordSpec {
     }
 
     "show" in {
-      assert(3.A.show === ("3 A^1 [I^1]"))
+      assert(3.A.show === ("3 A [I]"))
     }
   }
 }

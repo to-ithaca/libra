@@ -8,214 +8,212 @@ import singleton.ops.impl._
 
 object dimensions {
 
-  /**
-   * Type class witnessing that two dimensions `L` and `R` have the same elements 
-   */
-  trait Eq[L <: Dimensions[_, _], R <: Dimensions[_, _]]
-
-  object Eq {
-    implicit def dimensionsEq[NL <: HList, DL <: HList, NR <: HList, DR <: HList](
-      implicit evN: Align[NL, NR], evD: Align[DL, DR])
-        : Eq[Dimensions[NL, DL], Dimensions[NR, DR]] =
-      new Eq[Dimensions[NL, DL], Dimensions[NR, DR]] {}
-  }
-
-  /**
-   * Type class to simplify the numerator and denominator of dimensions `D`.
-   * 
-   * The output contains no shared elements in the numerator and denominator.
-   */
-  trait Simplify[D <: Dimensions[_,_]] {
-    type Out <: Dimensions[_,_]
-  }
-
-  object Simplify {
-
-    type Aux[D <: Dimensions[_, _], Out0 <: Dimensions[_, _]] = Simplify[D] { type Out = Out0 }
-
-    implicit def dimensionsSimplify[N <: HList, D <: HList, NS <: HList, DS <: HList](
-      implicit ev0: Diff.Aux[N, D, NS], ev1: Diff.Aux[D, N, DS]
-    ): Simplify.Aux[Dimensions[N, D], Dimensions[NS, DS]] = new Simplify[Dimensions[N, D]] {
-      type Out = Dimensions[NS, DS]
-    }
-  }
-
-
-  /**
-   * Type class to multiply dimensions `L` and `R` together.
-   * 
-   * The output contains a simplified combination of elements in `L` appended to elements in `R`
-   */
-  trait Multiply[L <: Dimensions[_, _], R <: Dimensions[_, _]] {
-    type Out <: Dimensions[_, _]
+  /** Type class for multiplying two hlists of dimensions */
+  trait Multiply[L <: HList, R <: HList] {
+    type Out <: HList
   }
 
   object Multiply {
-    type Aux[L <: Dimensions[_, _], R <: Dimensions[_, _], Out0 <: Dimensions[_, _]] = Multiply[L, R] { type Out = Out0 }
+    type Aux[L <: HList, R <: HList, Out0 <: HList] = Multiply[L, R] { type Out = Out0 }
 
-    implicit def dimensionsMultiply[NL <: HList, DL <: HList, NR <: HList, DR <: HList, NOut <: HList, DOut <: HList,
-      DimOut <: Dimensions[_, _]](
-      implicit evN: Prepend.Aux[NL, NR, NOut], evD: Prepend.Aux[DL, DR, DOut], s: Simplify.Aux[Dimensions[NOut, DOut], DimOut]
-    ) : Multiply.Aux[Dimensions[NL, DL], Dimensions[NR, DR], DimOut] =
-      new Multiply[Dimensions[NL, DL], Dimensions[NR, DR]] {
-        type Out = DimOut
-      }
+    implicit def dimensionsMultiplyBase[R <: HList]: Aux[HNil, R, R] = new Multiply[HNil, R] {
+      type Out = R
+    }
+
+    implicit def dimensionsMultiplyRecurseValid[D, R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
+      implicit ev: shapeless.ops.record.Selector.Aux[R, D, RF],
+      ev1: fraction.Add.Aux[LF, RF, TF],
+      ev2: fraction.Valid[TF],
+      ev3: FilterNot.Aux[R, Term[D, RF], RT],
+      ev4: Aux[LT, RT, T]
+ ): Aux[Term[D, LF] :: LT, R, Term[D, TF] :: T] = new Multiply[Term[D, LF] :: LT, R] {
+      type Out = Term[D, TF] :: T
+    }
+
+    implicit def dimensionsMultiplyRecurseInvalid[D, R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
+      implicit ev: shapeless.ops.record.Selector.Aux[R, D, RF],
+      ev1: fraction.Add.Aux[LF, RF, TF],
+      ev2: Refute[fraction.Valid[TF]],
+      ev3: FilterNot.Aux[R, Term[D, RF], RT],
+      ev4: Aux[LT, RT, T]
+ ): Aux[Term[D, LF] :: LT, R, T] = new Multiply[Term[D, LF] :: LT, R] {
+      type Out = T
+    }
+
+    implicit def dimensionsMultiplyRecurseLeft[D, R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
+      implicit ev: Refute[shapeless.ops.record.Selector[R, D]],
+      ev1: Aux[LT, R, T]
+    ): Aux[Term[D, LF] :: LT, R, Term[D, TF] :: T] = new Multiply[Term[D, LF] :: LT, R] {
+      type Out = Term[D, TF] :: T
+    }
   }
 
-  /**
-   * Type class to invert dimensions `D`.
-   * 
-   * The inverse of `Dimensions[N, D]` is `Dimensions[D, N]`
-   */
-  trait Invert[D <: Dimensions[_, _]] {
-    type Out <: Dimensions[_, _]
+  /** Type class for inverting a hlist of dimensions */
+  trait Invert[H <: HList] {
+    type Out <: HList
   }
 
   object Invert {
-    type Aux[D <: Dimensions[_, _], Out0 <: Dimensions[_, _]] = Invert[D] { type Out = Out0 }
+    type Aux[H <: HList, Out0 <: HList] = Invert[H] { type Out = Out0 }
 
-    implicit def dimensionsInvert[N <: HList, D <: HList]: Invert.Aux[Dimensions[N, D], Dimensions[D, N]] =
-      new Invert[Dimensions[N, D]] {
-        type Out = Dimensions[D, N]
-      }
+    implicit def invertBase: Aux[HNil, HNil] = new Invert[HNil] { 
+      type Out = HNil
+    }
+    implicit def invertRecurse[D, F <: Fraction[_, _], NF <: Fraction[_, _], T <: HList, IT <: HList](
+      implicit ev0: fraction.Negate.Aux[F, NF],
+      ev1: Aux[T, IT]): Aux[Term[D, F] :: T, Term[D, NF] :: IT] = new Invert[Term[D, F] :: T] {
+      type Out = Term[D, NF] :: IT
+    }
   }
 
-  /**
-   * Type class to divide dimensions `L` by `R`.
-   */
-  trait Divide[L <: Dimensions[_, _], R <: Dimensions[_, _]] {
-    type Out <: Dimensions[_, _]
+  /** Type class for dividing dimensions `L` by `R` */
+  trait Divide[L <: HList, R <: HList] {
+    type Out <: HList
   }
 
   object Divide {
-    type Aux[L <: Dimensions[_, _], R <: Dimensions[_, _], Out0 <: Dimensions[_, _]] = Divide[L, R] { type Out = Out0 }
+    type Aux[L <: HList, R <: HList, Out0 <: HList] = Divide[L, R] { type Out = Out0 }
 
-    implicit def dimensionsDivide[NL <: HList, NR <: HList, DL <: HList, DR <: HList, DimRInv <: Dimensions[_, _], DimOut <: Dimensions[_, _]](
-      implicit inv: Invert.Aux[Dimensions[NR, DR], DimRInv],
-      m: Multiply.Aux[Dimensions[NL, DL], DimRInv, DimOut]
-    ): Divide.Aux[Dimensions[NL, DL], Dimensions[NR, DR], DimOut] = 
-      new Divide[Dimensions[NL, DL], Dimensions[NR, DR]] {
-      type Out = DimOut
+    implicit def dimensionsDivide[L <: HList, R <: HList, IR <: HList, M <: HList](
+      implicit ev0: Invert.Aux[R, IR],
+      ev1: Multiply.Aux[L, IR, M]
+    ): Aux[L, R, M] = new Divide[L, R] {
+      type Out = M
     }
   }
 
-  /**
-    * Type class to raise dimensions `D` to the power `P`.
-    */
-  trait Power[D <: Dimensions[_, _], P <: Singleton with Int] {
-    type Out <: Dimensions[_, _]
+  /** Type class for raising dimensions to the power `P` */
+  trait Power[P <: Singleton with Int, H <: HList] {
+    type Out <: HList
   }
-  
+
   object Power {
-    type Aux[D <: Dimensions[_, _], P <: Singleton with Int, Out0 <: Dimensions[_, _]] = Power[D, P] { type Out = Out0 }
+    type Aux[P <: Singleton with Int, H <: HList, Out0 <: HList] = Power[P, H] { type Out = Out0 }
 
-    implicit def dimensionsPower0[D <: Dimensions[_, _]]: Power.Aux[D, 0, Dimensions[HNil, HNil]] =
-      new Power[D, 0] {
-        type Out = Dimensions[HNil, HNil]
-      }
-
-    implicit def dimensionsPowerPositiveN[D <: Dimensions[_, _], P <: Singleton with Int, PPred <: Singleton with Int, PowPred <: Dimensions[_, _], DOut <: Dimensions[_, _]](
-      implicit evPos: Require[P > 0],
-      pred: OpInt.Aux[P - 1, PPred],
-      powPred: Power.Aux[D, PPred, PowPred],
-      m: Multiply.Aux[D, PowPred, DOut]
-    ): Power.Aux[D, P, DOut] = new Power[D, P] {
-      type Out = DOut
+    implicit def dimensionsPowerBase[P <: Singleton with Int]: Aux[P, HNil, HNil] = new Power[P, HNil] {
+      type Out = HNil
     }
 
-    implicit def dimensionsPowerNegativeN[D <: Dimensions[_, _], PNeg <: Singleton with Int, PPos <: Singleton with Int,
-      PowPos <: Dimensions[_, _], DOut <: Dimensions[_, _]](
-      implicit evNeg: Require[PNeg < 0],
-        negate: OpInt.Aux[Negate[PNeg], PPos],
-        powPos: Power.Aux[D, PPos, PowPos],
-        invert: Invert.Aux[PowPos, DOut]
-    ): Power.Aux[D, PNeg, DOut] = new Power[D, PNeg] {
-      type Out = DOut
+    implicit def dimensionsPowerRecurseValid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
+      implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
+      ev1: Aux[P, T, TOut],
+      ev2: fraction.Valid[PF]
+ ): Aux[P, Term[D, F] :: T, Term[D, PF] :: TOut] = new Power[P, Term[D, F] :: T] {
+      type Out = Term[D, PF] :: TOut
+    }
+
+    implicit def dimensionsPowerRecurseInvalid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
+      implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
+      ev1: Aux[P, T, TOut],
+      ev2: Refute[fraction.Valid[PF]]
+ ): Aux[P, Term[D, F] :: T, TOut] = new Power[P, Term[D, F] :: T] {
+      type Out = TOut
     }
   }
 
-  type Numerator
-  type Denominator
 
-  /**
-    * Type class representing a single term within a dimensions string representation.
-    *  `D` is the dimension for the term, `I` is the number of apperances, 
-    *  `S` represents whether the term appears in the numerator or the denominator.
-    */
-  trait Term[D, I <: Nat, S[_] <: base.Show[_], A] {
-    def apply(): String
+  /** Type class for raising dimensions to the power `1 / P` */
+  trait Root[P <: Singleton with Int, H <: HList] {
+    type Out <: HList
   }
-  
-  object Term {
+  object Root {
+    type Aux[P <: Singleton with Int, H <: HList, Out0 <: HList] = Root[P, H] { type Out = Out0 }
 
-    implicit def numeratorTerm[D, I <: Nat, S[_] <: base.Show[_]](
-      implicit dShow: S[D],
-      iValue: shapeless.ops.nat.ToInt[I]): Term[D, I, S, Numerator] =
-      new Term[D, I, S, Numerator] {
-        def apply(): String = s"${dShow()}^${iValue()}"
-      }
-
-    implicit def denominatorTerm[D, I <: Nat, S[_] <: base.Show[_]](
-      implicit dShow: S[D],
-      iValue: shapeless.ops.nat.ToInt[I]): Term[D, I, S, Denominator] =
-      new Term[D, I, S, Denominator] {
-        def apply(): String = s"${dShow()}^-${iValue()}"
-      }
-  }
-
-  /**
-    * Type class represeting a list of terms within a dimensions string.
-    *  `L` is the list of dimensions
-    *  `A` indicates whether the list is the Numerator or the Denominator
-    */
-  trait TermList[L <: HList, S[_] <: base.Show[_], A] {
-    def apply(): String
-  }
-
-  object TermList {
-    implicit def hnilTermList[S[_] <: base.Show[_], A]: TermList[HNil, S, A] = new TermList[HNil, S, A] {
-      def apply(): String = ""
+    implicit def dimensionsRootBase[P <: Singleton with Int]: Aux[P, HNil, HNil] = new Root[P, HNil] {
+      type Out = HNil
     }
 
-    implicit def hlistTermList[H, T <: HList, S[_] <: base.Show[_], A, Prefix <: HList, Suffix <: HList, Pow <: Nat](
-      implicit ev0: Partition.Aux[H :: T, H, Prefix, Suffix],
-      ev1: Length.Aux[Prefix, Pow],
-      term: Term[H, Pow, S, A],
-      tail: TermList[Suffix, S, A]
-    ): TermList[H :: T, S, A] =
-      new TermList[H :: T, S, A] {
-        def apply(): String = s"${term()} ${tail()}"
-      }
+    implicit def dimensionsRootRecurse[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
+      implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
+      ev1: Aux[P, T, TOut],
+      ev2: fraction.Valid[PF]
+    ): Aux[P, Term[D, F] :: T, Term[D, PF] :: TOut] = new Root[P, Term[D, F] :: T] {
+      type Out = Term[D, PF] :: TOut
+    }
+
+    implicit def dimensionsRootRecurseInvalid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
+      implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
+      ev1: Aux[P, T, TOut],
+      ev2: Refute[fraction.Valid[PF]]
+    ): Aux[P, Term[D, F] :: T, TOut] = new Root[P, Term[D, F] :: T] {
+      type Out = TOut
+    }
   }
 
-  /**
-    * Type class for showing the dimension of dimensions `D`.
-    * e.g. velocity has dimensions L^1 T^-1
-    */
-  trait ShowDimension[D] {
+  /** Type class for printing dimensions */
+  trait ShowDimension[H <: HList] {
     def apply(): String
   }
 
   object ShowDimension {
-
-    implicit def dimensionsShowDimension[N <: HList, D <: HList](
-      implicit numerator: TermList[N, base.ShowDimension, Numerator],
-      denominator: TermList[D, base.ShowDimension, Denominator]
-    ): ShowDimension[Dimensions[N, D]] = new ShowDimension[Dimensions[N, D]] {
-      def apply(): String = s"${numerator()} ${denominator()}".trim
+    implicit def dimensionsShowDimensionBase: ShowDimension[HNil] = new ShowDimension[HNil] {
+      def apply(): String = ""
     }
+
+    implicit def dimensionsShowDimensionRecurse[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
+      ev0: Require[FD != 1],
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowDimension[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showDimension()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
+      }
+
+    implicit def dimensionsShowDimensionRecurse1[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
+      ev0: Require[FD == 1], ev1: LowPriority,
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowDimension[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showDimension()}^${numerator.value.toString} ${showTail()}"
+      }
+
+    implicit def dimensionsShowDimensionRecurse2[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
+      ev0: Require[FD == 1], ev1: Require[FN == 1],
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowDimension[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showDimension()} ${showTail()}"
+      }
   }
 
-  trait ShowUnit[D] {
+  /** Type class for printing dimensions */
+  trait ShowUnit[H <: HList] {
     def apply(): String
   }
 
+
   object ShowUnit {
-    implicit def dimensionsShowUnit[N <: HList, D <: HList](
-      implicit numerator: TermList[N, base.ShowUnit, Numerator],
-      denominator: TermList[D, base.ShowUnit, Denominator]
-    ): ShowUnit[Dimensions[N, D]] = new ShowUnit[Dimensions[N, D]] {
-      def apply(): String = s"${numerator()} ${denominator()}".trim
+    implicit def dimensionsShowUnitBase: ShowUnit[HNil] = new ShowUnit[HNil] {
+      def apply(): String = ""
     }
+
+    implicit def dimensionsShowUnitRecurse[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
+      ev0: Require[FD != 1],
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowUnit[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showUnit()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
+      }
+
+    implicit def dimensionsShowUnitRecurse1[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
+      ev0: Require[FD == 1], ev1: LowPriority,
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowUnit[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showUnit()}^${numerator.value.toString} ${showTail()}"
+      }
+
+    implicit def dimensionsShowUnitRecurse2[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+      implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
+      ev0: Require[FD == 1], ev1: Require[FN == 1],
+      numerator: ValueOf[FN],
+      denominator: ValueOf[FD]) =
+      new ShowUnit[Term[D, Fraction[FN, FD]] :: T] {
+        def apply(): String = s"${showUnit()} ${showTail()}"
+      }
   }
 }

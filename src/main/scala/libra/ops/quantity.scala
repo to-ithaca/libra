@@ -2,6 +2,7 @@ package libra
 package ops
 
 import shapeless._
+import shapeless.ops.hlist.Align
 import singleton.ops._
 import singleton.ops.impl._
 
@@ -26,9 +27,9 @@ Right: ${R}""")
   object Add {
     type Aux[L <: Quantity[_, _], R <: Quantity[_, _], Out0 <: Quantity[_, _]] = Add[L, R] { type Out = Out0 }
 
-    implicit def quantityAdd[A, DL <: Dimensions[_, _], DR <: Dimensions[_, _]](
+    implicit def quantityAdd[A, DL <: HList, DR <: HList](
       implicit ev0: AdditiveSemigroup[A],
-        ev1: dimensions.Eq[DL, DR]
+        ev1: Align[DL, DR]
     ): Add.Aux[Quantity[A, DL], Quantity[A, DR], Quantity[A, DL]] =
       new Add[Quantity[A, DL], Quantity[A, DR]] {
         type Out = Quantity[A, DL]
@@ -49,7 +50,7 @@ Right: ${R}""")
   object Multiply {
     type Aux[L <: Quantity[_, _], R <: Quantity[_, _], Out0 <: Quantity[_, _]] = Multiply[L, R] { type Out = Out0 }
 
-    implicit def quantityMultiply[A, DL <: Dimensions[_, _], DR <: Dimensions[_, _], DOut <: Dimensions[_, _]](
+    implicit def quantityMultiply[A, DL <: HList, DR <: HList, DOut <: HList](
       implicit ev: MultiplicativeSemigroup[A],
       dimensionsM: dimensions.Multiply.Aux[DL, DR, DOut]
     ): Multiply.Aux[Quantity[A, DL], Quantity[A, DR], Quantity[A, DOut]] =
@@ -69,7 +70,7 @@ Right: ${R}""")
   object Invert {
     type Aux[Q <: Quantity[_, _], Out0 <: Quantity[_, _]] = Invert[Q] { type Out = Out0 }
 
-    implicit def quantityInvert[A, D <: Dimensions[_, _], DInv <: Dimensions[_, _]](
+    implicit def quantityInvert[A, D <: HList, DInv <: HList](
       implicit ev: Field[A], convert: ConvertableTo[A],
         dimensionsInv: dimensions.Invert.Aux[D, DInv]
     ): Invert.Aux[Quantity[A, D], Quantity[A, DInv]] = 
@@ -109,9 +110,9 @@ Right: ${R}""")
   object Power {
     type Aux[Q <: Quantity[_, _], P <: Singleton with Int, Out0 <: Quantity[_, _]] = Power[Q, P] { type Out = Out0 }
 
-    implicit def quantityPower[A, D <: Dimensions[_, _], Pow <: Singleton with Int, DOut <: Dimensions[_, _]](
+    implicit def quantityPower[A, D <: HList, Pow <: Singleton with Int, DOut <: HList](
       implicit ev: ConvertableFrom[A], convert: ConvertableTo[A],
-      dimensionsP: dimensions.Power.Aux[D, Pow, DOut],
+      dimensionsP: dimensions.Power.Aux[Pow, D, DOut],
       powValue: ValueOf[Pow]
     ): Power.Aux[Quantity[A, D], Pow, Quantity[A, DOut]] =
       new Power[Quantity[A, D], Pow] {
@@ -129,13 +130,13 @@ Right: ${R}""")
   }
 
   object Show {
-    implicit def quantityShow[A, D <: Dimensions[_, _]](
+    implicit def quantityShow[A, D <: HList](
       implicit showUnit: dimensions.ShowUnit[D],
       showDimension: dimensions.ShowDimension[D]
     ): Show[Quantity[A, D]] =
       new Show[Quantity[A, D]] {
         def apply(q: Quantity[A, D]): String = 
-          s"${q.value} ${showUnit()} [${showDimension()}]"
+          s"${q.value} ${showUnit().trim} [${showDimension().trim}]"
       }
   }
 }
