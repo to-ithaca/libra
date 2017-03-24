@@ -11,17 +11,19 @@ package object libra {
     */
   trait Fraction[N <: XInt, D <: XInt]
 
-  /** Represents a single dimension in a HList of dimensions
+  trait Unit[D]
+
+  /** Represents a unit in a HList of units
     * 
     * @tparam A the base dimension e.g. Length
     * @tparam E the fractional exponent the dimension is raised to
+    * @tparam U the unit
     * 
     */
-  type Term[A, E <: Fraction[_, _]] = shapeless.labelled.FieldType[A, E]
+  type Term[A, U <: Unit[_], E <: Fraction[_, _]] = shapeless.labelled.FieldType[A, (U, E)]
 
-  /** Aliases a quantity with single dimension */
-  type QuantityOf[A, T] = Quantity[A, OneOf[T] :: HNil]
+  type TermValue[U <: Unit[_], E <: Fraction[_, _]] = (U, E)
 
-  /** Aliases a single dimension */
-  type OneOf[A] = Term[A, Fraction[1, 1]]
+  /** Aliases a quantity with single unit */
+  type QuantityOf[A, D, U <: Unit[D]] = Quantity[A, Term[D, U, Fraction[1, 1]] :: HNil]
 }

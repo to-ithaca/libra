@@ -122,6 +122,8 @@ Right: ${R}""")
       }
   }
 
+  trait Conversion[A, D, 
+
   /**
    * Type class for showing a quantity `Q`
    */
