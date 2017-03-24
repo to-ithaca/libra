@@ -83,18 +83,18 @@ object dimensions {
   }
 
   /** Type class for raising dimensions to the power `P` */
-  trait Power[P <: Singleton with Int, H <: HList] {
+  trait Power[P <: XInt, H <: HList] {
     type Out <: HList
   }
 
   object Power {
-    type Aux[P <: Singleton with Int, H <: HList, Out0 <: HList] = Power[P, H] { type Out = Out0 }
+    type Aux[P <: XInt, H <: HList, Out0 <: HList] = Power[P, H] { type Out = Out0 }
 
-    implicit def dimensionsPowerBase[P <: Singleton with Int]: Aux[P, HNil, HNil] = new Power[P, HNil] {
+    implicit def dimensionsPowerBase[P <: XInt]: Aux[P, HNil, HNil] = new Power[P, HNil] {
       type Out = HNil
     }
 
-    implicit def dimensionsPowerRecurseValid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
+    implicit def dimensionsPowerRecurseValid[P <: XInt, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
       implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
       ev1: Aux[P, T, TOut],
       ev2: fraction.Valid[PF]
@@ -102,7 +102,7 @@ object dimensions {
       type Out = Term[D, PF] :: TOut
     }
 
-    implicit def dimensionsPowerRecurseInvalid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
+    implicit def dimensionsPowerRecurseInvalid[P <: XInt, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList, Out0 <: HList](
       implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
       ev1: Aux[P, T, TOut],
       ev2: Refute[fraction.Valid[PF]]
@@ -113,17 +113,17 @@ object dimensions {
 
 
   /** Type class for raising dimensions to the power `1 / P` */
-  trait Root[P <: Singleton with Int, H <: HList] {
+  trait Root[P <: XInt, H <: HList] {
     type Out <: HList
   }
   object Root {
-    type Aux[P <: Singleton with Int, H <: HList, Out0 <: HList] = Root[P, H] { type Out = Out0 }
+    type Aux[P <: XInt, H <: HList, Out0 <: HList] = Root[P, H] { type Out = Out0 }
 
-    implicit def dimensionsRootBase[P <: Singleton with Int]: Aux[P, HNil, HNil] = new Root[P, HNil] {
+    implicit def dimensionsRootBase[P <: XInt]: Aux[P, HNil, HNil] = new Root[P, HNil] {
       type Out = HNil
     }
 
-    implicit def dimensionsRootRecurse[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
+    implicit def dimensionsRootRecurse[P <: XInt, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
       implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
       ev1: Aux[P, T, TOut],
       ev2: fraction.Valid[PF]
@@ -131,7 +131,7 @@ object dimensions {
       type Out = Term[D, PF] :: TOut
     }
 
-    implicit def dimensionsRootRecurseInvalid[P <: Singleton with Int, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
+    implicit def dimensionsRootRecurseInvalid[P <: XInt, D, F <: Fraction[_, _], PF <: Fraction[_, _], T <: HList, TOut <: HList](
       implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
       ev1: Aux[P, T, TOut],
       ev2: Refute[fraction.Valid[PF]]
@@ -150,7 +150,7 @@ object dimensions {
       def apply(): String = ""
     }
 
-    implicit def dimensionsShowDimensionRecurse[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowDimensionRecurse[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
       ev0: Require[FD != 1],
       numerator: ValueOf[FN],
@@ -159,7 +159,7 @@ object dimensions {
         def apply(): String = s"${showDimension()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
       }
 
-    implicit def dimensionsShowDimensionRecurse1[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowDimensionRecurse1[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
       ev0: Require[FD == 1], ev1: LowPriority,
       numerator: ValueOf[FN],
@@ -168,7 +168,7 @@ object dimensions {
         def apply(): String = s"${showDimension()}^${numerator.value.toString} ${showTail()}"
       }
 
-    implicit def dimensionsShowDimensionRecurse2[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowDimensionRecurse2[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.ShowDimension[D], showTail: ShowDimension[T],
       ev0: Require[FD == 1], ev1: Require[FN == 1],
       numerator: ValueOf[FN],
@@ -189,7 +189,7 @@ object dimensions {
       def apply(): String = ""
     }
 
-    implicit def dimensionsShowUnitRecurse[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowUnitRecurse[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
       ev0: Require[FD != 1],
       numerator: ValueOf[FN],
@@ -198,7 +198,7 @@ object dimensions {
         def apply(): String = s"${showUnit()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
       }
 
-    implicit def dimensionsShowUnitRecurse1[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowUnitRecurse1[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
       ev0: Require[FD == 1], ev1: LowPriority,
       numerator: ValueOf[FN],
@@ -207,7 +207,7 @@ object dimensions {
         def apply(): String = s"${showUnit()}^${numerator.value.toString} ${showTail()}"
       }
 
-    implicit def dimensionsShowUnitRecurse2[D, FN <: Singleton with Int, FD <: Singleton with Int, T <: HList](
+    implicit def dimensionsShowUnitRecurse2[D, FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.ShowUnit[D], showTail: ShowUnit[T],
       ev0: Require[FD == 1], ev1: Require[FN == 1],
       numerator: ValueOf[FN],

@@ -105,13 +105,13 @@ Right: ${R}""")
   /**
    * Type class for raising a quantity `Q` to the power `P`
    */
-  trait Power[Q <: Quantity[_, _], P <: Singleton with Int] extends DepFn1[Q] {
+  trait Power[Q <: Quantity[_, _], P <: XInt] extends DepFn1[Q] {
     type Out <: Quantity[_, _]
   }
   object Power {
-    type Aux[Q <: Quantity[_, _], P <: Singleton with Int, Out0 <: Quantity[_, _]] = Power[Q, P] { type Out = Out0 }
+    type Aux[Q <: Quantity[_, _], P <: XInt, Out0 <: Quantity[_, _]] = Power[Q, P] { type Out = Out0 }
 
-    implicit def quantityPower[A, D <: HList, Pow <: Singleton with Int, DOut <: HList](
+    implicit def quantityPower[A, D <: HList, Pow <: XInt, DOut <: HList](
       implicit ev: ConvertableFrom[A], convert: ConvertableTo[A],
       dimensionsP: dimensions.Power.Aux[Pow, D, DOut],
       powValue: ValueOf[Pow]
