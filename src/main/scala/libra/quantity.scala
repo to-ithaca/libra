@@ -3,7 +3,6 @@ package libra
 import ops.quantity._
 import shapeless._
 import spire._, spire.algebra._, spire.math._, spire.implicits._
-import singleton.ops._
 
 /** Represents a dimensional quantity
   * 
@@ -119,7 +118,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * res0: Quantity[Int, Term[Length, Fraction[3, 1]] :: HNil] = Quantity(8)
     * }}}
     */
-  def power[P <: XInt]()(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
+  def power[P <: Singleton with Int]()(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 
   /** The standard index form String
     * 
@@ -191,5 +190,5 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * res0: Quantity[Int, Term[Length, Fraction[3, 1]] :: HNil] = Quantity(8)
     * }}}
     */
-  def ^[P <: XInt](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
+  def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 }
