@@ -116,6 +116,14 @@ val q = 3.0.m.invert
 q.show
 ```
 
+### Scalar multiplication
+You can multiply by scalar values:
+
+```tut
+val q = 3.0.m
+q :* 3.0
+```
+
 ### Extracting the base value
 Here's how you extract the value as a numeric in base units:
 
