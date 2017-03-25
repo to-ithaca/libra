@@ -191,4 +191,21 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * }}}
     */
   def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
+
+}
+
+object Quantity {
+
+  implicit def quantityModule[A, D <: HList](implicit R: Ring[A], ev: shapeless.ops.hlist.Align[D, D]): Module[Quantity[A, D], A] = {
+    new Module[Quantity[A, D], A] {
+
+      implicit def scalar: Rng[A] = R
+
+      def negate(x: Quantity[A,D]): Quantity[A,D] = x.negate
+      def zero: Quantity[A,D] = Quantity(R.zero)
+      def plus(x: Quantity[A,D], y: Quantity[A,D]): Quantity[A,D] = x add y
+      def timesl(r: A, v: Quantity[A,D]): Quantity[A,D] = Quantity(r * v.value)
+
+    }
+  }
 }
