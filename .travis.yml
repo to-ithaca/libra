@@ -12,4 +12,10 @@ matrix:
   - scala: 2.12.1
     jdk: oraclejdk8
   - scala: 2.11.8
-    jdk: oraclejdk7
+    jdk: oraclejdk8
+    
+script:
+  - sbt clean compile coverage test coverageReport
+
+after_success:
+- bash <(curl -s https://codecov.io/bash)
