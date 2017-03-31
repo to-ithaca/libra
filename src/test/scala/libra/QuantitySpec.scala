@@ -69,6 +69,12 @@ class QuantitySpec extends FlatSpec {
     assert(q.power[2] === Quantity[Double, Term[Length, Fraction[2, 1]] :: HNil](16.0))
   }
 
+  it should "support scalar multiplication" in {
+    val q: QuantityOf[Int, Length] = Quantity(4)
+    assert((q :* 3) == Quantity[Int, OneOf[Length] :: HNil](12))
+    assert((3 *: q) == Quantity[Int, OneOf[Length] :: HNil](12))
+  }
+
   it should "show" in {
     type Q = Quantity[Double, OneOf[Length] :: OneOf[Mass] :: HNil]
     the[Show[Q]]
