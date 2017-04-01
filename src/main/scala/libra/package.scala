@@ -15,12 +15,12 @@ package object libra {
 
   /** Represents a unit in a HList of units
     * 
-    * @tparam A the base dimension e.g. Length
+    * @tparam D the base dimension e.g. Length
     * @tparam E the fractional exponent the dimension is raised to
     * @tparam U the unit
     * 
     */
-  type Term[A, U <: Unit[_], E <: Fraction[_, _]] = shapeless.labelled.FieldType[A, (U, E)]
+  type Term[D, U <: Unit[_], E <: Fraction[_, _]] = shapeless.labelled.FieldType[D, (U, E)]
 
   type TermValue[U <: Unit[_], E <: Fraction[_, _]] = (U, E)
 

@@ -63,7 +63,7 @@ Right: ${R}""")
   /** 
    * Type class for inverting a quantity `Q`
    */
-  @annotation.implicitNotFound(msg = "No implicit Field in scope.  Make sure you import spire.implicits._")
+  @annotation.implicitNotFound(msg = "No implicit MultiplicativeGroup in scope.  Make sure you import spire.implicits._")
   trait Invert[Q <: Quantity[_, _]] extends DepFn1[Q] {
     type Out <: Quantity[_, _]
   }
@@ -71,12 +71,12 @@ Right: ${R}""")
     type Aux[Q <: Quantity[_, _], Out0 <: Quantity[_, _]] = Invert[Q] { type Out = Out0 }
 
     implicit def quantityInvert[A, D <: HList, DInv <: HList](
-      implicit ev: Field[A], convert: ConvertableTo[A],
-        dimensionsInv: dimensions.Invert.Aux[D, DInv]
-    ): Invert.Aux[Quantity[A, D], Quantity[A, DInv]] = 
+      implicit ev0: MultiplicativeGroup[A],
+      ev1: dimensions.Invert.Aux[D, DInv]
+    ): Invert.Aux[Quantity[A, D], Quantity[A, DInv]] =
       new Invert[Quantity[A, D]] {
         type Out = Quantity[A, DInv]
-        def apply(q: Quantity[A, D]): Quantity[A, DInv] = Quantity[A, DInv](convert.fromInt(1) / q.value)
+        def apply(q: Quantity[A, D]): Quantity[A, DInv] = Quantity[A, DInv](q.value.reciprocal)
       }
   }
 
@@ -112,17 +112,30 @@ Right: ${R}""")
     type Aux[Q <: Quantity[_, _], P <: XInt, Out0 <: Quantity[_, _]] = Power[Q, P] { type Out = Out0 }
 
     implicit def quantityPower[A, D <: HList, Pow <: XInt, DOut <: HList](
-      implicit ev: ConvertableFrom[A], convert: ConvertableTo[A],
-      dimensionsP: dimensions.Power.Aux[Pow, D, DOut],
-      powValue: ValueOf[Pow]
+      implicit ev0: dimensions.Power.Aux[Pow, D, DOut],
+      ev1: Field[A],
+      p: ValueOf[Pow]
     ): Power.Aux[Quantity[A, D], Pow, Quantity[A, DOut]] =
       new Power[Quantity[A, D], Pow] {
         type Out = Quantity[A, DOut]
-        def apply(q: Quantity[A, D]): Out = Quantity[A, DOut](convert.fromDouble(math.pow(q.value.toDouble, powValue.value)))
+        def apply(q: Quantity[A, D]): Out = Quantity[A, DOut](q.value.pow(p.value))
       }
   }
 
-  trait Conversion[A, D, 
+  trait ConvertTo[Q <: Quantity[_, _], UT <: Unit[_]] extends DepFn1[Q] {
+    type Out <: Quantity[_, _]
+  }
+
+  object ConvertTo {
+    type Aux[Q <: Quantity[_, _], UT <: Unit[_], Out0 <: Quantity[_, _]] = ConvertTo[Q, UT] { type Out = Out0 }
+
+    implicit def quantityConvertTo[A, U <: Unit[_], D <: HList, DOut <: HList](
+      implicit to: dimensions.ConvertTo.Aux[A, U, D, DOut]
+    ): Aux[Quantity[A, D], U, Quantity[A, DOut]] = new ConvertTo[Quantity[A, D], U] {
+      type Out = Quantity[A, DOut]
+      def apply(q: Quantity[A, D]): Quantity[A, DOut] = Quantity(to(q.value))
+    }
+  }
 
   /**
    * Type class for showing a quantity `Q`

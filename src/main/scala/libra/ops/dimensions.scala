@@ -2,11 +2,51 @@ package libra
 package ops
 
 import shapeless._
+import shapeless.labelled.FieldType
 import shapeless.ops.hlist._
 import singleton.ops._
 import singleton.ops.impl._
+import spire.algebra._, spire.implicits._
 
 object dimensions {
+
+  trait MultiplyZipped[H <: HList] {
+    type Out
+  }
+
+  object MultiplyZipped {
+    type Aux[H <: HList, Out0 <: HList] = MultiplyZipped[H] { type Out = Out0 }
+
+    implicit def multiplyZippedBase: Aux[HNil, HNil] = new MultiplyZipped[HNil] { type Out = HNil }
+
+    implicit def multiplyZippedRecurseValid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
+      Tail <: HList, OutTail <: HList](
+      implicit ev0: fraction.Add.Aux[LF, RF, TF],
+      ev1: fraction.Valid[TF],
+      ev2: Aux[Tail, OutTail]
+    ): Aux[FieldType[D, ((U, LF), (U, RF))] :: Tail, FieldType[D, (U, TF)] :: OutTail] =
+      new MultiplyZipped[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
+        type Out = FieldType[D, (U, TF)] :: OutTail
+      }
+
+
+    implicit def multiplyZippedRecurseInvalid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
+      Tail <: HList, OutTail <: HList](
+      implicit ev0: fraction.Add.Aux[LF, RF, TF],
+      ev1: Refute[fraction.Valid[TF]],
+      ev2: Aux[Tail, OutTail]
+    ): Aux[FieldType[D, ((U, LF), (U, RF))] :: Tail, OutTail] =
+      new MultiplyZipped[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
+        type Out = OutTail
+      }
+
+    implicit def multiplyZippedRecurseSingle[D, U <: Unit[_], F <: Fraction[_, _], Tail <: HList, OutTail <: HList](
+      implicit ev: Aux[Tail, OutTail]
+    ): Aux[FieldType[D, (U, F)] :: Tail, FieldType[D, (U, F)] :: OutTail] = 
+      new MultiplyZipped[FieldType[D, (U, F)] :: Tail] {
+        type Out = FieldType[D, (U, F)] :: OutTail
+      }
+  }
 
   /** Type class for multiplying two hlists of dimensions */
   trait Multiply[L <: HList, R <: HList] {
@@ -16,35 +56,11 @@ object dimensions {
   object Multiply {
     type Aux[L <: HList, R <: HList, Out0 <: HList] = Multiply[L, R] { type Out = Out0 }
 
-    implicit def dimensionsMultiplyBase[R <: HList]: Aux[HNil, R, R] = new Multiply[HNil, R] {
-      type Out = R
-    }
-
-    implicit def dimensionsMultiplyRecurseValidFraction[D, U <: Unit[_], R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
-      implicit ev: shapeless.ops.record.Selector.Aux[R, D, TermValue[U, RF]],
-      ev1: fraction.Add.Aux[LF, RF, TF],
-      ev2: fraction.Valid[TF],
-      ev3: FilterNot.Aux[R, Term[D, U, RF], RT],
-      ev4: Aux[LT, RT, T]
- ): Aux[Term[D, U, LF] :: LT, R, Term[D, U, TF] :: T] = new Multiply[Term[D, U, LF] :: LT, R] {
-      type Out = Term[D, U, TF] :: T
-    }
-
-    implicit def dimensionsMultiplyRecurseInvalidFraction[D, U <: Unit[_], R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
-      implicit ev: shapeless.ops.record.Selector.Aux[R, D, TermValue[U, RF]],
-      ev1: fraction.Add.Aux[LF, RF, TF],
-      ev2: Refute[fraction.Valid[TF]],
-      ev3: FilterNot.Aux[R, Term[D, U, RF], RT],
-      ev4: Aux[LT, RT, T]
- ): Aux[Term[D, U, LF] :: LT, R, T] = new Multiply[Term[D, U, LF] :: LT, R] {
-      type Out = T
-    }
-
-    implicit def dimensionsMultiplyRecurseLeft[D, U <: Unit[_], R <: HList, LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _], RT <: HList, LT <: HList, T <: HList](
-      implicit ev: Refute[shapeless.ops.record.Selector[R, D]],
-      ev1: Aux[LT, R, T]
-    ): Aux[Term[D, U, LF] :: LT, R, Term[D, U, TF] :: T] = new Multiply[Term[D, U, LF] :: LT, R] {
-      type Out = Term[D, U, TF] :: T
+    implicit def dimensionsMultiply[L <: HList, R <: HList, Zipped <: HList, Out0 <: HList](
+      implicit ev0: recordExtra.Zip.Aux[L, R, Zipped],
+      ev1: MultiplyZipped.Aux[Zipped, Out0]
+    ): Aux[L, R, Out0] = new Multiply[L, R] {
+      type Out = Out0
     }
   }
 
@@ -140,9 +156,33 @@ object dimensions {
     }
   }
 
-  trait Conversion[A, D, UF <: Unit[D], UT <: Unit[D], H <: HList] {
+  trait ConvertTo[A, UT <: Unit[_], H <: HList] {
     type Out <: HList
     def apply(a: A): A
+  }
+
+  object ConvertTo {
+    type Aux[A, UT <: Unit[_], H <: HList, Out0 <: HList] = ConvertTo[A, UT, H] { type Out = Out0 }
+
+    implicit def dimensionConvertTo[A, D, UF <: Unit[D], NF <: Singleton with Int, DF <: Singleton with Int, UT <: Unit[D], T <: HList]
+    (implicit conversion: base.Conversion[A, D, UF, UT],
+      ev3: Field[A],
+      ev4: NRoot[A],
+      n: ValueOf[NF],
+      d: ValueOf[DF]
+    ): Aux[A, UT, Term[D, UF, Fraction[NF, DF]] :: T, Term[D, UT, Fraction[NF, DF]] :: T] =
+      new ConvertTo[A, UT, Term[D, UF, Fraction[NF, DF]] :: T] {
+        type Out = Term[D, UT, Fraction[NF, DF]] :: T
+        def apply(a: A): A = conversion.factor.pow(n.value).nroot(d.value) * a
+      }
+
+    implicit def dimensionConvertToRecurse[A, U <: Unit[_], H, T <: HList, TOut <: HList](
+      implicit ev: Aux[A, U, T, TOut]
+    ): Aux[A, U, H :: T, H :: TOut] =
+      new ConvertTo[A, U, H :: T] {
+        type Out = H :: TOut
+        def apply(a: A): A = ev(a)
+      }
   }
 
   /** Type class for printing dimensions */
