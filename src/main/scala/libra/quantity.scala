@@ -15,8 +15,8 @@ import spire._, spire.algebra._, spire.math._, spire.implicits._
   * scala> import spire.implicits._
   * scala> import libra._, libra.si._
   * 
-  * scala> Quantity[Double, Term[Length, Fraction[1, 1]] :: HNil](5.5) // represents 5.5 m 
-  * scala> res0: Quantity[Double, Term[Length :: Fraction[1, 1]] :: HNil] = Quantity(5.5)
+  * scala> Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil](5.5) // represents 5.5 m 
+  * scala> res0: Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5.5)
   * }}}
   */
 case class Quantity[A, D <: HList](val value: A) extends AnyVal {
@@ -30,7 +30,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
    * scala> import shapeless._
    * scala> import libra._, libra.si._
    * scala> 3.m add 2.m
-   * res1: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(5)
+   * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5)
    * }}}
    */
   def add[D1 <: HList](q1: Quantity[A, D1])(implicit a: Add[Quantity[A, D], Quantity[A, D1]]): a.Out = a(this, q1)
@@ -42,9 +42,9 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> val x = 2.m
-    * x: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(2)
+    * x: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(2)
     * scala> x.negate
-    * res2: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(-2)
+    * res2: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(-2)
     * }}}
     */
   def negate()(implicit ev: AdditiveGroup[A]): Quantity[A, D] = Quantity(-value)
@@ -58,7 +58,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
    * scala> import shapeless._
    * scala> import libra._, libra.si._
    * scala> 3.m subtract 2.m
-   * res1: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(1)
+   * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(1)
    * }}}
    */
   def subtract[D1 <: HList](q1: Quantity[A, D1])(implicit a: Add[Quantity[A, D], Quantity[A, D1]], group: AdditiveGroup[A]): a.Out = a(this, q1.negate)
@@ -70,9 +70,9 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> val x = 2.0.m
-    * x: Quantity[Double, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(2.0)
+    * x: Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(2.0)
     * scala> x.invert
-    * res2: Quantity[Double, Term[Length, Fraction[-1, 1]] :: HNil] = Quantity(0.5)
+    * res2: Quantity[Double, Term[Length, Metre, Fraction[-1, 1]] :: HNil] = Quantity(0.5)
     * }}}
     */
   def invert()(implicit i: Invert[Quantity[A, D]]): i.Out = i(this)
@@ -87,7 +87,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> 2.m multiply 3.m
-    * res0: Quantity[Int, Term[Length, Fraction[2, 1]] :: HNil] = Quantity(6)
+    * res0: Quantity[Int, Term[Length, Metre, Fraction[2, 1]] :: HNil] = Quantity(6)
     * }}}
     */
   def multiply[D1 <: HList](q1: Quantity[A, D1])(implicit m: Multiply[Quantity[A, D], Quantity[A, D1]]): m.Out = m(this, q1)
@@ -114,8 +114,8 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import spire.implicits._
     * scala> import shapeless._
     * scala> import libra._, libra.si._
-    * scala> 2.m.power[3]
-    * res0: Quantity[Int, Term[Length, Fraction[3, 1]] :: HNil] = Quantity(8)
+    * scala> 2.0.m.power[3]
+    * res0: Quantity[Double, Term[Length, Metre, Fraction[3, 1]] :: HNil] = Quantity(8.0)
     * }}}
     */
   def power[P <: Singleton with Int]()(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
@@ -138,7 +138,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> 3.m + 2.m
-    * res1: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(5)
+    * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5)
     * }}}
     */
   def +[D1 <: HList](q1: Quantity[A, D1])(implicit a: Add[Quantity[A, D], Quantity[A, D1]]): a.Out = add(q1)
@@ -150,7 +150,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> 3.m - 2.m
-    * res1: Quantity[Int, Term[Length, Fraction[1, 1]] :: HNil] = Quantity(1)
+    * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(1)
     * }}}
     */
   def -[D1 <: HList](q1: Quantity[A, D1])(implicit a: Add[Quantity[A, D], Quantity[A, D1]], g: AdditiveGroup[A]): a.Out = subtract(q1)
@@ -162,7 +162,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import shapeless._
     * scala> import libra._, libra.si._
     * scala> 2.m * 3.m
-    * res0: Quantity[Int, Term[Length, Fraction[2, 1]] :: HNil] = Quantity(6)
+    * res0: Quantity[Int, Term[Length, Metre, Fraction[2, 1]] :: HNil] = Quantity(6)
     * }}}
     */
   def *[D1 <: HList](q1: Quantity[A, D1])(implicit m: Multiply[Quantity[A, D], Quantity[A, D1]]): m.Out = multiply(q1)
@@ -186,12 +186,13 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import spire.implicits._
     * scala> import shapeless._
     * scala> import libra._, libra.si._
-    * scala> 2.m^(3)
-    * res0: Quantity[Int, Term[Length, Fraction[3, 1]] :: HNil] = Quantity(8)
+    * scala> 2.0.m^(3)
+    * res0: Quantity[Double, Term[Length, Metre, Fraction[3, 1]] :: HNil] = Quantity(8.0)
     * }}}
     */
   def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 
+  def to[U <: Unit[_]](implicit to: ConvertTo[Quantity[A, D], U]): to.Out = to(this)
 }
 
 object Quantity {
