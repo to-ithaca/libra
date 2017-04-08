@@ -1,0 +1,22 @@
+options:
+
+  #############################
+  # Operations Menu Options #
+  #############################
+
+  - title: Operations
+    url: docs/operations.html
+
+  ###########################
+  # Conversions Menu Options #
+  ###########################
+
+  - title: Conversions
+    url: docs/conversions.html
+
+  ###########################
+  # Roll Your Own Menu Options #
+  ###########################
+
+  - title: Roll Your Own
+    url: docs/rollYourOwn.html
