@@ -10,40 +10,45 @@ import spire.algebra._, spire.implicits._
 
 object dimensions {
 
-  trait MultiplyZipped[H <: HList] {
+  /** Typeclass for simplifying a merged HList to produce a multiplied HList
+    *
+    * Given a FieldType[D, (U, F)], produces a FieldType[D, (U, F)] with no change.  This occurs when a term exists in L but not in R, or vice versa
+    * Given a FieldType[D, ((U, LF), (U, RF))] produces a FieldType[D, (U, TF)] where TF is the sum of LF and RF.  If TF is invalid, the term is removed from the output.
+    */
+  trait MultiplyMerged[H <: HList] {
     type Out
   }
 
-  object MultiplyZipped {
-    type Aux[H <: HList, Out0 <: HList] = MultiplyZipped[H] { type Out = Out0 }
+  object MultiplyMerged {
+    type Aux[H <: HList, Out0 <: HList] = MultiplyMerged[H] { type Out = Out0 }
 
-    implicit def multiplyZippedBase: Aux[HNil, HNil] = new MultiplyZipped[HNil] { type Out = HNil }
+    implicit def multiplyMergedBase: Aux[HNil, HNil] = new MultiplyMerged[HNil] { type Out = HNil }
 
-    implicit def multiplyZippedRecurseValid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
+    implicit def multiplyMergedRecurseValid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
       Tail <: HList, OutTail <: HList](
       implicit ev0: fraction.Add.Aux[LF, RF, TF],
       ev1: fraction.Valid[TF],
       ev2: Aux[Tail, OutTail]
     ): Aux[FieldType[D, ((U, LF), (U, RF))] :: Tail, FieldType[D, (U, TF)] :: OutTail] =
-      new MultiplyZipped[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
+      new MultiplyMerged[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
         type Out = FieldType[D, (U, TF)] :: OutTail
       }
 
 
-    implicit def multiplyZippedRecurseInvalid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
+    implicit def multiplyMergedRecurseInvalid[D, U <: Unit[_], LF <: Fraction[_, _], RF <: Fraction[_, _], TF <: Fraction[_, _],
       Tail <: HList, OutTail <: HList](
       implicit ev0: fraction.Add.Aux[LF, RF, TF],
       ev1: Refute[fraction.Valid[TF]],
       ev2: Aux[Tail, OutTail]
     ): Aux[FieldType[D, ((U, LF), (U, RF))] :: Tail, OutTail] =
-      new MultiplyZipped[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
+      new MultiplyMerged[FieldType[D, ((U, LF), (U, RF))] :: Tail] {
         type Out = OutTail
       }
 
-    implicit def multiplyZippedRecurseSingle[D, U <: Unit[_], F <: Fraction[_, _], Tail <: HList, OutTail <: HList](
+    implicit def multiplyMergedRecurseSingle[D, U <: Unit[_], F <: Fraction[_, _], Tail <: HList, OutTail <: HList](
       implicit ev: Aux[Tail, OutTail]
     ): Aux[FieldType[D, (U, F)] :: Tail, FieldType[D, (U, F)] :: OutTail] = 
-      new MultiplyZipped[FieldType[D, (U, F)] :: Tail] {
+      new MultiplyMerged[FieldType[D, (U, F)] :: Tail] {
         type Out = FieldType[D, (U, F)] :: OutTail
       }
   }
@@ -56,9 +61,9 @@ object dimensions {
   object Multiply {
     type Aux[L <: HList, R <: HList, Out0 <: HList] = Multiply[L, R] { type Out = Out0 }
 
-    implicit def dimensionsMultiply[L <: HList, R <: HList, Zipped <: HList, Out0 <: HList](
-      implicit ev0: recordExtra.Zip.Aux[L, R, Zipped],
-      ev1: MultiplyZipped.Aux[Zipped, Out0]
+    implicit def dimensionsMultiply[L <: HList, R <: HList, Merged <: HList, Out0 <: HList](
+      implicit ev0: Merge.Aux[L, R, Merged],
+      ev1: MultiplyMerged.Aux[Merged, Out0]
     ): Aux[L, R, Out0] = new Multiply[L, R] {
       type Out = Out0
     }

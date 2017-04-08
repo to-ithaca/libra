@@ -5,6 +5,8 @@ import spire.algebra._, spire.implicits._
 
 object base {
 
+  /** Typeclass for a String representation of a type
+    */
   trait Show[A] {
     def apply(): String
   }
@@ -14,8 +16,19 @@ object base {
     }
   }
 
+  /** Base typeclass for the conversion factor from F to T
+    *
+    * @tparam A the numeric type of the underlying value
+    * @tparam D the dimension of both units
+    * @tparam F the unit to convert from
+    * @tparam T the unit to convert to
+    */
   case class ConversionFactor[A, D, F <: Unit[D], T <: Unit[D]](val value: A)
 
+  /** Derived typeclass for the conversion factor from F to T
+    *
+    * Two conversions (from and to) are derived from a single conversion factor
+    */
   class Conversion[A, D, F <: Unit[D], T <: Unit[D]](val factor: A)
 
   object Conversion {

@@ -131,6 +131,14 @@ Here's how you extract the value as a numeric in base units:
 3.km.value
 ```
 
+### Conversion
+Here's how you convert quantities:
+
+```tut
+val q = 3.0.km.to[Metre]
+q.show
+```
+
 ## Rolling your own
 
 Let's say we want to code up a game of [Catan](http://www.catan.com/game/catan).  The base SI units don't cut the mustard, so let's make our own.  Our base dimensions are going to be `Stone`, `Wood`, `Wheat`, `Sheep` and `Time`.
