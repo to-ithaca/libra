@@ -7,15 +7,25 @@ dist: trusty
 git:
   depth: 9999
 
-matrix:
-  include:
-  - scala: 2.12.1
-    jdk: oraclejdk8
-  - scala: 2.11.8
-    jdk: oraclejdk8
+scala:
+ - 2.12.1
+ - 2.11.8
+
+jdk:
+ - oraclejdk8
+
+before_install:
+ - export PATH=${PATH}:./vendor/bundle
+
+install:
+  - rvm use 2.2.3 --install --fuzzy
+  - gem update --system
+  - gem install sass
+  - gem install jekyll -v 3.2.1
     
 script:
-  - sbt clean compile coverage test coverageReport
+  - sbt clean compile coverage test makeMicrosite coverageReport
 
 after_success:
 - bash <(curl -s https://codecov.io/bash)
+
