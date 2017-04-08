@@ -17,7 +17,8 @@ object quantity {
    * This only exists if `L` and `R` have the same dimensions.
    *  If `L` and `R` have different mertric prefixes,the output has the highest prefix.
    */
-  @annotation.implicitNotFound(msg = """These quantities can't be added!  Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
+  @annotation.implicitNotFound(msg = """These quantities can't be added!
+Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
 Left: ${L}
 Right: ${R}""")
   trait Add[L <: Quantity[_, _], R <: Quantity[_, _]] extends DepFn2[L, R] {
@@ -140,7 +141,7 @@ Right: ${R}""")
   /**
    * Type class for showing a quantity `Q`
    */
-  @annotation.implicitNotFound(msg = "Some base units can't be shown. Make sure you import libra.si._ when working with units.")
+  @annotation.implicitNotFound(msg = "Some base units can't be shown")
   trait Show[Q <: Quantity[_, _]] {
     def apply(q: Q): String
   }
