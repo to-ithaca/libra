@@ -16,4 +16,4 @@ Take a look at the [guide on contributing](https://github.com/to-ithaca/libra/bl
 Libra is maintained by:
 
  * [zainab-ali](https://github.com/zainab-ali) Zainab Ali
- * [yilin-wei](https://github.com/yilinwei) Yilin Wei
+ * [yilinwei](https://github.com/yilinwei) Yilin Wei
