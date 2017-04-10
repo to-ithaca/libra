@@ -14,7 +14,6 @@ package object si {
   type Amount
   type Intensity
 
-  trait MetricUnit[I <: XInt, D] extends Unit[D]
 
   type Metre = MetricUnit[0, Length]
   type Centimetre = MetricUnit[-2, Length]

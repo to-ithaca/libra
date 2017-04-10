@@ -1,7 +1,10 @@
+import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
+
 lazy val buildSettings = Seq(
-  organization := "com.ithaca",
+  organization := "com.github.zainab-ali",
   scalaOrganization := "org.typelevel",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
+  homepage := Some(url("https://to-ithaca.github.io/libra/")),
   scalaVersion := "2.12.1",
   crossScalaVersions := Seq("2.11.8", "2.12.1"),
   name         := "libra"
@@ -41,8 +44,32 @@ lazy val siteSettings = Seq(
 )
 
 lazy val publishSettings = Seq(
+  sonatypeProfileName := "zainab-ali",
+  pomExtra in Global := {
+    <developers>
+    <developer>
+    <id>zainab-ali</id>
+    <name>Zainab Ali</name>
+    <url>http://github.com/zainab-ali</url>
+        </developer>
+    </developers>
+  },
   releaseCrossBuild := true,
-  bintrayOrganization := Some("to-ithaca")
+  pomIncludeRepository := { _ => false },
+  publishMavenStyle := true,
+  publishTo := {
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value)
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  },
+  scmInfo := Some(
+    ScmInfo(
+      url("https://github.com/to-ithaca/libra"),
+      "scm:git@github.com:to-ithaca/libra.git"
+    )
+  )
 )
 
 lazy val commonSettings = Seq(

@@ -1,17 +1,6 @@
 import shapeless._
 
-import singleton.ops._
-
 package object libra {
-
-  /** Represents a fraction 
-    * 
-    * @tparam N the numerator
-    * @tparam D the denominator
-    */
-  trait Fraction[N <: XInt, D <: XInt]
-
-  trait Unit[D]
 
   /** Represents a unit in a HList of units
     * 
