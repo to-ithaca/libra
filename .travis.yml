@@ -16,7 +16,7 @@ before_script:
 script:
   - |
     if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
-      sbt ++$TRAVIS_SCALA_VERSION 'release with-defaults'
+      sbt ++$TRAVIS_SCALA_VERSION 'publish'
     else
       sbt sbt ++$TRAVIS_SCALA_VERSION test
     fi
