@@ -1,26 +1,37 @@
 language: scala
-
-sudo: required
-
 scala:
- - 2.12.1
- - 2.11.8
+  - 2.11.8
+  - 2.12.1
 
 jdk:
- - oraclejdk8
+  - oraclejdk8
 
-before_install:
- - export PATH=${PATH}:./vendor/bundle
+branches:
+  only:
+  - master
 
-install:
-  - rvm use 2.2.3 --install --fuzzy
-  - gem update --system
-  - gem install sass
-  - gem install jekyll -v 3.2.1
-    
+before_script:
+  - "if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi"
+
 script:
-  - sbt clean compile coverage test makeMicrosite coverageReport
+  - |
+    if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+      sbt ++$TRAVIS_SCALA_VERSION 'release with-defaults'
+    else
+      sbt sbt ++$TRAVIS_SCALA_VERSION test
+    fi
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/boot/scala-$TRAVIS_SCALA_VERSION
 
 after_success:
-- bash <(curl -s https://codecov.io/bash)
-
+  - find $HOME/.sbt -name "*.lock" | xargs rm
+  - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+env:
+  global:
+  - secure: p5M6hT4Vx5UwDQNW7eVtpD/tzogyKpMZl3Wv52rt8inKBjlFgxxBilscTm8NQIPn7FyPtDvUUqT5Lgo+5BIHugHi68xa9B9xzNi10VP+UQ5o7TSsiMMPhMFCTfSBJdwJbAYzoSs3MtVeO3jwgoW0GVlB9If6OO2QMC9+5TPR8uXwQxeNTquZ3Q/hEmty0T9T8fucptY/OTwOvp0U8icv5NTZvJucJTly055uifkuwGfBKyaJzyrXdC+pTQQMyKBsd5B3Hu/kprXZWh4kX6hAVhdSOro8lz4v/N3QLU+QuhJ3rMjTz78bRTk00tdgcwgB0vdqdJHGRHRibIMqXqeSGWST/VaiuPlcKUeeXiPodUXYsSnq068utZqwTSxS6DwcUfXvdMZlU/W7q9vBALOZm7plx3pQDYyusOBDqmD7qxtp79fiusfctVSIw7f26Djd2x/C6DTElmj8Os8wDG+WF0GQ0E7fC0LzYjFHbjTuvqL41j0IaBglanUGKH8N+2aJC5GRcXDK68bLnC71oLEfTU4metz8mhYWN9KLHj5NbCnvD/8xa5u4ua0Y+CFBLfVAHAsKCvD9mEJylc80w4Ad75Al0B3jN74yengNPTFwc3+33s2PjIoDr4myxV2l3KcCMdQYSNEsHI/FIm68NMnsMy5T88bpF7OAZHlYg0rg0vY=
+  - secure: pUidB94Wh50SQ+uNw2TEaJQ30THZgRUtqsDUESWreuqtwm0Pl1dlMSV++cSU37CwIywiZJ4vyntdKAK3BVQaMNoABbYsYXVIdpGu57YymZ41hjaPineaRV3IF7AcH0pzXWyPs7VMeN17V58x8/G8cbz3m3Azyylt05TI7EizkT9OcSBe2jLlJMqvDgaCXlsmyQhzBKNkcyPlvK8mIwduPCrxMla+5hhh8+Ke+gEnWbu9xoQIt//STEtBELKs5hYqx4ie6kmDiVP5/iiIxhk3dRqyeqLFfY1EUAd203jFAh1BvxEZggNCuDuHpBnSY9iIdOxbhdNzEkxgCPdTESiQljTFRmHrH6mhEEeFjXSxp2vmKjt+PCkMfH/ECRnT0r1L4pDUjsA8+jBekdNYdjFjtJqZS85kUY6wlOS5GEPe+WG0Fq3404onmhZh+KTeBzWwPvyFqQVahZeNvFBjGPS6IpHPHmNvVvQIzw+TzsePYpgmdsJEV158I1p9MZ80xLl396cadz0LKRA5RReALMLoBRWeHnOedjFKlcAqI0U0SzqTI0VnTCtv0UveJZPtpruZWmpCcV+l7SvN7J8KZQz1XkWvpkuvS6GskLfx+vwzdYRSeaPCfqgUSxnbycGc9DrPdP78Q5yge1q0eSq8Q40LQU0+sgPC7fSeF4T3oYA/gQo=

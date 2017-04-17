@@ -1,5 +1,5 @@
 lazy val buildSettings = Seq(
-  organization := "com.ithaca",
+  organization := "github.zainab-ali",
   scalaOrganization := "org.typelevel",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   scalaVersion := "2.12.1",
@@ -40,11 +40,6 @@ lazy val siteSettings = Seq(
   autoAPIMappings := true
 )
 
-lazy val publishSettings = Seq(
-  releaseCrossBuild := true,
-  bintrayOrganization := Some("to-ithaca")
-)
-
 lazy val commonSettings = Seq(
     resolvers ++= commonResolvers,
     scalacOptions ++= commonScalacOptions,
@@ -61,5 +56,4 @@ lazy val commonSettings = Seq(
 lazy val root = (project in file("."))
   .settings(commonSettings)
   .settings(siteSettings)
-  .settings(publishSettings)
   .enablePlugins(MicrositesPlugin)
