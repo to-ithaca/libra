@@ -1,5 +1,6 @@
 # Libra
 
+[![Typelevel incubator](https://img.shields.io/badge/typelevel-incubator-F51C2B.svg)](http://typelevel.org)
 [![Build Status](https://travis-ci.org/to-ithaca/libra.svg?branch=master)](https://travis-ci.org/to-ithaca/libra)
 [![codecov](https://codecov.io/gh/to-ithaca/libra/branch/master/graph/badge.svg)](https://codecov.io/gh/to-ithaca/libra)
 
