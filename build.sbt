@@ -29,6 +29,7 @@ lazy val commonResolvers = Seq(
 lazy val docsMappingsAPIDir = settingKey[String]("Name of subdirectory in site target directory for api docs")
 
 
+
 lazy val siteSettings = Seq(
   micrositeName := "Libra",
   micrositeDescription := "Dimensional analysis for Scala",
