@@ -1,7 +1,10 @@
+import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
+
 lazy val buildSettings = Seq(
-  organization := "github.zainab-ali",
+  organization := "com.github.zainab-ali",
   scalaOrganization := "org.typelevel",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
+  homepage := Some(url("https://to-ithaca.github.io/libra/")),
   scalaVersion := "2.12.1",
   crossScalaVersions := Seq("2.11.8", "2.12.1"),
   name         := "libra"
@@ -24,6 +27,8 @@ lazy val commonResolvers = Seq(
 )
 
 lazy val docsMappingsAPIDir = settingKey[String]("Name of subdirectory in site target directory for api docs")
+
+
 
 lazy val siteSettings = Seq(
   micrositeName := "Libra",
