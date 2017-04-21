@@ -2,7 +2,7 @@ import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
 import ReleaseTransformations._
 
 lazy val buildSettings = Seq(
-  organization := "com.ithaca",
+  organization := "com.github.to-ithaca",
   scalaOrganization := "org.typelevel",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
@@ -59,7 +59,7 @@ lazy val commonSettings = Seq(
 val publishSettings = Seq(
   releaseCrossBuild := true,
   releaseIgnoreUntrackedFiles := true,
-  sonatypeProfileName := "com.ithaca",
+  sonatypeProfileName := "com.github.to-ithaca",
   developers += Developer("zainab-ali", "Zainab Ali", "", url("http://github.com/zainab-ali")),
   licenses := Seq("Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("http://to-ithaca.github.io/libra/")),
