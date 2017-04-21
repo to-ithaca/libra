@@ -18,10 +18,10 @@ before_script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi
 script:
 - |
-  if [ $TRAVIS_PULL_REQUEST = 'false' ]; then
+  if [ $TRAVIS_PULL_REQUEST = 'false' && $TRAVIS_BRANCH == 'master' && $(cat version.sbt) =~ '-SNAPSHOT']; then
     openssl aes-256-cbc -k "$ENCRYPTION_PASSWORD" -in secrets.tar.enc -out secrets.tar -d
     tar xvf secrets.tar
-    sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport
+    sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport publish
   else
     sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport
   fi
