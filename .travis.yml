@@ -21,7 +21,7 @@ script:
   if [ $TRAVIS_PULL_REQUEST = 'false' ] && [ "$TRAVIS_BRANCH" = "master" ] && [[ $(cat version.sbt) =~ "-SNAPSHOT" ]]; then
     openssl aes-256-cbc -k "$ENCRYPTION_PASSWORD" -in secrets.tar.enc -out secrets.tar -d
     tar xvf secrets.tar
-    sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport publish
+    sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport publishSigned
   else
     sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport
   fi
