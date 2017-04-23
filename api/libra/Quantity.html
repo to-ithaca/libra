@@ -127,17 +127,25 @@
       <p class="shortcomment cmt">SI units</p><div class="fullcomment"><div class="comment cmt"><p>SI units</p></div><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="index.html" class="extype" name="libra">libra</a></dd></dl></div>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="trait" href="Dimensions.html" title="Represents the dimensions of a quantity, in base units"></a>
-                        <a href="Dimensions.html" title="Represents the dimensions of a quantity, in base units">
-                          Dimensions
+                        <a class="trait" href="Fraction.html" title="Represents a fraction
+"></a>
+                        <a href="Fraction.html" title="Represents a fraction
+">
+                          Fraction
+                        </a>
+                      </li><li class="current-entities indented1">
+                        <a class="object" href="Quantity$.html" title=""></a>
+                        <a class="class" href="" title="Represents a dimensional quantity
+"></a>
+                        <a href="" title="Represents a dimensional quantity
+">
+                          Quantity
                         </a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="class" href="" title="Represents a quantity in standard index form
-"></a>
-                        <a href="" title="Represents a quantity in standard index form
-">
-                          Quantity
+                        <a class="trait" href="Unit.html" title="Represents a unit of a given dimension"></a>
+                        <a href="Unit.html" title="Represents a unit of a given dimension">
+                          Unit
                         </a>
                       </li>
               </ul>
@@ -146,39 +154,41 @@
           <div id="content">
             <body class="class type">
       <div id="definition">
-        <div class="big-circle class">c</div>
+        <a href="Quantity$.html" title="See companion object"><div class="big-circle class-companion-object">c</div></a>
         <p id="owner"><a href="index.html" class="extype" name="libra">libra</a></p>
-        <h1>Quantity<span class="permalink">
+        <h1><a href="Quantity$.html" title="See companion object">Quantity</a><span class="permalink">
       <a href="../libra/Quantity.html" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span></h1>
-        <h3><span class="morelinks"></span></h3>
+        <h3><span class="morelinks"><div>
+            Companion <a href="Quantity$.html" title="See companion object">object Quantity</a>
+          </div></span></h3>
       </div>
 
       <h4 id="signature" class="signature">
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <span class="name">Quantity</span><span class="tparams">[<span name="A">A</span>, <span name="I">I &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D">D &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="libra.Quantity.A">A</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+        <span class="name">Quantity</span><span class="tparams">[<span name="A">A</span>, <span name="D">D &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="value">value: <span class="extype" name="libra.Quantity.A">A</span></span>)</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       </h4>
 
       
-          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents a quantity in standard index form
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Numeric type of the quantity e.g. Int, Float, Double</p></dd><dt class="tparam">I</dt><dd class="cmt"><p>the standard index form exponent</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>the dimensions</p></dd><dt class="param">value</dt><dd class="cmt"><p>the standard form coefficient</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+          <div id="comment" class="fullcommenttop"><div class="comment cmt"><p>Represents a dimensional quantity
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Numeric type of the quantity e.g. Int, Float, Double</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>the dimensions</p></dd><dt class="param">value</dt><dd class="cmt"><p>the coefficient</p></dd></dl><dl class="attributes block"> <div class="block">Example:
                <ol><li class="cmt"><p></p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 
-scala&gt; Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dimensions[Length :: HNil, HNil]](<span class="num">5.5</span>) <span class="cmt">// represents 5.5 x 10^3 m</span>
-scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5.5</span>)</pre></li></ol>
+scala&gt; Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil](<span class="num">5.5</span>) <span class="cmt">// represents 5.5 m</span>
+scala&gt; res0: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">5.5</span>)</pre></li></ol>
             </div></dl><div class="toggleContainer block">
           <span class="toggle">
             Linear Supertypes
           </span>
-          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <span class="extype" name="scala.AnyRef">AnyRef</span>, <span class="extype" name="scala.Any">Any</span></div>
+          <div class="superTypes hiddenContent"><a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a>, <span class="extype" name="java.io.Serializable">Serializable</span>, <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a>, <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Equals" class="extype" target="_top">Equals</a>, <span class="extype" name="scala.AnyVal">AnyVal</span>, <span class="extype" name="scala.Any">Any</span></div>
         </div></div>
         
 
@@ -204,7 +214,7 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
                   <span class="filtertype">Inherited<br />
                   </span>
                   <ol id="linearization">
-                    <li class="in" name="libra.Quantity"><span>Quantity</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                    <li class="in" name="libra.Quantity"><span>Quantity</span></li><li class="in" name="scala.Serializable"><span>Serializable</span></li><li class="in" name="java.io.Serializable"><span>Serializable</span></li><li class="in" name="scala.Product"><span>Product</span></li><li class="in" name="scala.Equals"><span>Equals</span></li><li class="in" name="scala.AnyVal"><span>AnyVal</span></li><li class="in" name="scala.Any"><span>Any</span></li>
                   </ol>
                 </div><div class="ancestors">
               <span class="filtertype"></span>
@@ -225,9 +235,9 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <div id="constructors" class="members">
               <h3>Instance Constructors</h3>
               <ol><li name="libra.Quantity#&lt;init&gt;" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="&lt;init&gt;(value:A):libra.Quantity[A,I,D]"></a><a id="&lt;init&gt;:Quantity[A,I,D]"></a>
+      <a id="&lt;init&gt;(value:A):libra.Quantity[A,D]"></a><a id="&lt;init&gt;:Quantity[A,D]"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#&lt;init&gt;(value:A):libra.Quantity[A,I,D]" title="Permalink">
+      <a href="../libra/Quantity.html#&lt;init&gt;(value:A):libra.Quantity[A,D]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -239,7 +249,7 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <span class="name">Quantity</span><span class="params">(<span name="value">value: <span class="extype" name="libra.Quantity.A">A</span></span>)</span>
       </span>
       
-      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the standard form coefficient</p></dd></dl></div>
+      <p class="shortcomment cmt"></p><div class="fullcomment"><div class="comment cmt"></div><dl class="paramcmts block"><dt class="param">value</dt><dd class="cmt"><p>the coefficient</p></dd></dl></div>
     </li></ol>
             </div>
 
@@ -250,7 +260,7 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="scala.AnyRef#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+                <li name="scala.Any#!=" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="!=(x$1:Any):Boolean"></a><a id="!=(Any):Boolean"></a>
       <span class="permalink">
       <a href="../libra/Quantity.html#!=(x$1:Any):Boolean" title="Permalink">
@@ -265,8 +275,8 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <span title="gt4s: $bang$eq" class="name">!=</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
-    </li><li name="scala.AnyRef###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
+    </li><li name="scala.Any###" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="##():Int"></a>
       <span class="permalink">
       <a href="../libra/Quantity.html###():Int" title="Permalink">
@@ -281,11 +291,11 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <span title="gt4s: $hash$hash" class="name">##</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="libra.Quantity#*" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="*[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):m.Out"></a><a id="*[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Multiply[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="*[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,D],libra.Quantity[A,D1]]):m.Out"></a><a id="*[D1&lt;:HList](Quantity[A,D1])(Multiply[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#*[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):m.Out" title="Permalink">
+      <a href="../libra/Quantity.html#*[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,D],libra.Quantity[A,D1]]):m.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -294,18 +304,18 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $times" class="name">*</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.*.I1">I1</span>, <span class="extype" name="libra.Quantity.*.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <a href="ops/quantity$$Multiply.html" class="extype" name="libra.ops.quantity.Multiply">Multiply</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.*.I1">I1</span>, <span class="extype" name="libra.Quantity.*.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Multiply.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Multiply.Out">Out</a></span>
+        <span title="gt4s: $times" class="name">*</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.*.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <a href="ops/quantity$$Multiply.html" class="extype" name="libra.ops.quantity.Multiply">Multiply</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.*.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Multiply.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Multiply.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Alias for multiply</p><div class="fullcomment"><div class="comment cmt"><p>Alias for multiply</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">2.</span>m * <span class="num">3.</span>m
-res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: Length :: HNil, HNil]] = Quantity(<span class="num">6</span>)</pre></div></div>
+res0: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">2</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">6</span>)</pre></div></div>
     </li><li name="libra.Quantity#+" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="+[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):a.Out"></a><a id="+[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Add[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="+[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]]):a.Out"></a><a id="+[D1&lt;:HList](Quantity[A,D1])(Add[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#+[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):a.Out" title="Permalink">
+      <a href="../libra/Quantity.html#+[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]]):a.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -314,18 +324,18 @@ res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $plus" class="name">+</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.+.I1">I1</span>, <span class="extype" name="libra.Quantity.+.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.+.I1">I1</span>, <span class="extype" name="libra.Quantity.+.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
+        <span title="gt4s: $plus" class="name">+</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.+.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.+.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Alias for add</p><div class="fullcomment"><div class="comment cmt"><p>Alias for add</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">3.</span>m + <span class="num">2.</span>m
-res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5</span>)</pre></div></div>
+res1: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">5</span>)</pre></div></div>
     </li><li name="libra.Quantity#-" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="-[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]],implicitg:spire.algebra.AdditiveGroup[A]):a.Out"></a><a id="-[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Add[Quantity[A,I,D],Quantity[A,I1,D1]],AdditiveGroup[A]):Out"></a>
+      <a id="-[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]],implicitg:spire.algebra.AdditiveGroup[A]):a.Out"></a><a id="-[D1&lt;:HList](Quantity[A,D1])(Add[Quantity[A,D],Quantity[A,D1]],AdditiveGroup[A]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#-[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]],implicitg:spire.algebra.AdditiveGroup[A]):a.Out" title="Permalink">
+      <a href="../libra/Quantity.html#-[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]],implicitg:spire.algebra.AdditiveGroup[A]):a.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -334,18 +344,18 @@ res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $minus" class="name">-</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.-.I1">I1</span>, <span class="extype" name="libra.Quantity.-.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.-.I1">I1</span>, <span class="extype" name="libra.Quantity.-.D1">D1</span>]]</span>, <span name="g">g: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
+        <span title="gt4s: $minus" class="name">-</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.-.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.-.D1">D1</span>]]</span>, <span name="g">g: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Alias for subtract</p><div class="fullcomment"><div class="comment cmt"><p>Alias for subtract</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">3.</span>m - <span class="num">2.</span>m
-res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">1</span>)</pre></div></div>
+res1: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">1</span>)</pre></div></div>
     </li><li name="libra.Quantity#/" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="/[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):d.Out"></a><a id="/[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Divide[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="/[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,D],libra.Quantity[A,D1]]):d.Out"></a><a id="/[D1&lt;:HList](Quantity[A,D1])(Divide[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#/[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):d.Out" title="Permalink">
+      <a href="../libra/Quantity.html#/[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,D],libra.Quantity[A,D1]]):d.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -354,15 +364,15 @@ res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $div" class="name">/</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity./.I1">I1</span>, <span class="extype" name="libra.Quantity./.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <a href="ops/quantity$$Divide.html" class="extype" name="libra.ops.quantity.Divide">Divide</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity./.I1">I1</span>, <span class="extype" name="libra.Quantity./.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Divide.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Divide.Out">Out</a></span>
+        <span title="gt4s: $div" class="name">/</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity./.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <a href="ops/quantity$$Divide.html" class="extype" name="libra.ops.quantity.Divide">Divide</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity./.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Divide.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Divide.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Alias for divide</p><div class="fullcomment"><div class="comment cmt"><p>Alias for divide</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">4.0</span>.m / <span class="num">2.0</span>.m
-res0: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dimensions[HNil, HNil]] = Quantity(<span class="num">2.0</span>)</pre></div></div>
-    </li><li name="scala.AnyRef#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+res0: Quantity[<span class="std">Double</span>, HNil] = Quantity(<span class="num">2.0</span>)</pre></div></div>
+    </li><li name="scala.Any#==" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="==(x$1:Any):Boolean"></a><a id="==(Any):Boolean"></a>
       <span class="permalink">
       <a href="../libra/Quantity.html#==(x$1:Any):Boolean" title="Permalink">
@@ -377,11 +387,11 @@ res0: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
         <span title="gt4s: $eq$eq" class="name">==</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.Any">Any</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="libra.Quantity#^" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="^[P&lt;:SingletonwithInt](pow:P)(implicitp:libra.ops.quantity.Power[libra.Quantity[A,I,D],P]):p.Out"></a><a id="^[P&lt;:SingletonwithInt](P)(Power[Quantity[A,I,D],P]):Out"></a>
+      <a id="^[P&lt;:SingletonwithInt](pow:P)(implicitp:libra.ops.quantity.Power[libra.Quantity[A,D],P]):p.Out"></a><a id="^[P&lt;:SingletonwithInt](P)(Power[Quantity[A,D],P]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#^[P&lt;:SingletonwithInt](pow:P)(implicitp:libra.ops.quantity.Power[libra.Quantity[A,I,D],P]):p.Out" title="Permalink">
+      <a href="../libra/Quantity.html#^[P&lt;:SingletonwithInt](pow:P)(implicitp:libra.ops.quantity.Power[libra.Quantity[A,D],P]):p.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -390,18 +400,18 @@ res0: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span title="gt4s: $up" class="name">^</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="params">(<span name="pow">pow: <span class="extype" name="libra.Quantity.^.P">P</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ops/quantity$$Power.html" class="extype" name="libra.ops.quantity.Power">Power</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.^.P">P</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Power.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Power.Out">Out</a></span>
+        <span title="gt4s: $up" class="name">^</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="params">(<span name="pow">pow: <span class="extype" name="libra.Quantity.^.P">P</span></span>)</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ops/quantity$$Power.html" class="extype" name="libra.ops.quantity.Power">Power</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.^.P">P</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Power.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Power.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Alias for power</p><div class="fullcomment"><div class="comment cmt"><p>Alias for power</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
-scala&gt; <span class="num">2.</span>m^(<span class="num">3</span>)
-res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: Length :: Length :: HNil, HNil]] = Quantity(<span class="num">8</span>)</pre></div></div>
+scala&gt; <span class="num">2.0</span>.m^(<span class="num">3</span>)
+res0: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">3</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">8.0</span>)</pre></div></div>
     </li><li name="libra.Quantity#add" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="add[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):a.Out"></a><a id="add[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Add[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="add[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]]):a.Out"></a><a id="add[D1&lt;:HList](Quantity[A,D1])(Add[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#add[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):a.Out" title="Permalink">
+      <a href="../libra/Quantity.html#add[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]]):a.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -410,14 +420,14 @@ res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">add</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.add.I1">I1</span>, <span class="extype" name="libra.Quantity.add.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.add.I1">I1</span>, <span class="extype" name="libra.Quantity.add.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
+        <span class="name">add</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.add.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.add.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Adds another quantity using the spire AdditiveSemigroup.</p><div class="fullcomment"><div class="comment cmt"><p>Adds another quantity using the spire AdditiveSemigroup.</p></div><dl class="paramcmts block"><dt class="param">q1</dt><dd class="cmt"><p>the quantity to add.  This must have the equivalient dimensions.</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">3.</span>m add <span class="num">2.</span>m
-res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5</span>)</pre></dd></dl></div>
+res1: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">5</span>)</pre></dd></dl></div>
     </li><li name="scala.Any#asInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="asInstanceOf[T0]:T0"></a>
       <span class="permalink">
@@ -434,51 +444,10 @@ res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
-    </li><li name="libra.Quantity#baseValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="baseValue()(implicitv:ValueOf[I],implicitC:spire.math.ConvertableTo[A],implicitM:spire.algebra.MultiplicativeSemigroup[A]):A"></a><a id="baseValue()(ValueOf[I],ConvertableTo[A],MultiplicativeSemigroup[A]):A"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#baseValue()(implicitv:ValueOf[I],implicitC:spire.math.ConvertableTo[A],implicitM:spire.algebra.MultiplicativeSemigroup[A]):A" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">baseValue</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="v">v: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.ValueOf" class="extype" target="_top">ValueOf</a>[<span class="extype" name="libra.Quantity.I">I</span>]</span>, <span name="C">C: <span class="extype" name="spire.math.ConvertableTo">ConvertableTo</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>, <span name="M">M: <span class="extype" name="spire.algebra.MultiplicativeSemigroup">MultiplicativeSemigroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <span class="extype" name="libra.Quantity.A">A</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">The value of the quantity in base units</p><div class="fullcomment"><div class="comment cmt"><p>The value of the quantity in base units</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
-scala&gt; <span class="kw">import</span> libra._, libra.si._
-scala&gt; <span class="num">3.</span>km.baseValue
-res0: <span class="std">Int</span> = <span class="num">3000</span></pre></div></div>
-    </li><li name="scala.AnyRef#clone" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="clone():Object"></a><a id="clone():AnyRef"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#clone():Object" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">clone</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.CloneNotSupportedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li><li name="libra.Quantity#divide" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="divide[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):d.Out"></a><a id="divide[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Divide[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="divide[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,D],libra.Quantity[A,D1]]):d.Out"></a><a id="divide[D1&lt;:HList](Quantity[A,D1])(Divide[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#divide[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):d.Out" title="Permalink">
+      <a href="../libra/Quantity.html#divide[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitd:libra.ops.quantity.Divide[libra.Quantity[A,D],libra.Quantity[A,D1]]):d.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -487,7 +456,7 @@ res0: <span class="std">Int</span> = <span class="num">3000</span></pre></div></
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">divide</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.divide.I1">I1</span>, <span class="extype" name="libra.Quantity.divide.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <a href="ops/quantity$$Divide.html" class="extype" name="libra.ops.quantity.Divide">Divide</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.divide.I1">I1</span>, <span class="extype" name="libra.Quantity.divide.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Divide.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Divide.Out">Out</a></span>
+        <span class="name">divide</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.divide.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="d">d: <a href="ops/quantity$$Divide.html" class="extype" name="libra.ops.quantity.Divide">Divide</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.divide.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Divide.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Divide.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Divides by a quantity
@@ -496,27 +465,11 @@ res0: <span class="std">Int</span> = <span class="num">3000</span></pre></div></
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">4.0</span>.m divide <span class="num">2.0</span>.m
-res0: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dimensions[HNil, HNil]] = Quantity(<span class="num">2.0</span>)</pre></dd></dl></div>
-    </li><li name="scala.AnyRef#eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="eq(x$1:AnyRef):Boolean"></a><a id="eq(AnyRef):Boolean"></a>
+res0: Quantity[<span class="std">Double</span>, HNil] = Quantity(<span class="num">2.0</span>)</pre></dd></dl></div>
+    </li><li name="scala.AnyVal#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
+      <a id="getClass():Class[_&lt;:AnyVal]"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#eq(x$1:AnyRef):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">eq</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="libra.Quantity#exp" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="exp[I1&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Exp[libra.Quantity[A,I,D],I1]):p.Out"></a><a id="exp[I1&lt;:SingletonwithInt]()(Exp[Quantity[A,I,D],I1]):Out"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#exp[I1&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Exp[libra.Quantity[A,I,D],I1]):p.Out" title="Permalink">
+      <a href="../libra/Quantity.html#getClass():Class[_&lt;:AnyVal]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -525,61 +478,14 @@ res0: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">exp</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ops/quantity$$Exp.html" class="extype" name="libra.ops.quantity.Exp">Exp</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.exp.I1">I1</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Exp.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Exp.Out">Out</a></span>
+        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="scala.Predef.Class">Class</span>[_ &lt;: <span class="extype" name="scala.AnyVal">AnyVal</span>]</span>
       </span>
       
-      <p class="shortcomment cmt">Sets the exponent in standard index form, without changing the true value of the quantity.</p><div class="fullcomment"><div class="comment cmt"><p>Sets the exponent in standard index form, without changing the true value of the quantity.
-This is useful for avoiding rounding errors when manipulating <a href="#value:A" class="extmbr" name="libra.Quantity#value">value</a>.
-</p></div><dl class="paramcmts block"><dt class="tparam">I1</dt><dd class="cmt"><p>the power of 10 to convert to
-For example, 5000.m.exp[3] changes the representation of 5000.0 x 10<sup>0 m to 5.0 x 10</sup>3 m:</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
-scala&gt; <span class="kw">import</span> shapeless._
-scala&gt; <span class="kw">import</span> libra._, libra.si._
-scala&gt; <span class="kw">val</span> x = <span class="num">5000.0</span>.m
-x: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5000.0</span>)
-scala&gt; x.exp[<span class="num">3</span>]
-res2: Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5.0</span>)</pre></dd></dl></div>
-    </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#finalize():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="symbol">classOf[java.lang.Throwable]</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#getClass" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="getClass():Class[_]"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#getClass():Class[_]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">getClass</span><span class="params">()</span><span class="result">: <span class="extype" name="java.lang.Class">Class</span>[_]</span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
+      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyVal → Any</dd></dl></div>
     </li><li name="libra.Quantity#invert" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="invert()(impliciti:libra.ops.quantity.Invert[libra.Quantity[A,I,D]]):i.Out"></a><a id="invert()(Invert[Quantity[A,I,D]]):Out"></a>
+      <a id="invert()(impliciti:libra.ops.quantity.Invert[libra.Quantity[A,D]]):i.Out"></a><a id="invert()(Invert[Quantity[A,D]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#invert()(impliciti:libra.ops.quantity.Invert[libra.Quantity[A,I,D]]):i.Out" title="Permalink">
+      <a href="../libra/Quantity.html#invert()(impliciti:libra.ops.quantity.Invert[libra.Quantity[A,D]]):i.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -588,16 +494,16 @@ res2: Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dime
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">invert</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="i">i: <a href="ops/quantity$$Invert.html" class="extype" name="libra.ops.quantity.Invert">Invert</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Invert.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Invert.Out">Out</a></span>
+        <span class="name">invert</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="i">i: <a href="ops/quantity$$Invert.html" class="extype" name="libra.ops.quantity.Invert">Invert</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Invert.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Invert.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Raises the quantity to the power of -1</p><div class="fullcomment"><div class="comment cmt"><p>Raises the quantity to the power of -1</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="kw">val</span> x = <span class="num">2.0</span>.m
-x: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">2.0</span>)
+x: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">2.0</span>)
 scala&gt; x.invert
-res2: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dimensions[HNil, Length :: HNil]] = Quantity(<span class="num">0.5</span>)</pre></div></div>
+res2: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[-<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">0.5</span>)</pre></div></div>
     </li><li name="scala.Any#isInstanceOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="isInstanceOf[T0]:Boolean"></a>
       <span class="permalink">
@@ -615,9 +521,9 @@ res2: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>Any</dd></dl></div>
     </li><li name="libra.Quantity#multiply" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="multiply[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):m.Out"></a><a id="multiply[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Multiply[Quantity[A,I,D],Quantity[A,I1,D1]]):Out"></a>
+      <a id="multiply[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,D],libra.Quantity[A,D1]]):m.Out"></a><a id="multiply[D1&lt;:HList](Quantity[A,D1])(Multiply[Quantity[A,D],Quantity[A,D1]]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#multiply[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]]):m.Out" title="Permalink">
+      <a href="../libra/Quantity.html#multiply[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicitm:libra.ops.quantity.Multiply[libra.Quantity[A,D],libra.Quantity[A,D1]]):m.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -626,7 +532,7 @@ res2: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">multiply</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.multiply.I1">I1</span>, <span class="extype" name="libra.Quantity.multiply.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <a href="ops/quantity$$Multiply.html" class="extype" name="libra.ops.quantity.Multiply">Multiply</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.multiply.I1">I1</span>, <span class="extype" name="libra.Quantity.multiply.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Multiply.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Multiply.Out">Out</a></span>
+        <span class="name">multiply</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.multiply.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="m">m: <a href="ops/quantity$$Multiply.html" class="extype" name="libra.ops.quantity.Multiply">Multiply</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.multiply.D1">D1</span>]]</span>)</span><span class="result">: <a href="ops/quantity$$Multiply.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Multiply.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Multiplies by a quantity
@@ -635,27 +541,11 @@ res2: Quantity[<span class="std">Double</span>, <span class="num">0</span>, Dime
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">2.</span>m multiply <span class="num">3.</span>m
-res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: Length :: HNil, HNil]] = Quantity(<span class="num">6</span>)</pre></dd></dl></div>
-    </li><li name="scala.AnyRef#ne" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="ne(x$1:AnyRef):Boolean"></a><a id="ne(AnyRef):Boolean"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#ne(x$1:AnyRef):Boolean" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">ne</span><span class="params">(<span name="arg0">arg0: <span class="extype" name="scala.AnyRef">AnyRef</span></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Boolean" class="extype" target="_top">Boolean</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+res0: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">2</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">6</span>)</pre></dd></dl></div>
     </li><li name="libra.Quantity#negate" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="negate()(implicitev:spire.algebra.AdditiveGroup[A]):libra.Quantity[A,I,D]"></a><a id="negate()(AdditiveGroup[A]):Quantity[A,I,D]"></a>
+      <a id="negate()(implicitev:spire.algebra.AdditiveGroup[A]):libra.Quantity[A,D]"></a><a id="negate()(AdditiveGroup[A]):Quantity[A,D]"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#negate()(implicitev:spire.algebra.AdditiveGroup[A]):libra.Quantity[A,I,D]" title="Permalink">
+      <a href="../libra/Quantity.html#negate()(implicitev:spire.algebra.AdditiveGroup[A]):libra.Quantity[A,D]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -664,52 +554,20 @@ res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">negate</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>]</span>
+        <span class="name">negate</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="ev">ev: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>]</span>
       </span>
       
       <p class="shortcomment cmt">Negates the quantity</p><div class="fullcomment"><div class="comment cmt"><p>Negates the quantity</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="kw">val</span> x = <span class="num">2.</span>m
-x: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">2</span>)
+x: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">2</span>)
 scala&gt; x.negate
-res2: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(-<span class="num">2</span>)</pre></div></div>
-    </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notify():Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#notify():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
-    </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notifyAll():Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#notifyAll():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+res2: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(-<span class="num">2</span>)</pre></div></div>
     </li><li name="libra.Quantity#power" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="power[P&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Power[libra.Quantity[A,I,D],P]):p.Out"></a><a id="power[P&lt;:SingletonwithInt]()(Power[Quantity[A,I,D],P]):Out"></a>
+      <a id="power[P&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Power[libra.Quantity[A,D],P]):p.Out"></a><a id="power[P&lt;:SingletonwithInt]()(Power[Quantity[A,D],P]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#power[P&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Power[libra.Quantity[A,I,D],P]):p.Out" title="Permalink">
+      <a href="../libra/Quantity.html#power[P&lt;:SingletonwithInt]()(implicitp:libra.ops.quantity.Power[libra.Quantity[A,D],P]):p.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -718,7 +576,7 @@ res2: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">power</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ops/quantity$$Power.html" class="extype" name="libra.ops.quantity.Power">Power</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.power.P">P</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Power.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Power.Out">Out</a></span>
+        <span class="name">power</span><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="p">p: <a href="ops/quantity$$Power.html" class="extype" name="libra.ops.quantity.Power">Power</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.power.P">P</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Power.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Power.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Raises to a power
@@ -726,12 +584,12 @@ res2: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
 </p></div><dl class="paramcmts block"><dt class="tparam">P</dt><dd class="cmt"><p>the Integer power to raise by</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
-scala&gt; <span class="num">2.</span>m.power[<span class="num">3</span>]
-res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: Length :: Length :: HNil, HNil]] = Quantity(<span class="num">8</span>)</pre></dd></dl></div>
+scala&gt; <span class="num">2.0</span>.m.power[<span class="num">3</span>]
+res0: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">3</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">8.0</span>)</pre></dd></dl></div>
     </li><li name="libra.Quantity#show" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="show()(implicits:libra.ops.quantity.Show[libra.Quantity[A,I,D]]):String"></a><a id="show()(Show[Quantity[A,I,D]]):String"></a>
+      <a id="show()(implicits:libra.ops.quantity.Show[libra.Quantity[A,D]]):String"></a><a id="show()(Show[Quantity[A,D]]):String"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#show()(implicits:libra.ops.quantity.Show[libra.Quantity[A,I,D]]):String" title="Permalink">
+      <a href="../libra/Quantity.html#show()(implicits:libra.ops.quantity.Show[libra.Quantity[A,D]]):String" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -740,17 +598,17 @@ res0: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">show</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="s">s: <a href="ops/quantity$$Show.html" class="extype" name="libra.ops.quantity.Show">Show</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
+        <span class="name">show</span><span class="params">()</span><span class="params">(<span class="implicit">implicit </span><span name="s">s: <a href="ops/quantity$$Show.html" class="extype" name="libra.ops.quantity.Show">Show</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>]]</span>)</span><span class="result">: <span class="extype" name="scala.Predef.String">String</span></span>
       </span>
       
       <p class="shortcomment cmt">The standard index form String</p><div class="fullcomment"><div class="comment cmt"><p>The standard index form String</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">2.</span>m.show
-res0: <span class="std">String</span> = <span class="num">2</span> * <span class="num">10</span>^<span class="num">0</span> m^<span class="num">1</span> [L^<span class="num">1</span>]</pre></div></div>
+res0: <span class="std">String</span> = <span class="num">2</span> m [L]</pre></div></div>
     </li><li name="libra.Quantity#subtract" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="subtract[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]],implicitgroup:spire.algebra.AdditiveGroup[A]):a.Out"></a><a id="subtract[I1&lt;:SingletonwithInt,D1&lt;:Dimensions[_,_]](Quantity[A,I1,D1])(Add[Quantity[A,I,D],Quantity[A,I1,D1]],AdditiveGroup[A]):Out"></a>
+      <a id="subtract[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]],implicitgroup:spire.algebra.AdditiveGroup[A]):a.Out"></a><a id="subtract[D1&lt;:HList](Quantity[A,D1])(Add[Quantity[A,D],Quantity[A,D1]],AdditiveGroup[A]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#subtract[I1&lt;:SingletonwithInt,D1&lt;:libra.Dimensions[_,_]](q1:libra.Quantity[A,I1,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,I,D],libra.Quantity[A,I1,D1]],implicitgroup:spire.algebra.AdditiveGroup[A]):a.Out" title="Permalink">
+      <a href="../libra/Quantity.html#subtract[D1&lt;:shapeless.HList](q1:libra.Quantity[A,D1])(implicita:libra.ops.quantity.Add[libra.Quantity[A,D],libra.Quantity[A,D1]],implicitgroup:spire.algebra.AdditiveGroup[A]):a.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -759,30 +617,30 @@ res0: <span class="std">String</span> = <span class="num">2</span> * <span class
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">subtract</span><span class="tparams">[<span name="I1">I1 &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D1">D1 &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.subtract.I1">I1</span>, <span class="extype" name="libra.Quantity.subtract.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.I">I</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.subtract.I1">I1</span>, <span class="extype" name="libra.Quantity.subtract.D1">D1</span>]]</span>, <span name="group">group: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
+        <span class="name">subtract</span><span class="tparams">[<span name="D1">D1 &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="q1">q1: <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.subtract.D1">D1</span>]</span>)</span><span class="params">(<span class="implicit">implicit </span><span name="a">a: <a href="ops/quantity$$Add.html" class="extype" name="libra.ops.quantity.Add">Add</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.subtract.D1">D1</span>]]</span>, <span name="group">group: <span class="extype" name="spire.algebra.AdditiveGroup">AdditiveGroup</span>[<span class="extype" name="libra.Quantity.A">A</span>]</span>)</span><span class="result">: <a href="ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
       </span>
       
       <p class="shortcomment cmt">Subtracts another quantity using the spire AdditiveGroup</p><div class="fullcomment"><div class="comment cmt"><p>Subtracts another quantity using the spire AdditiveGroup</p></div><dl class="paramcmts block"><dt class="param">q1</dt><dd class="cmt"><p>the quantity to subtract.  This must have the equivalient dimensions.</p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> shapeless._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 scala&gt; <span class="num">3.</span>m subtract <span class="num">2.</span>m
-res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">1</span>)</pre></dd></dl></div>
-    </li><li name="scala.AnyRef#synchronized" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="synchronized[T0](x$1:=&gt;T0):T0"></a><a id="synchronized[T0](⇒T0):T0"></a>
+res1: Quantity[<span class="std">Int</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">1</span>)</pre></dd></dl></div>
+    </li><li name="libra.Quantity#to" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="to[U&lt;:libra.Unit[_]](implicitto:libra.ops.quantity.ConvertTo[libra.Quantity[A,D],U]):to.Out"></a><a id="to[U&lt;:Unit[_]](ConvertTo[Quantity[A,D],U]):Out"></a>
       <span class="permalink">
-      <a href="../libra/Quantity.html#synchronized[T0](x$1:=&gt;T0):T0" title="Permalink">
+      <a href="../libra/Quantity.html#to[U&lt;:libra.Unit[_]](implicitto:libra.ops.quantity.ConvertTo[libra.Quantity[A,D],U]):to.Out" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">final </span>
+        <span class="modifier"></span>
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">synchronized</span><span class="tparams">[<span name="T0">T0</span>]</span><span class="params">(<span name="arg0">arg0: ⇒ <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>)</span><span class="result">: <span class="extype" name="java.lang.AnyRef.synchronized.T0">T0</span></span>
+        <span class="name">to</span><span class="tparams">[<span name="U">U &lt;: <a href="Unit.html" class="extype" name="libra.Unit">Unit</a>[_]</span>]</span><span class="params">(<span class="implicit">implicit </span><span name="to">to: <a href="ops/quantity$$ConvertTo.html" class="extype" name="libra.ops.quantity.ConvertTo">ConvertTo</a>[<a href="" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.Quantity.A">A</span>, <span class="extype" name="libra.Quantity.D">D</span>], <span class="extype" name="libra.Quantity.to.U">U</span>]</span>)</span><span class="result">: <a href="ops/quantity$$ConvertTo.html#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.ConvertTo.Out">Out</a></span>
       </span>
       
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
+      
     </li><li name="libra.Quantity#value" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="value:A"></a>
       <span class="permalink">
@@ -799,72 +657,6 @@ res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
       </span>
       
       
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#wait():Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
-    </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
-      <span class="permalink">
-      <a href="../libra/Quantity.html#wait(x$1:Long):Unit" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier">final </span>
-        <span class="kind">def</span>
-      </span>
-      <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
-      </span>
-      
-      <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
-                <span class="name">@throws</span><span class="args">(<span>
-      
-      <span class="defval" name="classOf[java.lang.InterruptedException]">...</span>
-    </span>)</span>
-              
-        </dd></dl></div>
     </li>
               </ol>
             </div>
@@ -883,8 +675,8 @@ res1: Quantity[<span class="std">Int</span>, <span class="num">0</span>, Dimensi
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a></h3>
             </div><div class="parent" name="scala.Equals">
               <h3>Inherited from <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Equals" class="extype" target="_top">Equals</a></h3>
-            </div><div class="parent" name="scala.AnyRef">
-              <h3>Inherited from <span class="extype" name="scala.AnyRef">AnyRef</span></h3>
+            </div><div class="parent" name="scala.AnyVal">
+              <h3>Inherited from <span class="extype" name="scala.AnyVal">AnyVal</span></h3>
             </div><div class="parent" name="scala.Any">
               <h3>Inherited from <span class="extype" name="scala.Any">Any</span></h3>
             </div>

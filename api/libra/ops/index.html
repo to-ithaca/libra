@@ -106,6 +106,18 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="libra">libra</a></dd></dl></div>
     </li><li class="current-entities indented2">
+                        <a class="object" href="Merge$.html" title=""></a>
+                        <a class="trait" href="Merge.html" title="Typeclass for merging two records"></a>
+                        <a href="Merge.html" title="Typeclass for merging two records">
+                          Merge
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <a class="object" href="Refute$.html" title=""></a>
+                        <a class="trait" href="Refute.html" title="Evidence that an implicit A is not present"></a>
+                        <a href="Refute.html" title="Evidence that an implicit A is not present">
+                          Refute
+                        </a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="object" href="base$.html" title=""></a>
                         <a href="base$.html" title="">
@@ -119,9 +131,21 @@
                         </a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
+                        <a class="object" href="fraction$.html" title=""></a>
+                        <a href="fraction$.html" title="">
+                          fraction
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
                         <a class="object" href="quantity$.html" title=""></a>
                         <a href="quantity$.html" title="">
                           quantity
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="object" href="recordExtensions$.html" title=""></a>
+                        <a href="recordExtensions$.html" title="">
+                          recordExtensions
                         </a>
                       </li><li name="libra.si" visbl="pub" class="indented2 " data-isabs="false" fullComment="yes" group="Ungrouped">
       <a id="si"></a><a id="si:si"></a>
@@ -202,14 +226,92 @@
         <div id="allMembers">
         
 
-        
+        <div id="types" class="types members">
+              <h3>Type Members</h3>
+              <ol><li name="libra.ops.Merge" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Merge[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef"></a><a id="Merge[L&lt;:HList,R&lt;:HList]:Merge[L,R]"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#Merge[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Typeclass for merging two records" href="Merge.html">
+              <span class="name">Merge</span>
+            </a><span class="tparams">[<span name="L">L &lt;: <span class="extype" name="shapeless.HList">HList</span></span>, <span name="R">R &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Typeclass for merging two records</p><div class="fullcomment"><div class="comment cmt"><p>Typeclass for merging two records</p><p>Given a field with key K with value LV in L and value RV in R, this produces a FieldType[K, (LV, RV)]
+Given a field with key K with value LV in L and no value in R, this produces a FieldType[K, LV]
+Given a field with key K with no value in L and value RV in R, this produces a FieldType[K, RV]
+</p></div></div>
+    </li><li name="libra.ops.Refute" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Refute[A]extendsAnyRef"></a><a id="Refute[A]:Refute[A]"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#Refute[A]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Evidence that an implicit A is not present" href="Refute.html">
+              <span class="name">Refute</span>
+            </a><span class="tparams">[<span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Evidence that an implicit A is not present</p>
+    </li></ol>
+            </div>
 
         
 
         <div class="values members">
               <h3>Value Members</h3>
               <ol>
-                <li name="libra.ops.base" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+                <li name="libra.ops.Merge" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Merge"></a><a id="Merge:Merge"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#Merge" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="Merge$.html">
+              <span class="name">Merge</span>
+            </a>
+      </span>
+      
+      
+    </li><li name="libra.ops.Refute" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Refute"></a><a id="Refute:Refute"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#Refute" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="Refute$.html">
+              <span class="name">Refute</span>
+            </a>
+      </span>
+      
+      
+    </li><li name="libra.ops.base" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="base"></a><a id="base:base"></a>
       <span class="permalink">
       <a href="../../libra/ops/index.html#base" title="Permalink">
@@ -245,6 +347,24 @@
       </span>
       
       
+    </li><li name="libra.ops.fraction" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="fraction"></a><a id="fraction:fraction"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#fraction" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="fraction$.html">
+              <span class="name">fraction</span>
+            </a>
+      </span>
+      
+      
     </li><li name="libra.ops.quantity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="quantity"></a><a id="quantity:quantity"></a>
       <span class="permalink">
@@ -259,6 +379,24 @@
       <span class="symbol">
         <a title="" href="quantity$.html">
               <span class="name">quantity</span>
+            </a>
+      </span>
+      
+      
+    </li><li name="libra.ops.recordExtensions" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="recordExtensions"></a><a id="recordExtensions:recordExtensions"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/index.html#recordExtensions" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="recordExtensions$.html">
+              <span class="name">recordExtensions</span>
             </a>
       </span>
       

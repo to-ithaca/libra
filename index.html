@@ -1,253 +1,100 @@
-<html><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>Libra</title><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Dimensional analysis for Scala" /><meta name="author" content="Zainab Ali" /><meta name="og:image" content="/libra/img/poster.png" /><meta name="og:title" content="Libra" /><meta name="og:site_name" content="Libra" /><meta name="og:url" content="" /><meta name="og:type" content="website" /><meta name="og:description" content="Dimensional analysis for Scala" /><meta name="twitter:image" content="/libra/img/poster.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="" /><link rel="icon" type="image/png" href="/libra/img/favicon.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/libra/highlight/styles/ocean.css" /><link rel="stylesheet" href="/libra/css/style.css" /><link rel="stylesheet" href="/libra/css/palette.css" /></head><body><header id="site-header"><div class="navbar-wrapper"><div class="container"><div class="row"><div class="col-xs-6"><a href="/libra/" class="brand"><div class="icon-wrapper"><span>Libra</span></div></a></div><div class="col-xs-6"><nav class="text-right"><ul class=""><li><a href="https://github.com/to-ithaca/libra"><i class="fa fa-github"></i><span class="hidden-xs">GitHub</span></a></li><li><a href="api"><i class="fa fa-file-text"></i><span class="hidden-xs">Documentation</span></a></li></ul></nav></div></div></div></div><div class="jumbotron"><div class="container"><h1 class="text-center">Dimensional analysis for Scala</h1><h2></h2><p class="text-center"><a href="https://github.com/to-ithaca/libra" class="btn btn-outline-inverse">View on GitHub</a></p></div></div><div><ul class="horizontalNav">      </ul></div></header><main id="site-main"><section class="use"><div class="container"><div id="content"><p>Libra is a dimensional analysis library based on <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It contains out of the box support for SI units for all numeric types.</p>
+<html><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>Libra</title><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Dimensional analysis for Scala" /><meta name="author" content="Zainab Ali" /><meta name="og:image" content="/libra/img/poster.png" /><meta name="og:title" content="Libra" /><meta name="og:site_name" content="Libra" /><meta name="og:url" content="http://to-ithaca.github.io/libra/" /><meta name="og:type" content="website" /><meta name="og:description" content="Dimensional analysis for Scala" /><meta name="twitter:image" content="/libra/img/poster.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="" /><meta name="kazari-dependencies" content="" /><meta name="kazari-resolvers" content="" /><link rel="icon" type="image/png" href="/libra/img/favicon.png" /><link rel="icon" type="image/png" sizes="16x16" href="/libra/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/libra/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/libra/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/libra/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/libra/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/libra/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/libra/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/libra/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/libra/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/libra/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/libra/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/libra/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/libra/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/libra/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/libra/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/libra/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/libra/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/libra/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/libra/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/libra/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/libra/highlight/styles/ocean.css" /><link rel="stylesheet" href="/libra/css/style.css" /><link rel="stylesheet" href="/libra/css/palette.css" /><link rel="stylesheet" href="/libra/css/codemirror.css" /><link rel="stylesheet" href="/libra/css/kazari-style.css" /><link rel="stylesheet" href="/libra/css/solarized-dark.css" /></head><body><header id="site-header"><div class="navbar-wrapper"><div class="container"><div class="row"><div class="col-xs-6"><a href="/libra/" class="brand"><div class="icon-wrapper"><span>Libra</span></div></a></div><div class="col-xs-6"><nav class="text-right"><ul class=""><li><a href="https://github.com/to-ithaca/libra"><i class="fa fa-github"></i><span class="hidden-xs">GitHub</span></a></li><li><a href="api"><i class="fa fa-file-text"></i><span class="hidden-xs">Documentation</span></a></li></ul></nav></div></div></div></div><div class="jumbotron"><div class="container"><h1 class="text-center">Dimensional analysis for Scala</h1><h2></h2><p class="text-center"><a href="https://github.com/to-ithaca/libra" class="btn btn-outline-inverse">View on GitHub</a></p></div></div><div><ul class="horizontalNav">       <li><a class="" href="/libra/docs/operations.html">Operations</a></li>  <li><a class="" href="/libra/docs/conversions.html">Conversions</a></li>  <li><a class="" href="/libra/docs/rollYourOwn.html">Roll Your Own</a></li> </ul></div></header><main id="site-main"><section class="use"><div class="container"><div id="content"><p>Libra is a dimensional analysis library based on <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It contains out of the box support for SI units for all numeric types.</p>
 
 <h2 id="to-use">To Use</h2>
 
+<p>Libra supports JDK 8, scala versions 2.11.8 and 2.12.1.</p>
+
 <p>Add this to your <code class="highlighter-rouge">build.sbt</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">resolvers</span> <span class="o">+=</span> <span class="nc">Resolver</span><span class="o">.</span><span class="n">bintrayRepo</span><span class="o">(</span><span class="s">"to-ithaca"</span><span class="o">,</span> <span class="s">"maven"</span><span class="o">)</span>
-
-<span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.1.0"</span>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.2.0"</span>
+<span class="n">scalaOrganization</span> <span class="o">:=</span> <span class="s">"org.typelevel"</span>
+<span class="n">scalacOptions</span> <span class="o">+=</span> <span class="s">"-Yliteral-types"</span>
 </code></pre>
 </div>
 
-<h2 id="tldr">TLDR</h2>
+<p>This adds <a href="http://typelevel.org/scala/">Typelevel Scala</a>.</p>
+
+<h2 id="tldr">TL;DR</h2>
 
 <p>Example usage:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spire.implicits._</span>
-<span class="k">import</span> <span class="nn">spire.implicits._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
-<span class="k">import</span> <span class="nn">libra._</span>
-<span class="k">import</span> <span class="nn">libra.si._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="o">(</span><span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">m</span><span class="o">).</span><span class="n">show</span>
-<span class="n">res0</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="o">(</span><span class="mf">3.</span><span class="n">m</span> <span class="o">*</span> <span class="mf">2.</span><span class="n">m</span><span class="o">).</span><span class="n">show</span>
-<span class="n">res1</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">2</span> <span class="o">[</span><span class="kt">L^</span><span class="err">2</span><span class="o">]</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="o">(</span><span class="mf">1.0</span><span class="o">.</span><span class="n">km</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">mm</span><span class="o">).</span><span class="n">show</span>
-<span class="n">res2</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">1.002003</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">3</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="o">(</span><span class="mf">3.0</span><span class="o">.</span><span class="n">s</span> <span class="o">/</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">ms</span><span class="o">).</span><span class="n">show</span>
-<span class="n">res3</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">1.0</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">3</span>  <span class="o">[]</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="c1">//this should fail
-</span>     <span class="o">|</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span>
-<span class="o">&lt;</span><span class="n">console</span><span class="k">&gt;:</span><span class="mi">23</span><span class="k">:</span> <span class="kt">error:</span> <span class="kt">These</span> <span class="kt">quantities</span> <span class="kt">can't</span> <span class="kt">be</span> <span class="kt">added!</span>  <span class="kt">Most</span> <span class="kt">likely</span> <span class="kt">they</span> <span class="kt">have</span> <span class="kt">different</span> <span class="kt">dimensions.</span>  <span class="kt">If</span> <span class="kt">not</span><span class="o">,</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">there</span><span class="ss">'s </span><span class="n">an</span> <span class="k">implicit</span> <span class="nc">AdditiveSemigroup</span> <span class="n">in</span> <span class="n">scope</span><span class="o">.</span>
-<span class="nc">Left</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-<span class="nc">Right</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Mass</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-       <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span>
-           <span class="o">^</span>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<span class="c1">// import spire.implicits._
+</span>
+<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
+<span class="c1">// import libra._
+// import libra.si._
+</span>
+<span class="o">(</span><span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">m</span><span class="o">).</span><span class="n">show</span>
+<span class="c1">// res0: String = 5 m [L]
+</span>
+<span class="o">(</span><span class="mf">3.</span><span class="n">m</span> <span class="o">*</span> <span class="mf">2.</span><span class="n">m</span><span class="o">).</span><span class="n">show</span>
+<span class="c1">// res1: String = 6 m^2 [L^2]
+</span>
+<span class="o">(</span><span class="mf">1.0</span><span class="o">.</span><span class="n">km</span><span class="o">.</span><span class="n">to</span><span class="o">[</span><span class="kt">Metre</span><span class="o">]</span> <span class="o">+</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">mm</span><span class="o">.</span><span class="n">to</span><span class="o">[</span><span class="kt">Metre</span><span class="o">]).</span><span class="n">show</span>
+<span class="c1">// res2: String = 1002.003 m [L]
+</span>
+<span class="o">(</span><span class="mf">3.0</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="o">[</span><span class="kt">Millisecond</span><span class="o">]</span> <span class="o">/</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">ms</span><span class="o">).</span><span class="n">show</span>
+<span class="c1">// res3: String = 1000.0  []
+</span>
+<span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span> <span class="c1">//this should fail
+// &lt;console&gt;:22: error: These quantities can't be added!
+// Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
+// Left: libra.Quantity[Int,libra.Term[libra.si.package.Length,libra.si.package.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Right: libra.Quantity[Int,libra.Term[libra.si.package.Mass,libra.si.package.Kilogram,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+//        3.m + 2.kg //this should fail
+//            ^
+</span></code></pre>
 </div>
 
 <h2 id="why">Why?</h2>
 <p>When we deal with numeric quantities, we often resort to <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code> or <code class="highlighter-rouge">Float</code> types.
 These are incommunicative and error prone.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
-</span><span class="n">distance</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">3.0</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span> <span class="c1">// 2 s
-</span><span class="n">time</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">2.0</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span> <span class="c1">// Oh no!
-</span><span class="n">speed</span><span class="k">:</span> <span class="kt">Double</span> <span class="o">=</span> <span class="mf">5.0</span>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
+// distance: Double = 3.0
+</span>
+<span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span> <span class="c1">// 2 s
+// time: Double = 2.0
+</span>
+<span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span> <span class="c1">// Oh no!
+// speed: Double = 5.0
+</span></code></pre>
 </div>
 
 <p>There’s a mistake in our formula, but we won’t know without a decent set of tests.</p>
 
 <p>Libra provides a <code class="highlighter-rouge">Quantity</code> which wraps base numeric types.  It supports <strong>compile time dimensional analysis</strong>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spire.implicits._</span>
-<span class="k">import</span> <span class="nn">spire.implicits._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
-<span class="k">import</span> <span class="nn">libra._</span>
-<span class="k">import</span> <span class="nn">libra.si._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span>
-<span class="n">distance</span><span class="k">:</span> <span class="kt">libra.QuantityOf</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.si.package.Length</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">3.0</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">s</span>
-<span class="n">time</span><span class="k">:</span> <span class="kt">libra.QuantityOf</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.si.package.Time</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">2.0</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span>
-<span class="o">&lt;</span><span class="n">console</span><span class="k">&gt;:</span><span class="mi">32</span><span class="k">:</span> <span class="kt">error:</span> <span class="kt">These</span> <span class="kt">quantities</span> <span class="kt">can't</span> <span class="kt">be</span> <span class="kt">added!</span>  <span class="kt">Most</span> <span class="kt">likely</span> <span class="kt">they</span> <span class="kt">have</span> <span class="kt">different</span> <span class="kt">dimensions.</span>  <span class="kt">If</span> <span class="kt">not</span><span class="o">,</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">there</span><span class="ss">'s </span><span class="n">an</span> <span class="k">implicit</span> <span class="nc">AdditiveSemigroup</span> <span class="n">in</span> <span class="n">scope</span><span class="o">.</span>
-<span class="nc">Left</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-<span class="nc">Right</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Time</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-       <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span>
-                            <span class="o">^</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">/</span> <span class="n">time</span> <span class="c1">// Yay!
-</span><span class="n">speed</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">libra.si.package.Time</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">1.5</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">speed</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res6</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span>  <span class="n">s</span><span class="o">^-</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span>  <span class="kt">T^-</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<h2 id="operations">Operations</h2>
-
-<h3 id="addition">Addition</h3>
-
-<p>Here is how you add quantities:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">m</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mi">5</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res7</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<p>You can add quantities for any kind of number type, provided there’s an <code class="highlighter-rouge">AdditiveSemigroup</code> for them.
-Here we’re using spire’s rationals:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="n">r</span><span class="s">"1/3"</span><span class="o">.</span><span class="n">m</span> <span class="o">+</span> <span class="n">r</span><span class="s">"2/3"</span><span class="o">.</span><span class="n">m</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">spire.math.Rational</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res8</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<p>But you can only add quantities of the same dimension:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">4.</span><span class="n">kg</span>
-<span class="o">&lt;</span><span class="n">console</span><span class="k">&gt;:</span><span class="mi">30</span><span class="k">:</span> <span class="kt">error:</span> <span class="kt">These</span> <span class="kt">quantities</span> <span class="kt">can't</span> <span class="kt">be</span> <span class="kt">added!</span>  <span class="kt">Most</span> <span class="kt">likely</span> <span class="kt">they</span> <span class="kt">have</span> <span class="kt">different</span> <span class="kt">dimensions.</span>  <span class="kt">If</span> <span class="kt">not</span><span class="o">,</span> <span class="n">make</span> <span class="n">sure</span> <span class="n">that</span> <span class="n">there</span><span class="ss">'s </span><span class="n">an</span> <span class="k">implicit</span> <span class="nc">AdditiveSemigroup</span> <span class="n">in</span> <span class="n">scope</span><span class="o">.</span>
-<span class="nc">Left</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-<span class="nc">Right</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Mass</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span>
-       <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">4.</span><span class="n">kg</span>
-                   <span class="o">^</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res9</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<p>Subtraction is just the same:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">-</span> <span class="mf">2.</span><span class="n">m</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res10</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<h3 id="multiplication">Multiplication</h3>
-<p>Here’s how you multiply quantities:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.</span><span class="n">m</span> <span class="o">*</span> <span class="mf">2.</span><span class="n">kg</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Int</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">libra.si.package.Mass</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mi">6</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res11</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span> <span class="n">kg</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span> <span class="kt">M^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-<p>You can also divide quantities:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span> <span class="o">/</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">kg</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">libra.si.package.Mass</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">1.5</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res12</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">1.5</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">1</span>  <span class="n">kg</span><span class="o">^-</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^</span><span class="err">1</span>  <span class="kt">M^-</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<h3 id="power">Power</h3>
-<p>Here’s how you raise quantities to a power:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span><span class="o">^(</span><span class="mi">3</span><span class="o">)</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">27.0</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res13</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">27.0</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^</span><span class="mi">3</span> <span class="o">[</span><span class="kt">L^</span><span class="err">3</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<h3 id="inverse">Inverse</h3>
-<p>You can also invert quantities:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">q</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span><span class="o">.</span><span class="n">invert</span>
-<span class="n">q</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">shapeless.HNil</span>,<span class="kt">libra.si.package.Length</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">0.3333333333333333</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">q</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res14</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">0.3333333333333333</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="n">m</span><span class="o">^-</span><span class="mi">1</span> <span class="o">[</span><span class="kt">L^-</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
-</div>
-
-<h3 id="extracting-the-base-value">Extracting the base value</h3>
-<p>Here’s how you extract the value as a numeric in base units:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="mf">3.</span><span class="n">km</span><span class="o">.</span><span class="n">baseValue</span>
-<span class="n">res15</span><span class="k">:</span> <span class="kt">Int</span> <span class="o">=</span> <span class="mi">3000</span>
-</code></pre>
-</div>
-
-<h2 id="rolling-your-own">Rolling your own</h2>
-
-<p>Let’s say we want to code up a game of <a href="http://www.catan.com/game/catan">Catan</a>.  The base SI units don’t cut the mustard, so let’s make our own.  Our base dimensions are going to be <code class="highlighter-rouge">Stone</code>, <code class="highlighter-rouge">Wood</code>, <code class="highlighter-rouge">Wheat</code>, <code class="highlighter-rouge">Sheep</code> and <code class="highlighter-rouge">Time</code>.</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="k">_</span>
-<span class="k">import</span> <span class="nn">libra._</span>
-<span class="k">import</span> <span class="nn">libra.ops.base._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">object</span> <span class="nc">catan</span> <span class="o">{</span>
-     <span class="o">|</span>   <span class="k">type</span> <span class="kt">Stone</span>
-     <span class="o">|</span>   <span class="k">type</span> <span class="kt">Wood</span>
-     <span class="o">|</span>   <span class="k">type</span> <span class="kt">Wheat</span>
-     <span class="o">|</span>   <span class="k">type</span> <span class="kt">Sheep</span>
-     <span class="o">|</span>   <span class="k">type</span> <span class="kt">Time</span>
-     <span class="o">|</span>   
-     <span class="o">|</span>   <span class="c1">//we ought to provide shows
-</span>     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">stoneShowDimension</span><span class="k">:</span> <span class="kt">ShowDimension</span><span class="o">[</span><span class="kt">Stone</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowDimension</span><span class="o">[</span><span class="kt">Stone</span><span class="o">](</span><span class="s">"S"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">woodShowDimension</span><span class="k">:</span> <span class="kt">ShowDimension</span><span class="o">[</span><span class="kt">Wood</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowDimension</span><span class="o">[</span><span class="kt">Wood</span><span class="o">](</span><span class="s">"W"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">wheatShowDimension</span><span class="k">:</span> <span class="kt">ShowDimension</span><span class="o">[</span><span class="kt">Wheat</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowDimension</span><span class="o">[</span><span class="kt">Wheat</span><span class="o">](</span><span class="s">"F"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">sheepShowDimension</span><span class="k">:</span> <span class="kt">ShowDimension</span><span class="o">[</span><span class="kt">Sheep</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowDimension</span><span class="o">[</span><span class="kt">Sheep</span><span class="o">](</span><span class="s">"B"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">timeShowDimension</span><span class="k">:</span> <span class="kt">ShowDimension</span><span class="o">[</span><span class="kt">Time</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowDimension</span><span class="o">[</span><span class="kt">Time</span><span class="o">](</span><span class="s">"T"</span><span class="o">)</span>
-     <span class="o">|</span>   
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">stoneShowUnit</span><span class="k">:</span> <span class="kt">ShowUnit</span><span class="o">[</span><span class="kt">Stone</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowUnit</span><span class="o">[</span><span class="kt">Stone</span><span class="o">](</span><span class="s">"Rocks"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">woodShowUnit</span><span class="k">:</span> <span class="kt">ShowUnit</span><span class="o">[</span><span class="kt">Wood</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowUnit</span><span class="o">[</span><span class="kt">Wood</span><span class="o">](</span><span class="s">"Logs"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">wheatShowUnit</span><span class="k">:</span> <span class="kt">ShowUnit</span><span class="o">[</span><span class="kt">Wheat</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowUnit</span><span class="o">[</span><span class="kt">Wheat</span><span class="o">](</span><span class="s">"Bushel"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">sheepShowUnit</span><span class="k">:</span> <span class="kt">ShowUnit</span><span class="o">[</span><span class="kt">Sheep</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowUnit</span><span class="o">[</span><span class="kt">Sheep</span><span class="o">](</span><span class="s">"Sheep"</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">def</span> <span class="n">timeShowUnit</span><span class="k">:</span> <span class="kt">ShowUnit</span><span class="o">[</span><span class="kt">Time</span><span class="o">]</span> <span class="k">=</span> <span class="nc">ShowUnit</span><span class="o">[</span><span class="kt">Time</span><span class="o">](</span><span class="s">"Turn"</span><span class="o">)</span>
-     <span class="o">|</span>   
-     <span class="o">|</span>   
-     <span class="o">|</span>   <span class="c1">//implicit conversions would be useful too
-</span>     <span class="o">|</span>   <span class="k">implicit</span> <span class="k">final</span> <span class="k">class</span> <span class="nc">CatanOps</span><span class="o">[</span><span class="kt">A</span><span class="o">](</span><span class="k">val</span> <span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span> <span class="k">extends</span> <span class="nc">AnyVal</span> <span class="o">{</span>
-     <span class="o">|</span>      <span class="k">def</span> <span class="n">wood</span><span class="k">:</span> <span class="kt">OneOf</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">Wood</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-     <span class="o">|</span>      <span class="k">def</span> <span class="n">stone</span><span class="k">:</span> <span class="kt">OneOf</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">Stone</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-     <span class="o">|</span>      <span class="k">def</span> <span class="n">sheep</span><span class="k">:</span> <span class="kt">OneOf</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">Sheep</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-     <span class="o">|</span>      <span class="k">def</span> <span class="n">turns</span><span class="k">:</span> <span class="kt">OneOf</span><span class="o">[</span><span class="kt">A</span>, <span class="kt">Time</span><span class="o">]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="n">a</span><span class="o">)</span>
-     <span class="o">|</span>   <span class="o">}</span>
-     <span class="o">|</span> <span class="o">}</span>
-<span class="n">defined</span> <span class="k">object</span> <span class="nc">catan</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spire.implicits._</span>
-<span class="k">import</span> <span class="nn">spire.implicits._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">catan._</span>
-<span class="k">import</span> <span class="nn">catan._</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">tradingRate</span> <span class="k">=</span> <span class="mf">4.0</span><span class="o">.</span><span class="n">wood</span> <span class="o">/</span> <span class="mf">1.0</span><span class="o">.</span><span class="n">sheep</span>
-<span class="n">tradingRate</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">catan.Wood</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">catan.Sheep</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">4.0</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="k">val</span> <span class="n">sheeple</span> <span class="k">=</span> <span class="mf">8.0</span><span class="o">.</span><span class="n">wood</span> <span class="o">/</span> <span class="n">tradingRate</span>
-<span class="n">sheeple</span><span class="k">:</span> <span class="kt">libra.Quantity</span><span class="o">[</span><span class="kt">Double</span>,<span class="kt">Int</span><span class="o">(</span><span class="err">0</span><span class="o">)</span>,<span class="kt">libra.Dimensions</span><span class="o">[</span><span class="kt">catan.Sheep</span> <span class="kt">::</span> <span class="kt">shapeless.HNil</span>,<span class="kt">shapeless.HNil</span><span class="o">]]</span> <span class="k">=</span> <span class="nc">Quantity</span><span class="o">(</span><span class="mf">2.0</span><span class="o">)</span>
-
-<span class="n">scala</span><span class="o">&gt;</span> <span class="n">sheeple</span><span class="o">.</span><span class="n">show</span>
-<span class="n">res16</span><span class="k">:</span> <span class="kt">String</span> <span class="o">=</span> <span class="mf">2.0</span> <span class="o">*</span> <span class="mi">10</span><span class="o">^</span><span class="mi">0</span> <span class="nc">Sheep</span><span class="o">^</span><span class="mi">1</span> <span class="o">[</span><span class="kt">B^</span><span class="err">1</span><span class="o">]</span>
-</code></pre>
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<span class="c1">// import spire.implicits._
+</span>
+<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
+<span class="c1">// import libra._
+// import libra.si._
+</span>
+<span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span>
+<span class="c1">// distance: libra.QuantityOf[Double,libra.si.package.Length,libra.si.package.Metre] = Quantity(3.0)
+</span>
+<span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">s</span>
+<span class="c1">// time: libra.QuantityOf[Double,libra.si.package.Time,libra.si.package.Second] = Quantity(2.0)
+</span>
+<span class="n">distance</span> <span class="o">+</span> <span class="n">time</span>
+<span class="c1">// &lt;console&gt;:33: error: These quantities can't be added!
+// Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
+// Left: libra.Quantity[Double,libra.Term[libra.si.package.Length,libra.si.package.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Right: libra.Quantity[Double,libra.Term[libra.si.package.Time,libra.si.package.Second,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+//        distance + time
+//                 ^
+</span>
+<span class="o">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">time</span><span class="o">).</span><span class="n">show</span> <span class="c1">// Yay!
+// res6: String = 1.5 m s^-1 [L T^-1]
+</span></code></pre>
 </div>
 
 <h2 id="credits">Credits</h2>
 
-<p>Libra makes heavy use of <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It wouldn’t be possible without these projects, their authors and contributors, so if you like Libra, please check them out.</p>
+<p>Libra makes heavy use of <a href="https://github.com/typelevel/scala">Typelevel Scala</a>, <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It wouldn’t be possible without these projects, their authors and contributors, so if you like Libra, please check them out.</p>
 
 <p>Libra also uses:</p>
 
@@ -260,8 +107,12 @@ Here we’re using spire’s rationals:</p>
 <h2 id="alternatives">Alternatives</h2>
 
 <p>If Libra isn’t quite your cup of tea, definitely take a look at <a href="https://github.com/typelevel/squants">Squants</a>.  It’s also a great library for dimensional analysis, with a slightly different scope.</p>
-</div></div></section><section class="technologies"><div class="container"><div class="row"></div></div></section></main><footer id="site-footer"><div class="container"><div class="row"><div class="col-xs-6"><p>Libra is designed and developed by <a href="" target="_blank">Zainab Ali</a></p></div><div class="col-xs-6"><p class="text-right"><a href="https://github.com/to-ithaca/libra"><span class="fa fa-github"></span>View on Github</a></p></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/libra/highlight/highlight.pack.js"></script><script>hljs.configure({
+</div></div></section><section class="technologies"><div class="container"><div class="row"></div></div></section></main><footer id="site-footer"><div class="container"><div class="row"><div class="col-xs-6"><p>Libra is designed and developed by <a href="http://to-ithaca.github.io/libra/" target="_blank">Zainab Ali</a></p></div><div class="col-xs-6"><p class="text-right"><a href="https://github.com/to-ithaca/libra"><span class="fa fa-github"></span>View on GitHub</a></p></div></div><div class="row"><div class="col-xs-6"><p>Website built with <a href="https://47deg.github.io/sbt-microsites/" target="_blank">Sbt-microsites</a> - © 2016 <a href="https://www.47deg.com/" target="_blank">47 Degrees</a></p></div></div></div></footer><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/libra/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });
 hljs.initHighlighting();
-             </script></body></html>
+             </script><script src="/libra/js/kazari.js"></script><script><script>
+$(document).ready(function() {
+	kazari.KazariPlugin().decorateCode('https://scala-evaluator-212.herokuapp.com/eval', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.S2F6YXJp.Jl2eqMfw8IakJF93PjxTbrf-8YUJgX5OoOfy5JHE8Yw', '', 'solarized-dark')
+})
+    </script></script></body></html>

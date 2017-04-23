@@ -108,6 +108,18 @@
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="../index.html" class="extype" name="libra">libra</a></dd></dl></div>
     </li><li class="current-entities indented2">
+                        <a class="object" href="Merge$.html" title=""></a>
+                        <a class="trait" href="Merge.html" title="Typeclass for merging two records"></a>
+                        <a href="Merge.html" title="Typeclass for merging two records">
+                          Merge
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <a class="object" href="Refute$.html" title=""></a>
+                        <a class="trait" href="Refute.html" title="Evidence that an implicit A is not present"></a>
+                        <a href="Refute.html" title="Evidence that an implicit A is not present">
+                          Refute
+                        </a>
+                      </li><li class="current-entities indented2">
                         <span class="separator"></span>
                         <a class="object" href="base$.html" title=""></a>
                         <a href="base$.html" title="">
@@ -121,9 +133,21 @@
                         </a>
                       </li><li class="current-entities indented2">
                         <span class="separator"></span>
+                        <a class="object" href="fraction$.html" title=""></a>
+                        <a href="fraction$.html" title="">
+                          fraction
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
                         <a class="object" href="quantity$.html" title=""></a>
                         <a href="quantity$.html" title="">
                           quantity
+                        </a>
+                      </li><li class="current-entities indented2">
+                        <span class="separator"></span>
+                        <a class="object" href="recordExtensions$.html" title=""></a>
+                        <a href="recordExtensions$.html" title="">
+                          recordExtensions
                         </a>
                       </li>
               </ul>
@@ -205,26 +229,28 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="libra.ops.dimensions.Denominator" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Denominator"></a><a id="Denominator:Denominator"></a>
+              <ol><li name="libra.ops.dimensions.ConvertTo" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ConvertTo[A,UT&lt;:libra.Unit[_],H&lt;:shapeless.HList]extendsAnyRef"></a><a id="ConvertTo[A,UT&lt;:Unit[_],H&lt;:HList]:ConvertTo[A,UT,H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Denominator" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#ConvertTo[A,UT&lt;:libra.Unit[_],H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">type</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Denominator</span>
+        <a title="" href="dimensions$$ConvertTo.html">
+              <span class="name">ConvertTo</span>
+            </a><span class="tparams">[<span name="A">A</span>, <span name="UT">UT &lt;: <a href="../Unit.html" class="extype" name="libra.Unit">Unit</a>[_]</span>, <span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
       
     </li><li name="libra.ops.dimensions.Divide" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Divide[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef"></a><a id="Divide[L&lt;:Dimensions[_,_],R&lt;:Dimensions[_,_]]:Divide[L,R]"></a>
+      <a id="Divide[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef"></a><a id="Divide[L&lt;:HList,R&lt;:HList]:Divide[L,R]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Divide[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#Divide[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -233,16 +259,16 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Type class to divide dimensions L by R." href="dimensions$$Divide.html">
+        <a title="Type class for dividing dimensions L by R" href="dimensions$$Divide.html">
               <span class="name">Divide</span>
-            </a><span class="tparams">[<span name="L">L &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>, <span name="R">R &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="L">L &lt;: <span class="extype" name="shapeless.HList">HList</span></span>, <span name="R">R &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Type class to divide dimensions <code>L</code> by <code>R</code>.</p>
-    </li><li name="libra.ops.dimensions.Eq" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Eq[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef"></a><a id="Eq[L&lt;:Dimensions[_,_],R&lt;:Dimensions[_,_]]:Eq[L,R]"></a>
+      <p class="shortcomment cmt">Type class for dividing dimensions <code>L</code> by <code>R</code></p>
+    </li><li name="libra.ops.dimensions.Invert" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Invert[H&lt;:shapeless.HList]extendsAnyRef"></a><a id="Invert[H&lt;:HList]:Invert[H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Eq[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#Invert[H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -251,37 +277,16 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Type class witnessing that two dimensions L and R have the same elements
-" href="dimensions$$Eq.html">
-              <span class="name">Eq</span>
-            </a><span class="tparams">[<span name="L">L &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>, <span name="R">R &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Type class witnessing that two dimensions <code>L</code> and <code>R</code> have the same elements
-</p>
-    </li><li name="libra.ops.dimensions.Invert" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Invert[D&lt;:libra.Dimensions[_,_]]extendsAnyRef"></a><a id="Invert[D&lt;:Dimensions[_,_]]:Invert[D]"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Invert[D&lt;:libra.Dimensions[_,_]]extendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Type class to invert dimensions D." href="dimensions$$Invert.html">
+        <a title="Type class for inverting a hlist of dimensions" href="dimensions$$Invert.html">
               <span class="name">Invert</span>
-            </a><span class="tparams">[<span name="D">D &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Type class to invert dimensions <code>D</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Type class to invert dimensions <code>D</code>.</p><p>The inverse of <code>Dimensions[N, D]</code> is <code>Dimensions[D, N]</code>
-</p></div></div>
-    </li><li name="libra.ops.dimensions.Multiply" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Multiply[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef"></a><a id="Multiply[L&lt;:Dimensions[_,_],R&lt;:Dimensions[_,_]]:Multiply[L,R]"></a>
+      <p class="shortcomment cmt">Type class for inverting a hlist of dimensions</p>
+    </li><li name="libra.ops.dimensions.Multiply" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Multiply[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef"></a><a id="Multiply[L&lt;:HList,R&lt;:HList]:Multiply[L,R]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Multiply[L&lt;:libra.Dimensions[_,_],R&lt;:libra.Dimensions[_,_]]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#Multiply[L&lt;:shapeless.HList,R&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -290,33 +295,36 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Type class to multiply dimensions L and R together." href="dimensions$$Multiply.html">
+        <a title="Type class for multiplying two hlists of dimensions" href="dimensions$$Multiply.html">
               <span class="name">Multiply</span>
-            </a><span class="tparams">[<span name="L">L &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>, <span name="R">R &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="L">L &lt;: <span class="extype" name="shapeless.HList">HList</span></span>, <span name="R">R &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Type class to multiply dimensions <code>L</code> and <code>R</code> together.</p><div class="fullcomment"><div class="comment cmt"><p>Type class to multiply dimensions <code>L</code> and <code>R</code> together.</p><p>The output contains a simplified combination of elements in <code>L</code> appended to elements in <code>R</code>
-</p></div></div>
-    </li><li name="libra.ops.dimensions.Numerator" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Numerator"></a><a id="Numerator:Numerator"></a>
+      <p class="shortcomment cmt">Type class for multiplying two hlists of dimensions</p>
+    </li><li name="libra.ops.dimensions.MultiplyMerged" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="MultiplyMerged[H&lt;:shapeless.HList]extendsAnyRef"></a><a id="MultiplyMerged[H&lt;:HList]:MultiplyMerged[H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Numerator" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#MultiplyMerged[H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier">abstract </span>
-        <span class="kind">type</span>
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Numerator</span>
+        <a title="Typeclass for simplifying a merged HList to produce a multiplied HList" href="dimensions$$MultiplyMerged.html">
+              <span class="name">MultiplyMerged</span>
+            </a><span class="tparams">[<span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      
+      <p class="shortcomment cmt">Typeclass for simplifying a merged HList to produce a multiplied HList</p><div class="fullcomment"><div class="comment cmt"><p>Typeclass for simplifying a merged HList to produce a multiplied HList</p><p>Given a FieldType[D, (U, F)], produces a FieldType[D, (U, F)] with no change.  This occurs when a term exists in L but not in R, or vice versa
+Given a FieldType[D, ((U, LF), (U, RF))] produces a FieldType[D, (U, TF)] where TF is the sum of LF and RF.  If TF is invalid, the term is removed from the output.
+</p></div></div>
     </li><li name="libra.ops.dimensions.Power" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="Power[D&lt;:libra.Dimensions[_,_],P&lt;:SingletonwithInt]extendsAnyRef"></a><a id="Power[D&lt;:Dimensions[_,_],P&lt;:SingletonwithInt]:Power[D,P]"></a>
+      <a id="Power[P&lt;:singleton.ops.XInt,H&lt;:shapeless.HList]extendsAnyRef"></a><a id="Power[P&lt;:XInt,H&lt;:HList]:Power[P,H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Power[D&lt;:libra.Dimensions[_,_],P&lt;:SingletonwithInt]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#Power[P&lt;:singleton.ops.XInt,H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -325,16 +333,16 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Type class to raise dimensions D to the power P." href="dimensions$$Power.html">
+        <a title="Type class for raising dimensions to the power P" href="dimensions$$Power.html">
               <span class="name">Power</span>
-            </a><span class="tparams">[<span name="D">D &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>, <span name="P">P &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="singleton.ops.XInt">XInt</span></span>, <span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Type class to raise dimensions <code>D</code> to the power <code>P</code>.</p>
-    </li><li name="libra.ops.dimensions.ShowDimension" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="ShowDimension[D]extendsAnyRef"></a><a id="ShowDimension[D]:ShowDimension[D]"></a>
+      <p class="shortcomment cmt">Type class for raising dimensions to the power <code>P</code></p>
+    </li><li name="libra.ops.dimensions.Root" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Root[P&lt;:singleton.ops.XInt,H&lt;:shapeless.HList]extendsAnyRef"></a><a id="Root[P&lt;:XInt,H&lt;:HList]:Root[P,H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#ShowDimension[D]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#Root[P&lt;:singleton.ops.XInt,H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -343,18 +351,34 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Type class for showing the dimension of dimensions D." href="dimensions$$ShowDimension.html">
+        <a title="Type class for raising dimensions to the power 1 / P" href="dimensions$$Root.html">
+              <span class="name">Root</span>
+            </a><span class="tparams">[<span name="P">P &lt;: <span class="extype" name="singleton.ops.XInt">XInt</span></span>, <span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Type class for raising dimensions to the power <code>1 / P</code></p>
+    </li><li name="libra.ops.dimensions.ShowDimension" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="ShowDimension[H&lt;:shapeless.HList]extendsAnyRef"></a><a id="ShowDimension[H&lt;:HList]:ShowDimension[H]"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/dimensions$.html#ShowDimension[H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Type class for printing dimensions" href="dimensions$$ShowDimension.html">
               <span class="name">ShowDimension</span>
-            </a><span class="tparams">[<span name="D">D</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Type class for showing the dimension of dimensions <code>D</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Type class for showing the dimension of dimensions <code>D</code>.
-e.g. velocity has dimensions L<sup>1 T</sup>-1
-</p></div></div>
+      <p class="shortcomment cmt">Type class for printing dimensions</p>
     </li><li name="libra.ops.dimensions.ShowUnit" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
-      <a id="ShowUnit[D]extendsAnyRef"></a><a id="ShowUnit[D]:ShowUnit[D]"></a>
+      <a id="ShowUnit[H&lt;:shapeless.HList]extendsAnyRef"></a><a id="ShowUnit[H&lt;:HList]:ShowUnit[H]"></a>
       <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#ShowUnit[D]extendsAnyRef" title="Permalink">
+      <a href="../../libra/ops/dimensions$.html#ShowUnit[H&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -363,73 +387,12 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="" href="dimensions$$ShowUnit.html">
+        <a title="Type class for printing dimensions" href="dimensions$$ShowUnit.html">
               <span class="name">ShowUnit</span>
-            </a><span class="tparams">[<span name="D">D</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+            </a><span class="tparams">[<span name="H">H &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      
-    </li><li name="libra.ops.dimensions.Simplify" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Simplify[D&lt;:libra.Dimensions[_,_]]extendsAnyRef"></a><a id="Simplify[D&lt;:Dimensions[_,_]]:Simplify[D]"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Simplify[D&lt;:libra.Dimensions[_,_]]extendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Type class to simplify the numerator and denominator of dimensions D." href="dimensions$$Simplify.html">
-              <span class="name">Simplify</span>
-            </a><span class="tparams">[<span name="D">D &lt;: <a href="../Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Type class to simplify the numerator and denominator of dimensions <code>D</code>.</p><div class="fullcomment"><div class="comment cmt"><p>Type class to simplify the numerator and denominator of dimensions <code>D</code>.</p><p>The output contains no shared elements in the numerator and denominator.
-</p></div></div>
-    </li><li name="libra.ops.dimensions.Term" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Term[D,I&lt;:shapeless.Nat,S[_]&lt;:libra.ops.base.Show[_],A]extendsAnyRef"></a><a id="Term[D,I&lt;:Nat,S[_]&lt;:Show[_],A]:Term[D,I,S,A]"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Term[D,I&lt;:shapeless.Nat,S[_]&lt;:libra.ops.base.Show[_],A]extendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Type class representing a single term within a dimensions string representation." href="dimensions$$Term.html">
-              <span class="name">Term</span>
-            </a><span class="tparams">[<span name="D">D</span>, <span name="I">I &lt;: <span class="extype" name="shapeless.Nat">Nat</span></span>, <span name="S">S<span class="tparams">[<span name="_">_</span>]</span> &lt;: <a href="base$$Show.html" class="extype" name="libra.ops.base.Show">Show</a>[_]</span>, <span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Type class representing a single term within a dimensions string representation.</p><div class="fullcomment"><div class="comment cmt"><p>Type class representing a single term within a dimensions string representation.
- <code>D</code> is the dimension for the term, <code>I</code> is the number of apperances,
- <code>S</code> represents whether the term appears in the numerator or the denominator.
-</p></div></div>
-    </li><li name="libra.ops.dimensions.TermList" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="TermList[L&lt;:shapeless.HList,S[_]&lt;:libra.ops.base.Show[_],A]extendsAnyRef"></a><a id="TermList[L&lt;:HList,S[_]&lt;:Show[_],A]:TermList[L,S,A]"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#TermList[L&lt;:shapeless.HList,S[_]&lt;:libra.ops.base.Show[_],A]extendsAnyRef" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">trait</span>
-      </span>
-      <span class="symbol">
-        <a title="Type class represeting a list of terms within a dimensions string." href="dimensions$$TermList.html">
-              <span class="name">TermList</span>
-            </a><span class="tparams">[<span name="L">L &lt;: <span class="extype" name="shapeless.HList">HList</span></span>, <span name="S">S<span class="tparams">[<span name="_">_</span>]</span> &lt;: <a href="base$$Show.html" class="extype" name="libra.ops.base.Show">Show</a>[_]</span>, <span name="A">A</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
-      </span>
-      
-      <p class="shortcomment cmt">Type class represeting a list of terms within a dimensions string.</p><div class="fullcomment"><div class="comment cmt"><p>Type class represeting a list of terms within a dimensions string.
- <code>L</code> is the list of dimensions
- <code>A</code> indicates whether the list is the Numerator or the Denominator
-</p></div></div>
+      <p class="shortcomment cmt">Type class for printing dimensions</p>
     </li></ol>
             </div>
 
@@ -557,7 +520,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a><a id="finalize():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -568,7 +531,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -643,7 +606,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a><a id="notify():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -654,12 +617,12 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a><a id="notifyAll():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -670,7 +633,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -707,7 +670,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a><a id="wait():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -718,7 +681,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -729,7 +692,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -740,7 +703,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -751,7 +714,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/dimensions$.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -762,7 +725,7 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -772,6 +735,24 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
     </span>)</span>
               
         </dd></dl></div>
+    </li><li name="libra.ops.dimensions.ConvertTo" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="ConvertTo"></a><a id="ConvertTo:ConvertTo"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/dimensions$.html#ConvertTo" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="dimensions$$ConvertTo$.html">
+              <span class="name">ConvertTo</span>
+            </a>
+      </span>
+      
+      
     </li><li name="libra.ops.dimensions.Divide" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Divide"></a><a id="Divide:Divide"></a>
       <span class="permalink">
@@ -786,24 +767,6 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       <span class="symbol">
         <a title="" href="dimensions$$Divide$.html">
               <span class="name">Divide</span>
-            </a>
-      </span>
-      
-      
-    </li><li name="libra.ops.dimensions.Eq" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Eq"></a><a id="Eq:Eq"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Eq" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="dimensions$$Eq$.html">
-              <span class="name">Eq</span>
             </a>
       </span>
       
@@ -844,6 +807,24 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       </span>
       
       
+    </li><li name="libra.ops.dimensions.MultiplyMerged" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="MultiplyMerged"></a><a id="MultiplyMerged:MultiplyMerged"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/dimensions$.html#MultiplyMerged" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="dimensions$$MultiplyMerged$.html">
+              <span class="name">MultiplyMerged</span>
+            </a>
+      </span>
+      
+      
     </li><li name="libra.ops.dimensions.Power" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
       <a id="Power"></a><a id="Power:Power"></a>
       <span class="permalink">
@@ -858,6 +839,24 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       <span class="symbol">
         <a title="" href="dimensions$$Power$.html">
               <span class="name">Power</span>
+            </a>
+      </span>
+      
+      
+    </li><li name="libra.ops.dimensions.Root" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Root"></a><a id="Root:Root"></a>
+      <span class="permalink">
+      <a href="../../libra/ops/dimensions$.html#Root" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="dimensions$$Root$.html">
+              <span class="name">Root</span>
             </a>
       </span>
       
@@ -894,60 +893,6 @@ e.g. velocity has dimensions L<sup>1 T</sup>-1
       <span class="symbol">
         <a title="" href="dimensions$$ShowUnit$.html">
               <span class="name">ShowUnit</span>
-            </a>
-      </span>
-      
-      
-    </li><li name="libra.ops.dimensions.Simplify" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Simplify"></a><a id="Simplify:Simplify"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Simplify" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="dimensions$$Simplify$.html">
-              <span class="name">Simplify</span>
-            </a>
-      </span>
-      
-      
-    </li><li name="libra.ops.dimensions.Term" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="Term"></a><a id="Term:Term"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#Term" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="dimensions$$Term$.html">
-              <span class="name">Term</span>
-            </a>
-      </span>
-      
-      
-    </li><li name="libra.ops.dimensions.TermList" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="TermList"></a><a id="TermList:TermList"></a>
-      <span class="permalink">
-      <a href="../../libra/ops/dimensions$.html#TermList" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">object</span>
-      </span>
-      <span class="symbol">
-        <a title="" href="dimensions$$TermList$.html">
-              <span class="name">TermList</span>
             </a>
       </span>
       

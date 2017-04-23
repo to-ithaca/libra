@@ -125,17 +125,25 @@
       <p class="shortcomment cmt">SI units</p>
     </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="trait" href="Dimensions.html" title="Represents the dimensions of a quantity, in base units"></a>
-                        <a href="Dimensions.html" title="Represents the dimensions of a quantity, in base units">
-                          Dimensions
+                        <a class="trait" href="Fraction.html" title="Represents a fraction
+"></a>
+                        <a href="Fraction.html" title="Represents a fraction
+">
+                          Fraction
+                        </a>
+                      </li><li class="current-entities indented1">
+                        <a class="object" href="Quantity$.html" title=""></a>
+                        <a class="class" href="Quantity.html" title="Represents a dimensional quantity
+"></a>
+                        <a href="Quantity.html" title="Represents a dimensional quantity
+">
+                          Quantity
                         </a>
                       </li><li class="current-entities indented1">
                         <span class="separator"></span>
-                        <a class="class" href="Quantity.html" title="Represents a quantity in standard index form
-"></a>
-                        <a href="Quantity.html" title="Represents a quantity in standard index form
-">
-                          Quantity
+                        <a class="trait" href="Unit.html" title="Represents a unit of a given dimension"></a>
+                        <a href="Unit.html" title="Represents a unit of a given dimension">
+                          Unit
                         </a>
                       </li>
               </ul>
@@ -173,7 +181,43 @@
         </div></div>
         
 
-      
+      <div id="mbrsel">
+        <div class="toggle"></div>
+        <div id="memberfilter">
+          <i class="material-icons arrow"></i>
+          <span class="input">
+            <input id="mbrsel-input" placeholder="Filter all members" type="text" accesskey="/" />
+          </span>
+          <i class="clear material-icons"></i>
+        </div>
+        <div id="filterby">
+          <div id="order">
+            <span class="filtertype">Ordering</span>
+            <ol>
+              
+              <li class="alpha in"><span>Alphabetic</span></li>
+              <li class="inherit out"><span>By Inheritance</span></li>
+            </ol>
+          </div>
+          <div class="ancestors">
+                  <span class="filtertype">Inherited<br />
+                  </span>
+                  <ol id="linearization">
+                    <li class="in" name="libra"><span>libra</span></li><li class="in" name="scala.AnyRef"><span>AnyRef</span></li><li class="in" name="scala.Any"><span>Any</span></li>
+                  </ol>
+                </div><div class="ancestors">
+              <span class="filtertype"></span>
+              <ol>
+                <li class="hideall out"><span>Hide All</span></li>
+                <li class="showall in"><span>Show All</span></li>
+              </ol>
+            </div>
+          <div id="visbl">
+              <span class="filtertype">Visibility</span>
+              <ol><li class="public in"><span>Public</span></li><li class="all out"><span>All</span></li></ol>
+            </div>
+        </div>
+      </div>
 
       <div id="template">
         <div id="allMembers">
@@ -181,10 +225,10 @@
 
         <div id="types" class="types members">
               <h3>Type Members</h3>
-              <ol><li name="libra.Dimensions" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Dimensions[N&lt;:shapeless.HList,D&lt;:shapeless.HList]extendsAnyRef"></a><a id="Dimensions[N&lt;:HList,D&lt;:HList]:Dimensions[N,D]"></a>
+              <ol><li name="libra.Fraction" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
+      <a id="Fraction[N&lt;:singleton.ops.XInt,D&lt;:singleton.ops.XInt]extendsAnyRef"></a><a id="Fraction[N&lt;:XInt,D&lt;:XInt]:Fraction[N,D]"></a>
       <span class="permalink">
-      <a href="../libra/index.html#Dimensions[N&lt;:shapeless.HList,D&lt;:shapeless.HList]extendsAnyRef" title="Permalink">
+      <a href="../libra/index.html#Fraction[N&lt;:singleton.ops.XInt,D&lt;:singleton.ops.XInt]extendsAnyRef" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -193,60 +237,46 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <a title="Represents the dimensions of a quantity, in base units" href="Dimensions.html">
-              <span class="name">Dimensions</span>
-            </a><span class="tparams">[<span name="N">N &lt;: <span class="extype" name="shapeless.HList">HList</span></span>, <span name="D">D &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+        <a title="Represents a fraction
+" href="Fraction.html">
+              <span class="name">Fraction</span>
+            </a><span class="tparams">[<span name="N">N &lt;: <span class="extype" name="singleton.ops.XInt">XInt</span></span>, <span name="D">D &lt;: <span class="extype" name="singleton.ops.XInt">XInt</span></span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
       </span>
       
-      <p class="shortcomment cmt">Represents the dimensions of a quantity, in base units</p><div class="fullcomment"><div class="comment cmt"><p>Represents the dimensions of a quantity, in base units</p><p>An acceleration in SI Units would have Dimensions[Length :: HNil, Time :: Time :: HNil]
-</p></div><dl class="paramcmts block"><dt class="tparam">N</dt><dd class="cmt"><p>a HList of base types in the numerator</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>a HList of base types in the denominator</p></dd></dl></div>
-    </li><li name="libra.OneOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="OneOf[A,T]=libra.Quantity[A,0,libra.Dimensions[T::shapeless.HNil,shapeless.HNil]]"></a><a id="OneOf[A,T]:OneOf[A,T]"></a>
-      <span class="permalink">
-      <a href="../libra/index.html#OneOf[A,T]=libra.Quantity[A,0,libra.Dimensions[T::shapeless.HNil,shapeless.HNil]]" title="Permalink">
-        <i class="material-icons"></i>
-      </a>
-    </span>
-      <span class="modifier_kind">
-        <span class="modifier"></span>
-        <span class="kind">type</span>
-      </span>
-      <span class="symbol">
-        <span class="name">OneOf</span><span class="tparams">[<span name="A">A</span>, <span name="T">T</span>]</span><span class="result alias"> = <a href="Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.OneOf.A">A</span>, 0, <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[<span class="extype" name="shapeless.::">::</span>[<span class="extype" name="libra.OneOf.T">T</span>, <span class="extype" name="shapeless.HNil">HNil</span>], <span class="extype" name="shapeless.HNil">HNil</span>]]</span>
-      </span>
-      
-      <p class="shortcomment cmt">Represents a quantity with single dimension term and no tens</p>
+      <p class="shortcomment cmt">Represents a fraction
+</p><div class="fullcomment"><div class="comment cmt"><p>Represents a fraction
+</p></div><dl class="paramcmts block"><dt class="tparam">N</dt><dd class="cmt"><p>the numerator</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>the denominator</p></dd></dl></div>
     </li><li name="libra.Quantity" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="Quantity[A,I&lt;:SingletonwithInt,D&lt;:libra.Dimensions[_,_]]extendsProductwithSerializable"></a><a id="Quantity[A,I&lt;:SingletonwithInt,D&lt;:Dimensions[_,_]]:Quantity[A,I,D]"></a>
+      <a id="Quantity[A,D&lt;:shapeless.HList]extendsAnyValwithProductwithSerializable"></a><a id="Quantity[A,D&lt;:HList]:Quantity[A,D]"></a>
       <span class="permalink">
-      <a href="../libra/index.html#Quantity[A,I&lt;:SingletonwithInt,D&lt;:libra.Dimensions[_,_]]extendsProductwithSerializable" title="Permalink">
+      <a href="../libra/index.html#Quantity[A,D&lt;:shapeless.HList]extendsAnyValwithProductwithSerializable" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
       <span class="modifier_kind">
-        <span class="modifier"></span>
+        <span class="modifier">final </span>
         <span class="kind">case class</span>
       </span>
       <span class="symbol">
-        <a title="Represents a quantity in standard index form
+        <a title="Represents a dimensional quantity
 " href="Quantity.html">
               <span class="name">Quantity</span>
-            </a><span class="tparams">[<span name="A">A</span>, <span name="I">I &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="D">D &lt;: <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[_, _]</span>]</span><span class="params">(<span name="value">value: <span class="extype" name="libra.Quantity.A">A</span></span>)</span><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+            </a><span class="tparams">[<span name="A">A</span>, <span name="D">D &lt;: <span class="extype" name="shapeless.HList">HList</span></span>]</span><span class="params">(<span name="value">value: <span class="extype" name="libra.Quantity.A">A</span></span>)</span><span class="result"> extends <span class="extype" name="scala.AnyVal">AnyVal</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Product" class="extype" target="_top">Product</a> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
       </span>
       
-      <p class="shortcomment cmt">Represents a quantity in standard index form
-</p><div class="fullcomment"><div class="comment cmt"><p>Represents a quantity in standard index form
-</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Numeric type of the quantity e.g. Int, Float, Double</p></dd><dt class="tparam">I</dt><dd class="cmt"><p>the standard index form exponent</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>the dimensions</p></dd><dt class="param">value</dt><dd class="cmt"><p>the standard form coefficient</p></dd></dl><dl class="attributes block"> <div class="block">Example:
+      <p class="shortcomment cmt">Represents a dimensional quantity
+</p><div class="fullcomment"><div class="comment cmt"><p>Represents a dimensional quantity
+</p></div><dl class="paramcmts block"><dt class="tparam">A</dt><dd class="cmt"><p>the Numeric type of the quantity e.g. Int, Float, Double</p></dd><dt class="tparam">D</dt><dd class="cmt"><p>the dimensions</p></dd><dt class="param">value</dt><dd class="cmt"><p>the coefficient</p></dd></dl><dl class="attributes block"> <div class="block">Example:
                <ol><li class="cmt"><p></p><pre>scala&gt; <span class="kw">import</span> spire.implicits._
 scala&gt; <span class="kw">import</span> libra._, libra.si._
 
-scala&gt; Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dimensions[Length :: HNil, HNil]](<span class="num">5.5</span>) <span class="cmt">// represents 5.5 x 10^3 m</span>
-scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</span>, Dimensions[Length :: HNil, HNil]] = Quantity(<span class="num">5.5</span>)</pre></li></ol>
+scala&gt; Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil](<span class="num">5.5</span>) <span class="cmt">// represents 5.5 m</span>
+scala&gt; res0: Quantity[<span class="std">Double</span>, Term[Length, Metre, Fraction[<span class="num">1</span>, <span class="num">1</span>]] :: HNil] = Quantity(<span class="num">5.5</span>)</pre></li></ol>
             </div></dl></div>
     </li><li name="libra.QuantityOf" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
-      <a id="QuantityOf[A,E&lt;:SingletonwithInt,T]=libra.Quantity[A,E,libra.Dimensions[T::shapeless.HNil,shapeless.HNil]]"></a><a id="QuantityOf[A,E&lt;:SingletonwithInt,T]:QuantityOf[A,E,T]"></a>
+      <a id="QuantityOf[A,D,U&lt;:libra.Unit[D]]=libra.Quantity[A,libra.package.Term[D,U,libra.Fraction[1,1]]::shapeless.HNil]"></a><a id="QuantityOf[A,D,U&lt;:Unit[D]]:QuantityOf[A,D,U]"></a>
       <span class="permalink">
-      <a href="../libra/index.html#QuantityOf[A,E&lt;:SingletonwithInt,T]=libra.Quantity[A,E,libra.Dimensions[T::shapeless.HNil,shapeless.HNil]]" title="Permalink">
+      <a href="../libra/index.html#QuantityOf[A,D,U&lt;:libra.Unit[D]]=libra.Quantity[A,libra.package.Term[D,U,libra.Fraction[1,1]]::shapeless.HNil]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -255,16 +285,90 @@ scala&gt; res0: Quantity[<span class="std">Double</span>, <span class="num">3</s
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">QuantityOf</span><span class="tparams">[<span name="A">A</span>, <span name="E">E &lt;: <span class="extype" name="scala.Singleton">Singleton</span> with <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>, <span name="T">T</span>]</span><span class="result alias"> = <a href="Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.QuantityOf.A">A</span>, <span class="extype" name="libra.QuantityOf.E">E</span>, <a href="Dimensions.html" class="extype" name="libra.Dimensions">Dimensions</a>[<span class="extype" name="shapeless.::">::</span>[<span class="extype" name="libra.QuantityOf.T">T</span>, <span class="extype" name="shapeless.HNil">HNil</span>], <span class="extype" name="shapeless.HNil">HNil</span>]]</span>
+        <span class="name">QuantityOf</span><span class="tparams">[<span name="A">A</span>, <span name="D">D</span>, <span name="U">U &lt;: <a href="Unit.html" class="extype" name="libra.Unit">Unit</a>[<span class="extype" name="libra.QuantityOf.D">D</span>]</span>]</span><span class="result alias"> = <a href="Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[<span class="extype" name="libra.QuantityOf.A">A</span>, <span class="extype" name="shapeless.::">::</span>[<a href="#Term[D,U&lt;:libra.Unit[_],E&lt;:libra.Fraction[_,_]]=shapeless.labelled.FieldType[D,(U,E)]" class="extmbr" name="libra.Term">Term</a>[<span class="extype" name="libra.QuantityOf.D">D</span>, <span class="extype" name="libra.QuantityOf.U">U</span>, <a href="Fraction.html" class="extype" name="libra.Fraction">Fraction</a>[1, 1]], <span class="extype" name="shapeless.HNil">HNil</span>]]</span>
       </span>
       
-      <p class="shortcomment cmt">Represents a quantity with single dimension term and E tens</p>
+      <p class="shortcomment cmt">Aliases a quantity with single unit</p>
+    </li><li name="libra.Term" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Term[D,U&lt;:libra.Unit[_],E&lt;:libra.Fraction[_,_]]=shapeless.labelled.FieldType[D,(U,E)]"></a><a id="Term[D,U&lt;:Unit[_],E&lt;:Fraction[_,_]]:Term[D,U,E]"></a>
+      <span class="permalink">
+      <a href="../libra/index.html#Term[D,U&lt;:libra.Unit[_],E&lt;:libra.Fraction[_,_]]=shapeless.labelled.FieldType[D,(U,E)]" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">Term</span><span class="tparams">[<span name="D">D</span>, <span name="U">U &lt;: <a href="Unit.html" class="extype" name="libra.Unit">Unit</a>[_]</span>, <span name="E">E &lt;: <a href="Fraction.html" class="extype" name="libra.Fraction">Fraction</a>[_, _]</span>]</span><span class="result alias"> = (<span class="extype" name="libra.Term.U">U</span>, <span class="extype" name="libra.Term.E">E</span>) with <span class="extype" name="shapeless.labelled.KeyTag">KeyTag</span>[<span class="extype" name="libra.Term.D">D</span>, (<span class="extype" name="libra.Term.U">U</span>, <span class="extype" name="libra.Term.E">E</span>)]</span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a unit in a HList of units
+</p>
+    </li><li name="libra.TermValue" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="TermValue[U&lt;:libra.Unit[_],E&lt;:libra.Fraction[_,_]]=(U,E)"></a><a id="TermValue[U&lt;:Unit[_],E&lt;:Fraction[_,_]]:TermValue[U,E]"></a>
+      <span class="permalink">
+      <a href="../libra/index.html#TermValue[U&lt;:libra.Unit[_],E&lt;:libra.Fraction[_,_]]=(U,E)" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">type</span>
+      </span>
+      <span class="symbol">
+        <span class="name">TermValue</span><span class="tparams">[<span name="U">U &lt;: <a href="Unit.html" class="extype" name="libra.Unit">Unit</a>[_]</span>, <span name="E">E &lt;: <a href="Fraction.html" class="extype" name="libra.Fraction">Fraction</a>[_, _]</span>]</span><span class="result alias"> = (<span class="extype" name="libra.TermValue.U">U</span>, <span class="extype" name="libra.TermValue.E">E</span>)</span>
+      </span>
+      
+      
+    </li><li name="libra.Unit" visbl="pub" class="indented0 " data-isabs="true" fullComment="no" group="Ungrouped">
+      <a id="Unit[D]extendsAnyRef"></a><a id="Unit[D]:Unit[D]"></a>
+      <span class="permalink">
+      <a href="../libra/index.html#Unit[D]extendsAnyRef" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">trait</span>
+      </span>
+      <span class="symbol">
+        <a title="Represents a unit of a given dimension" href="Unit.html">
+              <span class="name">Unit</span>
+            </a><span class="tparams">[<span name="D">D</span>]</span><span class="result"> extends <span class="extype" name="scala.AnyRef">AnyRef</span></span>
+      </span>
+      
+      <p class="shortcomment cmt">Represents a unit of a given dimension</p>
     </li></ol>
             </div>
 
         
 
-        
+        <div class="values members">
+              <h3>Value Members</h3>
+              <ol>
+                <li name="libra.Quantity" visbl="pub" class="indented0 " data-isabs="false" fullComment="no" group="Ungrouped">
+      <a id="Quantity"></a><a id="Quantity:Quantity"></a>
+      <span class="permalink">
+      <a href="../libra/index.html#Quantity" title="Permalink">
+        <i class="material-icons"></i>
+      </a>
+    </span>
+      <span class="modifier_kind">
+        <span class="modifier"></span>
+        <span class="kind">object</span>
+      </span>
+      <span class="symbol">
+        <a title="" href="Quantity$.html">
+              <span class="name">Quantity</span>
+            </a><span class="result"> extends <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Serializable" class="extype" target="_top">Serializable</a></span>
+      </span>
+      
+      
+    </li>
+              </ol>
+            </div>
 
         
 

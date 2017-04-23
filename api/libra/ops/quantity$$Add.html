@@ -132,18 +132,18 @@
                           Add
                         </a>
                       </li><li class="current-entities indented3">
+                        <a class="object" href="quantity$$ConvertTo$.html" title=""></a>
+                        <a class="trait" href="quantity$$ConvertTo.html" title=""></a>
+                        <a href="quantity$$ConvertTo.html" title="">
+                          ConvertTo
+                        </a>
+                      </li><li class="current-entities indented3">
                         <a class="object" href="quantity$$Divide$.html" title=""></a>
                         <a class="trait" href="quantity$$Divide.html" title="Type class for dividing quantity L by R
 "></a>
                         <a href="quantity$$Divide.html" title="Type class for dividing quantity L by R
 ">
                           Divide
-                        </a>
-                      </li><li class="current-entities indented3">
-                        <a class="object" href="quantity$$Exp$.html" title=""></a>
-                        <a class="trait" href="quantity$$Exp.html" title="Type class for setting the exponent of a Quantity Q in standard index form."></a>
-                        <a href="quantity$$Exp.html" title="Type class for setting the exponent of a Quantity Q in standard index form.">
-                          Exp
                         </a>
                       </li><li class="current-entities indented3">
                         <a class="object" href="quantity$$Invert$.html" title=""></a>
@@ -202,7 +202,7 @@
         <span class="kind">trait</span>
       </span>
       <span class="symbol">
-        <span class="name">Add</span><span class="tparams">[<span name="L">L &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _, _]</span>, <span name="R">R &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _, _]</span>]</span><span class="result"> extends <span class="extype" name="shapeless.DepFn2">DepFn2</span>[<span class="extype" name="libra.ops.quantity.Add.L">L</span>, <span class="extype" name="libra.ops.quantity.Add.R">R</span>]</span>
+        <span class="name">Add</span><span class="tparams">[<span name="L">L &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _]</span>, <span name="R">R &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _]</span>]</span><span class="result"> extends <span class="extype" name="shapeless.DepFn2">DepFn2</span>[<span class="extype" name="libra.ops.quantity.Add.L">L</span>, <span class="extype" name="libra.ops.quantity.Add.R">R</span>]</span>
       </span>
       </h4>
 
@@ -213,7 +213,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
 </p></div><dl class="attributes block"> <dt>Annotations</dt><dd>
                 <span class="name">@implicitNotFound</span><span class="args">(<span>
       
-      <span class="defval" name="&quot;&quot;&quot;These quantities can't be added!  Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.<br/>Left: ${L}<br/>Right: ${R}&quot;&quot;&quot;">...</span>
+      <span class="defval" name="&quot;&quot;&quot;These quantities can't be added!<br/>Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.<br/>Left: ${L}<br/>Right: ${R}&quot;&quot;&quot;">...</span>
     </span>)</span>
               
         </dd></dl><div class="toggleContainer block">
@@ -269,9 +269,9 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <div id="types" class="types members">
               <h3>Type Members</h3>
               <ol><li name="libra.ops.quantity.Add.Out" visbl="pub" class="indented0 " data-isabs="true" fullComment="yes" group="Ungrouped">
-      <a id="Out&lt;:libra.Quantity[_,_,_]"></a><a id="Out:Out"></a>
+      <a id="Out&lt;:libra.Quantity[_,_]"></a><a id="Out:Out"></a>
       <span class="permalink">
-      <a href="../../libra/ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_,_]" title="Permalink">
+      <a href="../../libra/ops/quantity$$Add.html#Out&lt;:libra.Quantity[_,_]" title="Permalink">
         <i class="material-icons"></i>
       </a>
     </span>
@@ -280,7 +280,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">type</span>
       </span>
       <span class="symbol">
-        <span class="name">Out</span><span class="result"> &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _, _]</span>
+        <span class="name">Out</span><span class="result"> &lt;: <a href="../Quantity.html" class="extype" name="libra.Quantity">Quantity</a>[_, _]</span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd><a href="" class="extype" name="libra.ops.quantity.Add">Add</a> → DepFn2</dd></dl></div>
@@ -301,7 +301,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">apply</span><span class="params">(<span name="t">t: <span class="extype" name="libra.ops.quantity.Add.L">L</span></span>, <span name="u">u: <span class="extype" name="libra.ops.quantity.Add.R">R</span></span>)</span><span class="result">: <a href="#Out&lt;:libra.Quantity[_,_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
+        <span class="name">apply</span><span class="params">(<span name="t">t: <span class="extype" name="libra.ops.quantity.Add.L">L</span></span>, <span name="u">u: <span class="extype" name="libra.ops.quantity.Add.R">R</span></span>)</span><span class="result">: <a href="#Out&lt;:libra.Quantity[_,_]" class="extmbr" name="libra.ops.quantity.Add.Out">Out</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>DepFn2</dd></dl></div>
@@ -430,7 +430,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#finalize" visbl="prt" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="finalize():Unit"></a>
+      <a id="finalize():Unit"></a><a id="finalize():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#finalize():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -441,7 +441,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">finalize</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Attributes</dt><dd>protected[<a href="../../java$lang.html" class="extype" name="java.lang">java.lang</a>] </dd><dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -516,7 +516,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notify" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notify():Unit"></a>
+      <a id="notify():Unit"></a><a id="notify():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#notify():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -527,12 +527,12 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notify</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
     </li><li name="scala.AnyRef#notifyAll" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="notifyAll():Unit"></a>
+      <a id="notifyAll():Unit"></a><a id="notifyAll():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#notifyAll():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -543,7 +543,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">notifyAll</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd></dl></div>
@@ -580,7 +580,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef → Any</dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait():Unit"></a>
+      <a id="wait():Unit"></a><a id="wait():scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#wait():Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -591,7 +591,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">()</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -602,7 +602,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):Unit"></a>
+      <a id="wait(x$1:Long,x$2:Int):Unit"></a><a id="wait(Long,Int):scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#wait(x$1:Long,x$2:Int):Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -613,7 +613,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>, <span name="arg1">arg1: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Int" class="extype" target="_top">Int</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
@@ -624,7 +624,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
               
         </dd></dl></div>
     </li><li name="scala.AnyRef#wait" visbl="pub" class="indented0 " data-isabs="false" fullComment="yes" group="Ungrouped">
-      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):Unit"></a>
+      <a id="wait(x$1:Long):Unit"></a><a id="wait(Long):scala.Unit"></a>
       <span class="permalink">
       <a href="../../libra/ops/quantity$$Add.html#wait(x$1:Long):Unit" title="Permalink">
         <i class="material-icons"></i>
@@ -635,7 +635,7 @@ This only exists if <code>L</code> and <code>R</code> have the same dimensions.
         <span class="kind">def</span>
       </span>
       <span class="symbol">
-        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">Unit</a></span>
+        <span class="name">wait</span><span class="params">(<span name="arg0">arg0: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Long" class="extype" target="_top">Long</a></span>)</span><span class="result">: <a href="http://www.scala-lang.org/api/2.12.1/index.html#scala.Unit" class="extype" target="_top">scala.Unit</a></span>
       </span>
       
       <div class="fullcomment"><dl class="attributes block"> <dt>Definition Classes</dt><dd>AnyRef</dd><dt>Annotations</dt><dd>
