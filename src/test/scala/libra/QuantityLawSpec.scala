@@ -3,7 +3,7 @@ package libra
 import org.scalatest._
 
 import shapeless._
-import spire._, spire.algebra._, spire.math._, spire.implicits._, spire.laws._
+import spire._, spire.algebra._, spire.math._, spire.laws._
 
 import org.typelevel.discipline.scalatest.Discipline
 
@@ -16,6 +16,7 @@ class QuantityLawSpec extends FunSuite with Discipline {
     Arbitrary(arbitrary[A].map(Quantity(_)))
 
   {
+    import spire.implicits._
     import spire.std.SeqCoordinateSpace
 
     implicitly[PartialOrder[Quantity[Double, HNil]]]
@@ -36,5 +37,8 @@ class QuantityLawSpec extends FunSuite with Discipline {
     implicitly[VectorSpace[Quantity[Seq[Float], HNil], Float]]
   }
 
-  checkAll("Quantity[Int, HNil]", OrderLaws[Quantity[Int, HNil]].order)
+  {
+    implicit val intIsOrder: Order[Int] = spire.std.int.IntAlgebra
+    checkAll("Quantity[Int, HNil]", OrderLaws[Quantity[Int, HNil]].order)
+  }
 }
