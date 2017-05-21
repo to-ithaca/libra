@@ -39,42 +39,36 @@ class QuantityLawSpec extends FunSuite with Discipline {
 
   {
     implicit val intIsOrder: Order[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", OrderLaws[Quantity[Int, HNil]].order)
+    checkAll("Order[Quantity[Int, HNil]]", OrderLaws[Quantity[Int, HNil]].order)
   }
 
   {
     implicit val intIsAdditiveSemigroup: AdditiveSemigroup[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveSemigroup)
+    checkAll("Group[Quantity[Int, HNil]].additiveSemigroup", GroupLaws[Quantity[Int, HNil]].additiveSemigroup)
   }
 
   {
     implicit val intIsAdditiveMonoid: AdditiveMonoid[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveMonoid)
+    checkAll("Group[Quantity[Int, HNil]].additiveMonoid", GroupLaws[Quantity[Int, HNil]].additiveMonoid)
   }
 
   {
     implicit val intIsAdditiveGroup: AdditiveGroup[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveGroup)
-  }
-
-  {
-    implicit val intIsAdditiveGroup: AdditiveGroup[Int] = spire.std.int.IntAlgebra
-    implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveGroup)
+    checkAll("Group[Quantity[Int, HNil]].additiveGroup", GroupLaws[Quantity[Int, HNil]].additiveGroup)
   }
 
   {
     implicit val intIsAdditiveCMonoid: AdditiveCMonoid[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveCMonoid)
+    checkAll("Group[Quantity[Int, HNil]].additiveCMonoid", GroupLaws[Quantity[Int, HNil]].additiveCMonoid)
   }
 
   {
     implicit val intIsAdditiveAbGroup: AdditiveAbGroup[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
-    checkAll("Quantity[Int, HNil]", GroupLaws[Quantity[Int, HNil]].additiveAbGroup)
+    checkAll("Group[Quantity[Int, HNil]].additiveAbGroup", GroupLaws[Quantity[Int, HNil]].additiveAbGroup)
   }
 }
