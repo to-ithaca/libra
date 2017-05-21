@@ -51,6 +51,7 @@ lazy val commonSettings = Seq(
       "com.chuusai" %% "shapeless" % "2.3.2",
       "eu.timepit" %% "singleton-ops" % "0.0.4",
       "org.typelevel" %% "spire" % "0.14.1",
+      "org.typelevel" %% "spire-laws" % "0.14.1" % "test",
       "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     ),
   doctestTestFramework := DoctestTestFramework.ScalaTest

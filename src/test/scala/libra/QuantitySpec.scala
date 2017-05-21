@@ -92,24 +92,5 @@ class QuantitySpec extends FlatSpec {
     assert(q.to[Centimetre].to[Gram] == Quantity[Double, Term[Length, Centimetre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil](200000.0))
   }
 
-  {
-    import spire.std.SeqCoordinateSpace
-
-    implicitly[PartialOrder[Quantity[Double, HNil]]]
-    implicitly[Order[Quantity[Double, HNil]]]
-    implicitly[Eq[Quantity[Double, HNil]]]
-    implicitly[Signed[Quantity[Double, HNil]]]
-    implicitly[Module[Quantity[Double, HNil], Double]]
-    implicitly[AdditiveSemigroup[Quantity[Double, HNil]]]
-    implicitly[AdditiveMonoid[Quantity[Double, HNil]]]
-    implicitly[AdditiveGroup[Quantity[Double, HNil]]]
-    implicitly[AdditiveCMonoid[Quantity[Double, HNil]]]
-    implicitly[AdditiveAbGroup[Quantity[Double, HNil]]]
-    implicitly[AdditiveCSemigroup[Quantity[Double, HNil]]]
-    implicitly[MetricSpace[Quantity[BigInt, HNil], BigInt]]
-    implicit val seqCoordinateSpace: SeqCoordinateSpace[Float, Seq[Float]] = new SeqCoordinateSpace(dimensions = 3)
-    implicitly[CoordinateSpace[Quantity[Seq[Float], HNil], Float]]
-    implicitly[InnerProductSpace[Quantity[Seq[Float], HNil], Float]]
-    implicitly[VectorSpace[Quantity[Seq[Float], HNil], Float]]
-  }
 }
+
