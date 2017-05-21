@@ -16,26 +16,26 @@ class QuantitySpec extends FlatSpec {
   it should "add" in {
     type D0 = Term[Length, Metre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil
     type D1 = Term[Mass, Kilogram, Fraction[1, 1]] :: Term[Length, Metre, Fraction[1, 1]] ::  HNil
-    type Q0 = Quantity[Double, D0]
-    type Q1 = Quantity[Double, D1]
+    type Q0 = Quantity[Int, D0]
+    type Q1 = Quantity[Int, D1]
     the[Add[Q0, Q1]]
 
-    val q0 = Quantity[Double, D0](2.0)
-    val q1 = Quantity[Double, D1](3.0)
-    assert((q0 + q1) === Quantity[Double, D0](5.0))
-    assert((q1 + q0) === Quantity[Double, D1](5.0))
+    val q0 = Quantity[Int, D0](2)
+    val q1 = Quantity[Int, D1](3)
+    assert((q0 + q1) === Quantity[Int, D0](5))
+    assert((q1 + q0) === Quantity[Int, D1](5))
   }
 
   it should "multiply" in {
     type D0 = Term[Length, Metre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil
     type D1 = Term[Mass, Kilogram, Fraction[1, 1]] :: Term[Length, Metre, Fraction[1, 1]] ::  HNil
-    type Q0 = Quantity[Double, D0]
-    type Q1 = Quantity[Double, D1]
+    type Q0 = Quantity[Int, D0]
+    type Q1 = Quantity[Int, D1]
     the[Multiply[Q0, Q1]]
 
-    val q0 = Quantity[Double, D0](2.0)
-    val q1 = Quantity[Double, D1](3.0)
-    assert((q0 * q1) === Quantity[Double, Term[Length, Metre, Fraction[2, 1]] :: Term[Mass, Kilogram, Fraction[2, 1]] :: HNil](6.0))
+    val q0 = Quantity[Int, D0](2)
+    val q1 = Quantity[Int, D1](3)
+    assert((q0 * q1) === Quantity[Int, Term[Length, Metre, Fraction[2, 1]] :: Term[Mass, Kilogram, Fraction[2, 1]] :: HNil](6))
   }
 
   it should "invert" in {
