@@ -49,8 +49,8 @@ lazy val commonSettings = Seq(
     scalacOptions ++= commonScalacOptions,
     libraryDependencies ++= Seq(
       "com.chuusai" %% "shapeless" % "2.3.2",
-      "eu.timepit" %% "singleton-ops" % "0.0.3",
-      "org.spire-math" %% "spire" % "0.13.0",
+      "eu.timepit" %% "singleton-ops" % "0.0.4",
+      "org.typelevel" %% "spire" % "0.14.1",
       "org.scalatest" %% "scalatest" % "3.0.1" % "test"
     ),
   doctestTestFramework := DoctestTestFramework.ScalaTest
