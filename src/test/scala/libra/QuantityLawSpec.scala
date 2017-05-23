@@ -71,4 +71,24 @@ class QuantityLawSpec extends FunSuite with Discipline {
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
     checkAll("Group[Quantity[Int, HNil]].additiveAbGroup", GroupLaws[Quantity[Int, HNil]].additiveAbGroup)
   }
+
+  {
+    implicit val floatIsField: Field[Float] = spire.std.float.FloatAlgebra
+    implicit val floatIseq: Eq[Float] = spire.std.float.FloatAlgebra
+    implicit val seqIsVectorSpace: VectorSpace[Seq[Float], Float] = spire.std.seq.SeqVectorSpace[Float, Seq]
+    implicit val seqIsEq: Eq[Seq[Float]] = spire.std.seq.SeqEq[Float, Seq]
+
+    checkAll("VectorSpace[Quantity[Seq[Float], HNil], Float].vectorSpace", VectorSpaceLaws[Quantity[Seq[Float], HNil], Float].vectorSpace)
+  }
+
+  {
+    implicit val floatIsField: Field[Float] = spire.std.float.FloatAlgebra
+    implicit val floatIseq: Eq[Float] = spire.std.float.FloatAlgebra
+    implicit val floatIsOrder: Order[Float] = spire.std.float.FloatAlgebra
+    implicit val floatIsSigned: Signed[Float] = spire.std.float.FloatAlgebra
+    implicit val seqIsInnerProductSpace: InnerProductSpace[Seq[Float], Float] = spire.std.seq.SeqInnerProductSpace[Float, Seq]
+    implicit val seqIsEq: Eq[Seq[Float]] = spire.std.seq.SeqEq[Float, Seq]
+
+    checkAll("VectorSpace[Quantity[Seq[Float], HNil], Float].innerProductSpace", VectorSpaceLaws[Quantity[Seq[Float], HNil], Float].innerProductSpace)
+  }
 }
