@@ -10,12 +10,6 @@ import org.typelevel.discipline.scalatest.Discipline
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalacheck.Arbitrary._
 
-import spire.implicits.{
-  SeqOrder => _,
-  SeqEq => _,
-  _ }
-
-import spire.optional.vectorOrder._
 
 class QuantityLawSpec extends FunSuite with Discipline {
 
@@ -80,12 +74,27 @@ class QuantityLawSpec extends FunSuite with Discipline {
   }
 
   {
+
+    import spire.implicits.{
+      SeqOrder => _,
+      SeqEq => _,
+      _ }
+
+    import spire.optional.vectorOrder._
+
     implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
     checkAll("VectorSpace[Quantity[List[Rational], HNil], Rational].vectorSpace", VectorSpaceLaws[Quantity[List[Rational], HNil], Rational].vectorSpace)
   }
 
   {
+    import spire.implicits.{
+      SeqOrder => _,
+      SeqEq => _,
+      _ }
+
+    import spire.optional.vectorOrder._
+
     implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIsOrder: Order[Rational] = spire.math.Rational.RationalAlgebra
