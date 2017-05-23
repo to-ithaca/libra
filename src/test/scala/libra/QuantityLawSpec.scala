@@ -3,12 +3,19 @@ package libra
 import org.scalatest._
 
 import shapeless._
-import spire._, spire.algebra._, spire.math._, spire.laws._
+import spire._, spire.algebra._, spire.math._, spire.laws._, spire.laws.arb._
 
 import org.typelevel.discipline.scalatest.Discipline
 
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalacheck.Arbitrary._
+
+import spire.implicits.{
+  SeqOrder => _,
+  SeqEq => _,
+  _ }
+
+import spire.optional.vectorOrder._
 
 class QuantityLawSpec extends FunSuite with Discipline {
 
@@ -73,22 +80,16 @@ class QuantityLawSpec extends FunSuite with Discipline {
   }
 
   {
-    implicit val floatIsField: Field[Float] = spire.std.float.FloatAlgebra
-    implicit val floatIseq: Eq[Float] = spire.std.float.FloatAlgebra
-    implicit val seqIsVectorSpace: VectorSpace[Seq[Float], Float] = spire.std.seq.SeqVectorSpace[Float, Seq]
-    implicit val seqIsEq: Eq[Seq[Float]] = spire.std.seq.SeqEq[Float, Seq]
-
-    checkAll("VectorSpace[Quantity[Seq[Float], HNil], Float].vectorSpace", VectorSpaceLaws[Quantity[Seq[Float], HNil], Float].vectorSpace)
+    implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
+    implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
+    checkAll("VectorSpace[Quantity[List[Rational], HNil], Rational].vectorSpace", VectorSpaceLaws[Quantity[List[Rational], HNil], Rational].vectorSpace)
   }
 
   {
-    implicit val floatIsField: Field[Float] = spire.std.float.FloatAlgebra
-    implicit val floatIseq: Eq[Float] = spire.std.float.FloatAlgebra
-    implicit val floatIsOrder: Order[Float] = spire.std.float.FloatAlgebra
-    implicit val floatIsSigned: Signed[Float] = spire.std.float.FloatAlgebra
-    implicit val seqIsInnerProductSpace: InnerProductSpace[Seq[Float], Float] = spire.std.seq.SeqInnerProductSpace[Float, Seq]
-    implicit val seqIsEq: Eq[Seq[Float]] = spire.std.seq.SeqEq[Float, Seq]
-
-    checkAll("VectorSpace[Quantity[Seq[Float], HNil], Float].innerProductSpace", VectorSpaceLaws[Quantity[Seq[Float], HNil], Float].innerProductSpace)
+    implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
+    implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
+    implicit val rationalIsOrder: Order[Rational] = spire.math.Rational.RationalAlgebra
+    implicit val rationalIsSigned: Signed[Rational] = spire.math.Rational.RationalAlgebra
+    checkAll("VectorSpace[Quantity[Seq[Rational], HNil], Rational].innerProductSpace", VectorSpaceLaws[Quantity[Seq[Rational], HNil], Rational].innerProductSpace)
   }
 }
