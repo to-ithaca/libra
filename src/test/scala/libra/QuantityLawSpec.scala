@@ -40,7 +40,16 @@ class QuantityLawSpec extends FunSuite with Discipline {
 
   {
     implicit val intIsOrder: Order[Int] = spire.std.int.IntAlgebra
-    checkAll("Order[Quantity[Int, HNil]]", OrderLaws[Quantity[Int, HNil]].order)
+    checkAll("Order[Quantity[Int, HNil]].order", OrderLaws[Quantity[Int, HNil]].order)
+  }
+  {
+    implicit val intIsPartialOrder: PartialOrder[Int] = spire.std.int.IntAlgebra
+    checkAll("Order[Quantity[Int, HNil]].partialOrder", OrderLaws[Quantity[Int, HNil]].partialOrder)
+  }
+
+  {
+    implicit val intIsSigned: Signed[Int] = spire.std.int.IntAlgebra
+    checkAll("Base[Quantity[Int, HNil]].signed", BaseLaws[Quantity[Int, HNil]].signed)
   }
 
   {
@@ -71,6 +80,14 @@ class QuantityLawSpec extends FunSuite with Discipline {
     implicit val intIsAdditiveAbGroup: AdditiveAbGroup[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
     checkAll("Group[Quantity[Int, HNil]].additiveAbGroup", GroupLaws[Quantity[Int, HNil]].additiveAbGroup)
+  }
+
+  {
+    implicit val stringIsMetricSpace: MetricSpace[String, Int] = spire.std.string.levenshteinDistance
+    implicit val stringIsEq: Eq[String] = spire.std.string.StringOrder
+    implicit val intIsSigned: Signed[Int] = spire.std.int.IntAlgebra
+    implicit val intIsAdditiveSemigroup: AdditiveSemigroup[Int] = spire.std.int.IntAlgebra
+    checkAll("Base[Quantity[String, HNil]].metricSpace", BaseLaws[Quantity[String, HNil]].metricSpace[Int])
   }
 
   {
