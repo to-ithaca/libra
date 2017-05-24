@@ -74,31 +74,20 @@ class QuantityLawSpec extends FunSuite with Discipline {
   }
 
   {
-
-    import spire.implicits.{
-      SeqOrder => _,
-      SeqEq => _,
-      _ }
-
-    import spire.optional.vectorOrder._
-
     implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
+    implicit val listIsVectorSpace: VectorSpace[List[Rational], Rational] = spire.std.seq.SeqInnerProductSpace
+    implicit val listIsEq: Eq[List[Rational]] = spire.optional.vectorOrder.seqOrder
     checkAll("VectorSpace[Quantity[List[Rational], HNil], Rational].vectorSpace", VectorSpaceLaws[Quantity[List[Rational], HNil], Rational].vectorSpace)
   }
 
   {
-    import spire.implicits.{
-      SeqOrder => _,
-      SeqEq => _,
-      _ }
-
-    import spire.optional.vectorOrder._
-
     implicit val rationalIsField: Field[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIlist: Eq[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIsOrder: Order[Rational] = spire.math.Rational.RationalAlgebra
     implicit val rationalIsSigned: Signed[Rational] = spire.math.Rational.RationalAlgebra
-    checkAll("VectorSpace[Quantity[Seq[Rational], HNil], Rational].innerProductSpace", VectorSpaceLaws[Quantity[Seq[Rational], HNil], Rational].innerProductSpace)
+    implicit val listIsVectorSpace: InnerProductSpace[List[Rational], Rational] = spire.std.seq.SeqInnerProductSpace
+    implicit val listIsEq: Eq[List[Rational]] = spire.optional.vectorOrder.seqOrder
+    checkAll("VectorSpace[Quantity[List[Rational], HNil], Rational].innerProductSpace", VectorSpaceLaws[Quantity[List[Rational], HNil], Rational].innerProductSpace)
   }
 }
