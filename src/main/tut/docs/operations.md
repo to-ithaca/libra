@@ -70,8 +70,8 @@ You can also invert quantities:
 You can multiply by scalar values:
 
 ```tut:book
-(3.0.m :* 3.0).show
-(3.0 *: 3.0.m).show
+(3.m :* 3).show
+(3 *: 3.m).show
 ```
 
 ### Extracting the base value

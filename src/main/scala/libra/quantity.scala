@@ -209,4 +209,98 @@ object Quantity {
 
     }
   }
+
+  implicit def quantityEq[A, D <: HList](implicit E: Eq[A]): Eq[Quantity[A, D]] =
+    new Eq[Quantity[A, D]] {
+      def eqv(x: Quantity[A, D], y: Quantity[A, D]): Boolean = x.value === y.value
+    }
+
+  implicit def quantityOrder[A, D <: HList](implicit O: Order[A]): Order[Quantity[A, D]] =
+    new Order[Quantity[A, D]] {
+      def compare(x: Quantity[A, D], y: Quantity[A, D]): Int = x.value compare y.value
+    }
+
+  implicit def quantityPartialOrder[A, D <: HList](implicit O: PartialOrder[A]): PartialOrder[Quantity[A, D]] =
+    new PartialOrder[Quantity[A, D]] {
+      def partialCompare(x: Quantity[A, D], y: Quantity[A, D]): Double = x.value partialCompare y.value
+    }
+
+  implicit def quantitySigned[A, D <: HList](implicit O: Signed[A]): Signed[Quantity[A, D]] =
+    new Signed[Quantity[A, D]] {
+      def compare(x: Quantity[A, D], y: Quantity[A, D]): Int = x.value compare y.value
+      def signum(q: Quantity[A, D]): Int = q.value.signum
+      def abs(q: Quantity[A, D]): Quantity[A, D] = Quantity(q.value.abs)
+    }
+
+  implicit def quantityAdditiveSemigroup[A, D <: HList](implicit O: AdditiveSemigroup[A]): AdditiveSemigroup[Quantity[A, D]] =
+    new AdditiveSemigroup[Quantity[A, D]] {
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(O.plus(x.value, y.value))
+    }
+
+  implicit def quantityAdditiveMonoid[A, D <: HList](implicit O: AdditiveMonoid[A]): AdditiveMonoid[Quantity[A, D]] =
+    new AdditiveMonoid[Quantity[A, D]] {
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(O.plus(x.value, y.value))
+    }
+
+  implicit def quantityAdditiveGroup[A, D <: HList](implicit O: AdditiveGroup[A]): AdditiveGroup[Quantity[A, D]] =
+    new AdditiveGroup[Quantity[A, D]] {
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def negate(q: Quantity[A, D]): Quantity[A, D] = Quantity(O.negate(q.value))
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(x.value + y.value)
+    }
+
+  implicit def quantityAdditiveCSemigroup[A, D <: HList](implicit O: AdditiveCSemigroup[A]): AdditiveCSemigroup[Quantity[A, D]] =
+    new AdditiveCSemigroup[Quantity[A, D]] {
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(O.plus(x.value, y.value))
+    }
+
+  implicit def quantityAdditiveCMonoid[A, D <: HList](implicit O: AdditiveCMonoid[A]): AdditiveCMonoid[Quantity[A, D]] =
+    new AdditiveCMonoid[Quantity[A, D]] {
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(O.plus(x.value, y.value))
+    }
+
+  implicit def quantityAdditiveAbGroup[A, D <: HList](implicit O: AdditiveAbGroup[A]): AdditiveAbGroup[Quantity[A, D]] =
+    new AdditiveAbGroup[Quantity[A, D]] {
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def negate(q: Quantity[A, D]): Quantity[A, D] = Quantity(O.negate(q.value))
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(x.value + y.value)
+    }
+
+  implicit def quantityMetricSpace[A, R, D <: HList](implicit O: MetricSpace[A, R]): MetricSpace[Quantity[A, D], R] =
+    new MetricSpace[Quantity[A, D], R] {
+      def distance(x: Quantity[A, D], y: Quantity[A, D]): R = O.distance(x.value, y.value)
+    }
+
+  implicit def quantityCoordinateSpace[A, R, D <: HList](implicit O: CoordinateSpace[A, R]): CoordinateSpace[Quantity[A, D], R] =
+    new CoordinateSpace[Quantity[A, D], R] {
+      implicit def scalar: Field[R] = O.scalar
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def negate(q: Quantity[A, D]): Quantity[A, D] = Quantity(O.negate(q.value))
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(x.value + y.value)
+      def axis(i: Int): Quantity[A, D] = Quantity(O.axis(i))
+      def coord(q: Quantity[A, D], i: Int): R = O.coord(q.value, i)
+      def dimensions: Int = O.dimensions
+      def timesl(r: R, q: Quantity[A,D]): Quantity[A,D] = Quantity(O.timesl(r, q.value))
+    }
+
+  implicit def quantityVectorSpace[A, R, D <: HList](implicit O: VectorSpace[A, R]): VectorSpace[Quantity[A, D], R] =
+    new VectorSpace[Quantity[A, D], R] {
+      implicit def scalar: Field[R] = O.scalar
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def negate(q: Quantity[A, D]): Quantity[A, D] = Quantity(O.negate(q.value))
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(x.value + y.value)
+      def timesl(r: R, q: Quantity[A,D]): Quantity[A,D] = Quantity(O.timesl(r, q.value))
+    }
+
+  implicit def quantityInnerProductSpace[A, R, D <: HList](implicit O: InnerProductSpace[A, R]): InnerProductSpace[Quantity[A, D], R] =
+    new InnerProductSpace[Quantity[A, D], R] {
+      implicit def scalar: Field[R] = O.scalar
+      def zero: Quantity[A, D] = Quantity(O.zero)
+      def negate(q: Quantity[A, D]): Quantity[A, D] = Quantity(O.negate(q.value))
+      def plus(x: Quantity[A, D], y: Quantity[A, D]): Quantity[A, D] = Quantity(x.value + y.value)
+      def timesl(r: R, q: Quantity[A,D]): Quantity[A,D] = Quantity(O.timesl(r, q.value))
+      def dot(x: Quantity[A, D], y: Quantity[A, D]): R = O.dot(x.value, y.value)
+    }
 }
