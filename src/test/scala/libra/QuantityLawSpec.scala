@@ -48,11 +48,6 @@ class QuantityLawSpec extends FunSuite with Discipline {
   }
 
   {
-    implicit val intIsSigned: Signed[Int] = spire.std.int.IntAlgebra
-    checkAll("Base[Quantity[Int, HNil]].signed", BaseLaws[Quantity[Int, HNil]].signed)
-  }
-
-  {
     implicit val intIsAdditiveSemigroup: AdditiveSemigroup[Int] = spire.std.int.IntAlgebra
     implicit val intIsEq: Eq[Int] = spire.std.int.IntAlgebra
     checkAll("Group[Quantity[Int, HNil]].additiveSemigroup", GroupLaws[Quantity[Int, HNil]].additiveSemigroup)
