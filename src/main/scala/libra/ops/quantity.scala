@@ -115,11 +115,11 @@ Right: ${R}""")
     implicit def quantityPower[A, D <: HList, Pow <: XInt, DOut <: HList](
       implicit ev0: dimensions.Power.Aux[Pow, D, DOut],
       ev1: Field[A],
-      p: ValueOf[Pow]
+      p: SafeInt[Pow]
     ): Power.Aux[Quantity[A, D], Pow, Quantity[A, DOut]] =
       new Power[Quantity[A, D], Pow] {
         type Out = Quantity[A, DOut]
-        def apply(q: Quantity[A, D]): Out = Quantity[A, DOut](q.value.pow(p.value))
+        def apply(q: Quantity[A, D]): Out = Quantity[A, DOut](q.value.pow(p))
       }
   }
 

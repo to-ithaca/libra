@@ -55,10 +55,10 @@ package object si {
   implicit def metricConversion[A, D, PF <: XInt, PT <: XInt](
     implicit c: ConvertableTo[A],
     ev: Field[A],
-    pf: ValueOf[PF],
-    pt: ValueOf[PT]
+    pf: SafeInt[PF],
+    pt: SafeInt[PT]
   ): ConversionFactor[A, D, MetricUnit[PF, D], MetricUnit[PT, D]] = 
-    new ConversionFactor(c.fromInt(10).pow(pf.value - pt.value))
+    new ConversionFactor(c.fromInt(10).pow(pf - pt))
 
   implicit final class BaseQuantityOps[A](val a: A) extends AnyVal {
 
