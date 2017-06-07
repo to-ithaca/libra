@@ -173,12 +173,12 @@ object dimensions {
     (implicit conversion: base.Conversion[A, D, UF, UT],
       ev3: Field[A],
       ev4: NRoot[A],
-      n: ValueOf[NF],
-      d: ValueOf[DF]
+      n: SafeInt[NF],
+      d: SafeInt[DF]
     ): Aux[A, UT, Term[D, UF, Fraction[NF, DF]] :: T, Term[D, UT, Fraction[NF, DF]] :: T] =
       new ConvertTo[A, UT, Term[D, UF, Fraction[NF, DF]] :: T] {
         type Out = Term[D, UT, Fraction[NF, DF]] :: T
-        def apply(a: A): A = conversion.factor.pow(n.value).nroot(d.value) * a
+        def apply(a: A): A = conversion.factor.pow(n: Int).nroot(d) * a
       }
 
     implicit def dimensionConvertToRecurse[A, U <: Unit[_], H, T <: HList, TOut <: HList](
@@ -203,26 +203,25 @@ object dimensions {
     implicit def dimensionsShowDimensionRecurse[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.Show[D], showTail: ShowDimension[T],
       ev0: Require[FD != 1],
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN],
+      denominator: SafeInt[FD]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
-        def apply(): String = s"${showDimension()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
+        def apply(): String = s"${showDimension()}^${(numerator: Int)}/${(denominator: Int)} ${showTail()}"
       }
 
     implicit def dimensionsShowDimensionRecurse1[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.Show[D], showTail: ShowDimension[T],
       ev0: Require[FD == 1], ev1: LowPriority,
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
-        def apply(): String = s"${showDimension()}^${numerator.value.toString} ${showTail()}"
+        def apply(): String = s"${showDimension()}^${(numerator: Int)} ${showTail()}"
       }
 
     implicit def dimensionsShowDimensionRecurse2[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showDimension: base.Show[D], showTail: ShowDimension[T],
       ev0: Require[FD == 1], ev1: Require[FN == 1],
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN],
+      denominator: SafeInt[FD]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
         def apply(): String = s"${showDimension()} ${showTail()}"
       }
@@ -242,26 +241,26 @@ object dimensions {
     implicit def dimensionsShowUnitRecurse[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.Show[U], showTail: ShowUnit[T],
       ev0: Require[FD != 1],
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN],
+      denominator: SafeInt[FD]) =
       new ShowUnit[Term[D, U, Fraction[FN, FD]] :: T] {
-        def apply(): String = s"${showUnit()}^${numerator.value.toString}/${denominator.value.toString} ${showTail()}"
+        def apply(): String = s"${showUnit()}^${(numerator: Int)}/${(denominator: Int)} ${showTail()}"
       }
 
     implicit def dimensionsShowUnitRecurse1[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.Show[U], showTail: ShowUnit[T],
       ev0: Require[FD == 1], ev1: LowPriority,
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN],
+      denominator: SafeInt[FD]) =
       new ShowUnit[Term[D, U, Fraction[FN, FD]] :: T] {
-        def apply(): String = s"${showUnit()}^${numerator.value.toString} ${showTail()}"
+        def apply(): String = s"${showUnit()}^${(numerator: Int)} ${showTail()}"
       }
 
     implicit def dimensionsShowUnitRecurse2[D, U <: Unit[_], FN <: XInt, FD <: XInt, T <: HList](
       implicit showUnit: base.Show[U], showTail: ShowUnit[T],
       ev0: Require[FD == 1], ev1: Require[FN == 1],
-      numerator: ValueOf[FN],
-      denominator: ValueOf[FD]) =
+      numerator: SafeInt[FN],
+      denominator: SafeInt[FD]) =
       new ShowUnit[Term[D, U, Fraction[FN, FD]] :: T] {
         def apply(): String = s"${showUnit()} ${showTail()}"
       }
