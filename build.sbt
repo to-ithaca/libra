@@ -85,8 +85,13 @@ val publishSettings = Seq(
     pushChanges)
 )
 
+lazy val mimaSettings = Seq(
+  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.2.0")
+)
+
 lazy val root = (project in file("."))
   .settings(commonSettings)
   .settings(publishSettings)
   .settings(siteSettings)
+  .settings(mimaSettings)
   .enablePlugins(MicrositesPlugin)
