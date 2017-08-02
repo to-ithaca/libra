@@ -8,6 +8,13 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 Take a look at the [guide](https://to-ithaca.github.io/libra/) for what it is and how to use it.
 
+## Versions
+
+libra | shapeless | spire | singleton-ops
+------|-----------|-------|--------------
+0.2.0 | 2.3.2 | 0.13.0 | 0.0.3
+
+
 ## How to help
 
 Take a look at the [guide on contributing](https://github.com/to-ithaca/libra/blob/master/CONTRIBUTING.md).
