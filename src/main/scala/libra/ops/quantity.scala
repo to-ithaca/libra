@@ -103,6 +103,29 @@ Right: ${R}""")
       }
   }
 
+
+  /**
+   * Type class for the euclidean division of `L` by `R`
+   */
+  trait EuclideanDivide[L <: Quantity[_, _], R <: Quantity[_, _]] {
+    type Out <: Quantity[_, _]
+    def apply(l: L, r: R): Out
+  }
+
+  object EuclideanDivide {
+    type Aux[L <: Quantity[_, _], R <: Quantity[_, _], Out0 <: Quantity[_, _]] = EuclideanDivide[L, R] { type Out = Out0 }
+
+    implicit def quantityEuclideanDivide[A, LD <: HList, RD <: HList, RDInv <: HList, DOut <: HList](
+      implicit invert: dimensions.Invert.Aux[RD, RDInv],
+      multiply: dimensions.Multiply.Aux[LD, RDInv, DOut],
+      ev: EuclideanRing[A]
+    ): EuclideanDivide.Aux[Quantity[A, LD], Quantity[A, RD], Quantity[A, DOut]] =
+      new EuclideanDivide[Quantity[A, LD], Quantity[A, RD]] {
+        type Out = Quantity[A, DOut]
+        def apply(l: Quantity[A, LD], r: Quantity[A, RD]): Out = Quantity[A, DOut](l.value /~ r.value)
+      }
+  }
+
   /**
    * Type class for raising a quantity `Q` to the power `P`
    */
