@@ -52,6 +52,12 @@ You can also divide quantities:
 (3.0.m / 2.0.kg).show
 ```
 
+You can use euclidean division for discrete numbers:
+
+```tut:book
+(3.m /~ 2.kg).show
+```
+
 ### Power
 Here's how you raise quantities to a power:
 
