@@ -202,8 +202,8 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * scala> import spire.implicits._
     * scala> import shapeless._
     * scala> import libra._, libra.si._
-    * scala> 4.0.m /~ 2.0.m
-    * res0: Quantity[Double, HNil] = Quantity(2.0)
+    * scala> 5.m /~ 2.m
+    * res0: Quantity[Int, HNil] = Quantity(2)
     * }}}
     */
   def /~[D1 <: HList](q1: Quantity[A, D1])(implicit d: EuclideanDivide[Quantity[A, D], Quantity[A, D1]]): d.Out = quotient(q1)
