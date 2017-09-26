@@ -105,7 +105,11 @@ package object si {
 
   type VelocityQuantity[A, L <: Unit[Length], T <: Unit[Time]] = Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
   type AccelerationQuantity[A, L <: Unit[Length], T <: Unit[Time]] = Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
+  type MomentumQuantity[A, M <: Unit[Mass], L <: Unit[Length], T <: Unit[Time]] =
+    Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
+  type ForceQuantity[A, M <: Unit[Mass], L <: Unit[Length], T <: Unit[Time]] =
+    Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
 
   implicit final class SIVelocityQuantityOps[A](val a: A) extends AnyVal {
     def kmps: VelocityQuantity[A, Kilometre, Second] = Quantity(a)
@@ -158,6 +162,16 @@ package object si {
     def fg: QuantityOf[A, Mass, Femtogram] = Quantity(a)
     def ag: QuantityOf[A, Mass, Attogram] = Quantity(a)
   }
+
+  implicit final class MomentumQuantityOps[A](val a: A) extends AnyVal {
+    def kgmps: MomentumQuantity[A, Kilogram, Metre, Second] = Quantity(a)
+    def Ns: MomentumQuantity[A, Kilogram, Metre, Second] = Quantity(a)
+  }
+
+  implicit final class ForceQuantityOps[A](val a: A) extends AnyVal {
+    def N: ForceQuantity[A, Kilogram, Metre, Second] = Quantity(a)
+  }
+
 
   implicit final class BaseQuantityOps[A](val a: A) extends AnyVal {
     def A: QuantityOf[A, Current, Ampere] = Quantity(a)
