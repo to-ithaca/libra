@@ -103,8 +103,12 @@ package object si {
     def am: QuantityOf[A, Length, Attometre] = Quantity(a)
   }
 
-  type VelocityQuantity[A, L <: Unit[Length], T <: Unit[Time]] = Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
-  type AccelerationQuantity[A, L <: Unit[Length], T <: Unit[Time]] = Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
+  type VelocityQuantity[A, L <: Unit[Length], T <: Unit[Time]] =
+    Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
+
+  type AccelerationQuantity[A, L <: Unit[Length], T <: Unit[Time]] =
+    Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
+
   type MomentumQuantity[A, M <: Unit[Mass], L <: Unit[Length], T <: Unit[Time]] =
     Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
