@@ -280,4 +280,15 @@ class SISpec extends WordSpec with Matchers {
       assert(3.A.show === ("3 A [I]"))
     }
   }
+
+  "momentum" should {
+
+    "kgmps value" in {
+      assert(3.0.kgmps.to[Centimetre].value === (300.0))
+    }
+
+    "show" in {
+      assert(3.kgmps.show === ("3 kg m s^-1 [M L T^-1]"))
+    }
+  }
 }
