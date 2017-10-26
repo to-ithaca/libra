@@ -106,6 +106,22 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     */
   def divide[D1 <: HList](q1: Quantity[A, D1])(implicit d: Divide[Quantity[A, D], Quantity[A, D1]]): d.Out = d(this, q1)
 
+
+  /** Euclidean division by a quantity
+    * 
+    * @param q1 the quantity to divide by
+    * @return the quotient of Euclidean division
+    * 
+    * {{{
+    * scala> import spire.implicits._
+    * scala> import shapeless._
+    * scala> import libra._, libra.si._
+    * scala> 5.m quotient 2.m
+    * res0: Quantity[Int, HNil] = Quantity(2)
+    * }}}
+    */
+  def quotient[D1 <: HList](q1: Quantity[A, D1])(implicit d: EuclideanDivide[Quantity[A, D], Quantity[A, D1]]): d.Out = d(this, q1)
+
   /** Raises to a power
     * 
     * @tparam P the Integer power to raise by
@@ -179,6 +195,19 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * }}}
     */
   def /[D1 <: HList](q1: Quantity[A, D1])(implicit d: Divide[Quantity[A, D], Quantity[A, D1]]): d.Out = divide(q1)
+
+  /** Alias for quotient
+    * 
+    * {{{
+    * scala> import spire.implicits._
+    * scala> import shapeless._
+    * scala> import libra._, libra.si._
+    * scala> 5.m /~ 2.m
+    * res0: Quantity[Int, HNil] = Quantity(2)
+    * }}}
+    */
+  def /~[D1 <: HList](q1: Quantity[A, D1])(implicit d: EuclideanDivide[Quantity[A, D], Quantity[A, D1]]): d.Out = quotient(q1)
+
 
   /** Alias for power
     * 

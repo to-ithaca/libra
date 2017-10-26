@@ -59,6 +59,18 @@ class QuantitySpec extends FlatSpec {
     assert((q0 / q1) === Quantity[Double, HNil](0.5))
   }
 
+  it should "quotient" in {
+
+    type Q0 = Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil]
+    type Q1 = Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil]
+    type Result = Quantity[Int, HNil]
+    the[EuclideanDivide.Aux[Q0, Q1, Result]]
+
+    val q0 = Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil](5)
+    val q1 = Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil](2)
+    assert((q0 /~ q1) === Quantity[Int, HNil](2))
+  }
+
   it should "power" in {
     type Q = Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil]
     type QRaised = Quantity[Double, Term[Length, Metre, Fraction[2, 1]] :: HNil]
