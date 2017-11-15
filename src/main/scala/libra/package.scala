@@ -9,10 +9,10 @@ package object libra {
     * @tparam U the unit
     * 
     */
-  type Term[D, U <: Unit[_], E <: Fraction[_, _]] = shapeless.labelled.FieldType[D, (U, E)]
+  type Term[D, U <: UnitOfMeasure[_], E <: Fraction[_, _]] = shapeless.labelled.FieldType[D, (U, E)]
 
-  type TermValue[U <: Unit[_], E <: Fraction[_, _]] = (U, E)
+  type TermValue[U <: UnitOfMeasure[_], E <: Fraction[_, _]] = (U, E)
 
   /** Aliases a quantity with single unit */
-  type QuantityOf[A, D, U <: Unit[D]] = Quantity[A, Term[D, U, Fraction[1, 1]] :: HNil]
+  type QuantityOf[A, D, U <: UnitOfMeasure[D]] = Quantity[A, Term[D, U, Fraction[1, 1]] :: HNil]
 }
