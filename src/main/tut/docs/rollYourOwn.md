@@ -18,11 +18,11 @@ object catan {
   type Sheep
   type Time
   
-  type Rock = Unit[Stone]
-  type Log = Unit[Wood]
-  type Bushel = Unit[Wheat]
-  type Flock = Unit[Sheep]
-  type Turn = Unit[Time]
+  type Rock = UnitOfMeasure[Stone]
+  type Log = UnitOfMeasure[Wood]
+  type Bushel = UnitOfMeasure[Wheat]
+  type Flock = UnitOfMeasure[Sheep]
+  type Turn = UnitOfMeasure[Time]
   
   
   //we ought to provide shows
