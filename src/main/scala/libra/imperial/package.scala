@@ -9,8 +9,8 @@ import libra.si.Time
 package object imperial {
 
   /** Time units */
-  trait Day extends Unit[Time]
-  trait Hour extends Unit[Time]
+  trait Day extends UnitOfMeasure[Time]
+  trait Hour extends UnitOfMeasure[Time]
 
   implicit def dayShow: Show[Day] = Show[Day]("days")
   implicit def hourShow: Show[Hour] = Show[Hour]("hours")

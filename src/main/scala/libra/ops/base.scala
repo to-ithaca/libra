@@ -23,22 +23,22 @@ object base {
     * @tparam F the unit to convert from
     * @tparam T the unit to convert to
     */
-  case class ConversionFactor[A, D, F <: Unit[D], T <: Unit[D]](val value: A)
+  case class ConversionFactor[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](val value: A)
 
   /** Derived typeclass for the conversion factor from F to T
     *
     * Two conversions (from and to) are derived from a single conversion factor
     */
-  class Conversion[A, D, F <: Unit[D], T <: Unit[D]](val factor: A)
+  class Conversion[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](val factor: A)
 
   object Conversion {
 
-    implicit def conversionTo[A, D, F <: Unit[D], T <: Unit[D]](
+    implicit def conversionTo[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](
       implicit to: ConversionFactor[A, D, F, T]
     ): Conversion[A, D, F, T] =
       new Conversion(to.value)
 
-    implicit def conversionFrom[A, D, F <: Unit[D], T <: Unit[D]](
+    implicit def conversionFrom[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](
       implicit to: ConversionFactor[A, D, F, T],
       ev0: Refute[ConversionFactor[A, D, T, F]],
       ev1: MultiplicativeGroup[A]

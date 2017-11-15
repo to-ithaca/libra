@@ -221,7 +221,7 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     */
   def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 
-  def to[U <: Unit[_]](implicit to: ConvertTo[Quantity[A, D], U]): to.Out = to(this)
+  def to[U <: UnitOfMeasure[_]](implicit to: ConvertTo[Quantity[A, D], U]): to.Out = to(this)
 }
 
 object Quantity {
