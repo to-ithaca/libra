@@ -50,9 +50,9 @@ package object si {
 
   type Ampere = MetricUnit[0, Current]
   type MilliAmpere = MetricUnit[-3, Current]
-  type Kelvin = Unit[Temperature]
-  type Mole = Unit[Amount]
-  type Candela = Unit[Intensity]
+  type Kelvin = UnitOfMeasure[Temperature]
+  type Mole = UnitOfMeasure[Amount]
+  type Candela = UnitOfMeasure[Intensity]
 
   implicit def lengthShow: Show[Length] = Show[Length]("L")
   implicit def massShow: Show[Mass] = Show[Mass]("M")
@@ -103,16 +103,16 @@ package object si {
     def am: QuantityOf[A, Length, Attometre] = Quantity(a)
   }
 
-  type VelocityQuantity[A, L <: Unit[Length], T <: Unit[Time]] =
+  type VelocityQuantity[A, L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
     Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
-  type AccelerationQuantity[A, L <: Unit[Length], T <: Unit[Time]] =
+  type AccelerationQuantity[A, L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
     Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
 
-  type MomentumQuantity[A, M <: Unit[Mass], L <: Unit[Length], T <: Unit[Time]] =
+  type MomentumQuantity[A, M <: UnitOfMeasure[Mass], L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
     Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
-  type ForceQuantity[A, M <: Unit[Mass], L <: Unit[Length], T <: Unit[Time]] =
+  type ForceQuantity[A, M <: UnitOfMeasure[Mass], L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
     Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
 
   implicit final class SIVelocityQuantityOps[A](val a: A) extends AnyVal {

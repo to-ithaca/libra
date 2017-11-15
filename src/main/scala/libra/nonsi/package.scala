@@ -12,9 +12,9 @@ package object nonsi {
   implicit def angleShow: Show[Angle] = Show[Angle]("∠")
 
   /** Angle units */
-  trait Degree extends Unit[Angle]
-  trait Arcminute extends Unit[Angle]
-  trait Arcsecond extends Unit[Angle]
+  trait Degree extends UnitOfMeasure[Angle]
+  trait Arcminute extends UnitOfMeasure[Angle]
+  trait Arcsecond extends UnitOfMeasure[Angle]
 
   implicit def degreeShow: Show[Degree] = Show[Degree]("degree")
   implicit def arcminuteShow: Show[Arcminute] = Show[Arcminute]("arcminute")

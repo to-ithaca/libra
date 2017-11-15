@@ -146,14 +146,14 @@ Right: ${R}""")
       }
   }
 
-  trait ConvertTo[Q <: Quantity[_, _], UT <: Unit[_]] extends DepFn1[Q] {
+  trait ConvertTo[Q <: Quantity[_, _], UT <: UnitOfMeasure[_]] extends DepFn1[Q] {
     type Out <: Quantity[_, _]
   }
 
   object ConvertTo {
-    type Aux[Q <: Quantity[_, _], UT <: Unit[_], Out0 <: Quantity[_, _]] = ConvertTo[Q, UT] { type Out = Out0 }
+    type Aux[Q <: Quantity[_, _], UT <: UnitOfMeasure[_], Out0 <: Quantity[_, _]] = ConvertTo[Q, UT] { type Out = Out0 }
 
-    implicit def quantityConvertTo[A, U <: Unit[_], D <: HList, DOut <: HList](
+    implicit def quantityConvertTo[A, U <: UnitOfMeasure[_], D <: HList, DOut <: HList](
       implicit to: dimensions.ConvertTo.Aux[A, U, D, DOut]
     ): Aux[Quantity[A, D], U, Quantity[A, DOut]] = new ConvertTo[Quantity[A, D], U] {
       type Out = Quantity[A, DOut]
