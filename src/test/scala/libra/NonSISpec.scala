@@ -49,4 +49,46 @@ class NonSISpec extends WordSpec {
       assert(120.0.arcsecond.to[Arcminute].value === 2.0)
     }
   }
+
+  "degreesPerSecond" should {
+    "show" in {
+      assert(2.degreessPerSecond.show === "2 degree s^-1 [∠ T^-1]")
+    }
+
+    "arcminutesPerSecond value" in {
+      assert(2.0.degreessPerSecond.to[Arcminute].value === 120.0)
+    }
+
+    "arcsecondsPerSecond value" in {
+      assert(2.0.degreessPerSecond.to[Arcsecond].value === 7200.0)
+    }
+  }
+
+  "arcminutesPerSecond" should {
+    "show" in {
+      assert(2.arcminutesPerSecond.show === "2 arcminute s^-1 [∠ T^-1]")
+    }
+
+    "degreesPerSecond value" in {
+      assert(120.0.arcminutesPerSecond.to[Degree].value === 2.0)
+    }
+
+    "arcsecond value" in {
+      assert(2.0.arcminutesPerSecond.to[Arcsecond].value === 120.0)
+    }
+  }
+
+  "arcsecondsPerSecond" should {
+    "show" in {
+      assert(2.arcsecondsPerSecond.show === "2 arcsecond s^-1 [∠ T^-1]")
+    }
+
+    "degreesPerSecond value" in {
+      assert(7200.0.arcsecondsPerSecond.to[Degree].value === 2.0)
+    }
+
+    "arcminutesPerSecond value" in {
+      assert(120.0.arcsecondsPerSecond.to[Arcminute].value === 2.0)
+    }
+  }
 }

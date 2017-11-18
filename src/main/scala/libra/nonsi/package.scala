@@ -3,7 +3,8 @@ package libra
 import ops.base.{Show, ConversionFactor}
 import spire._, spire.algebra._, spire.math._, spire.implicits._
 import singleton.ops._
-import libra.si.Time
+import libra.si.{Time, Second}
+import shapeless._
 
 /* Non-SI units */
 package object nonsi {
@@ -35,10 +36,15 @@ package object nonsi {
   ): ConversionFactor[A, Angle, Arcminute, Arcsecond] =
     new ConversionFactor(c.fromInt(60))
 
+  type AngularVelocityQuantity[A, L <: UnitOfMeasure[Angle], T <: UnitOfMeasure[Time]] =
+    Quantity[A, Term[Angle, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
   implicit final class BaseQuantityNonSIOps[A](val a: A) extends AnyVal {
     def degree: QuantityOf[A, Angle, Degree] = Quantity(a)
     def arcminute: QuantityOf[A, Angle, Arcminute] = Quantity(a)
     def arcsecond: QuantityOf[A, Angle, Arcsecond] = Quantity(a)
+    def degreessPerSecond: AngularVelocityQuantity[A, Degree, Second] = Quantity(a)
+    def arcminutesPerSecond: AngularVelocityQuantity[A, Arcminute, Second] = Quantity(a)
+    def arcsecondsPerSecond: AngularVelocityQuantity[A, Arcsecond, Second] = Quantity(a)
   }
 }
