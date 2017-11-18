@@ -36,7 +36,7 @@ package object nonsi {
   ): ConversionFactor[A, Angle, Arcminute, Arcsecond] =
     new ConversionFactor(c.fromInt(60))
 
-  type AngularVelocityQuantity[A, L <: Unit[Angle], T <: Unit[Time]] =
+  type AngularVelocityQuantity[A, L <: libra.Unit[Angle], T <: libra.Unit[Time]] =
     Quantity[A, Term[Angle, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
 
   implicit final class BaseQuantityNonSIOps[A](val a: A) extends AnyVal {
