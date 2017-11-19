@@ -53,4 +53,7 @@ This document is heavily based on the [http4s contributor guide](https://github.
 
 ## Contributors
 
-Libra has no contributors yet, which means you can be the first! Go on, you know you want to!
+The following people have helped made Libra great:
+
+- [Łukasz Drygała](https://github.com/ldrygala)
+
