@@ -1,7 +1,9 @@
 package libra
 
 import spire.implicits._
-import libra.nonsi._, libra.si._
+import spire.math._
+import libra.nonsi._
+import libra.si._
 
 import org.scalatest._
 
@@ -19,6 +21,10 @@ class NonSISpec extends WordSpec {
 
     "arcsecond value" in {
       assert(2.0.degree.to[Arcsecond].value === 7200.0)
+    }
+
+    "radian value" in {
+      assert(180.0.degree.to[Radian].value === pi)
     }
   }
 
@@ -76,6 +82,10 @@ class NonSISpec extends WordSpec {
     "arcsecond value" in {
       assert(2.0.arcminutesPerSecond.to[Arcsecond].value === 120.0)
     }
+
+    "radian value" in {
+      assert(10800.0.arcminutesPerSecond.to[Radian].value === pi)
+    }
   }
 
   "arcsecondsPerSecond" should {
@@ -89,6 +99,28 @@ class NonSISpec extends WordSpec {
 
     "arcminutesPerSecond value" in {
       assert(120.0.arcsecondsPerSecond.to[Arcminute].value === 2.0)
+    }
+
+    "radian value" in {
+      assert(648000.0.arcsecondsPerSecond.to[Radian].value === pi)
+    }
+  }
+
+  "radians" should {
+    "show" in {
+      assert(2.radian.show === "2 rad [∠]")
+    }
+
+    "degree value" in {
+      assert(pi.radian.to[Degree].value === 180.0)
+    }
+
+    "arcminute value" in {
+      assert(pi.radian.to[Arcminute].value === 10800.0)
+    }
+
+    "arcsecond value" in {
+      assert(pi.radian.to[Arcsecond].value === 648000.0)
     }
   }
 }
