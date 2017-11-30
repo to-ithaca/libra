@@ -23,12 +23,14 @@ package object nonsi {
   trait Arcsecond extends UnitOfMeasure[Angle]
   trait Radian extends UnitOfMeasure[Angle]
   trait Gradian extends UnitOfMeasure[Angle]
+  trait Turn extends UnitOfMeasure[Angle]
 
   implicit def degreeShow: Show[Degree] = Show[Degree]("degree")
   implicit def arcminuteShow: Show[Arcminute] = Show[Arcminute]("arcminute")
   implicit def arcsecondShow: Show[Arcsecond] = Show[Arcsecond]("arcsecond")
   implicit def radian: Show[Radian] = Show[Radian]("rad")
   implicit def gradian: Show[Gradian] = Show[Gradian]("gon")
+  implicit def turn: Show[Turn] = Show[Turn]("tr")
 
   implicit def degreeArcminuteConversion[A](
       implicit c: ConvertableTo[A]
@@ -77,13 +79,42 @@ package object nonsi {
       implicit c: ConvertableTo[A],
       multiplicative: MultiplicativeSemigroup[A]
   ): ConversionFactor[A, Angle, Gradian, Arcminute] =
-    degreeArcminuteConversion.compose(radianDegreeConversion.compose(gradianRadianConversion))
+    radianArcminuteConversion.compose(gradianRadianConversion)
 
   implicit def gradianArcsecondConversion[A](
       implicit c: ConvertableTo[A],
       multiplicative: MultiplicativeSemigroup[A]
   ): ConversionFactor[A, Angle, Gradian, Arcsecond] =
-    degreeArcsecondConversion.compose(radianDegreeConversion.compose(gradianRadianConversion))
+    radianArcsecondConversion.compose(gradianRadianConversion)
+
+  implicit def turnGradianConversion[A](
+      implicit c: ConvertableTo[A]
+  ): ConversionFactor[A, Angle, Turn, Gradian] =
+    new ConversionFactor(c.fromInt(400))
+
+  implicit def turnRadianConversion[A](
+      implicit c: ConvertableTo[A],
+      multiplicative: MultiplicativeSemigroup[A]
+  ): ConversionFactor[A, Angle, Turn, Radian] =
+    gradianRadianConversion.compose(turnGradianConversion)
+
+  implicit def turnDegreeConversion[A](
+      implicit c: ConvertableTo[A],
+      multiplicative: MultiplicativeSemigroup[A]
+  ): ConversionFactor[A, Angle, Turn, Degree] =
+    gradianDegreeConversion.compose(turnGradianConversion)
+
+  implicit def turnArcminuteConversion[A](
+      implicit c: ConvertableTo[A],
+      multiplicative: MultiplicativeSemigroup[A]
+  ): ConversionFactor[A, Angle, Turn, Arcminute] =
+    gradianArcminuteConversion.compose(turnGradianConversion)
+
+  implicit def turnArcsecondConversion[A](
+      implicit c: ConvertableTo[A],
+      multiplicative: MultiplicativeSemigroup[A]
+  ): ConversionFactor[A, Angle, Turn, Arcsecond] =
+    gradianArcsecondConversion.compose(turnGradianConversion)
 
 
 
@@ -99,5 +130,6 @@ package object nonsi {
     def arcsecondsPerSecond: AngularVelocityQuantity[A, Arcsecond, Second] = Quantity(a)
     def radian: QuantityOf[A, Angle, Radian] = Quantity(a)
     def gradian: QuantityOf[A, Angle, Gradian] = Quantity(a)
+    def turn: QuantityOf[A, Angle, Turn] = Quantity(a)
   }
 }

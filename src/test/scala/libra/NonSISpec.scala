@@ -32,6 +32,10 @@ class NonSISpec extends WordSpec with Matchers {
     "gradian value" in {
       assert(180.0.degree.to[Gradian].value === 200.0)
     }
+
+    "turn value" in {
+      assert(720.0.degree.to[Turn].value === 2.0)
+    }
   }
 
   "arcminute" should {
@@ -54,6 +58,10 @@ class NonSISpec extends WordSpec with Matchers {
     "gradian value" in {
       assert(10800.0.arcminute.to[Gradian].value === 200.0)
     }
+
+    "turn value" in {
+      assert(21600.0.arcminute.to[Turn].value === 1.0)
+    }
   }
 
   "arcsecond" should {
@@ -74,7 +82,11 @@ class NonSISpec extends WordSpec with Matchers {
     }
 
     "gradian value" in {
-      assert(648000.0.arcsecond.to[Gradian].value === 200.0)
+      assert(648000.0.arcsecond.to[Gradian].value === 200.0 +- ε)
+    }
+
+    "turn value" in {
+      assert(1296000.0.arcsecond.to[Turn].value === (1.0) +- ε)
     }
   }
 
@@ -149,6 +161,10 @@ class NonSISpec extends WordSpec with Matchers {
     "gradian value" in {
       assert(pi.radian.to[Gradian].value === 200.0)
     }
+
+    "turn value" in {
+      assert(pi.radian.to[Turn].value === 0.5 +- ε)
+    }
   }
 
   "gradian" should {
@@ -169,9 +185,38 @@ class NonSISpec extends WordSpec with Matchers {
     }
 
     "arcsecond value" in {
-      assert(200.0.gradian.to[Arcsecond].value === 648000.0)
+      assert(200.0.gradian.to[Arcsecond].value === 648000.0 +- ε)
     }
+
+    "turn value" in {
+      assert(400.0.gradian.to[Turn].value === 1)
+    }
+
   }
 
+  "turn" should {
+    "show" in {
+      assert(2.turn.show === "2 tr [∠]")
+    }
 
+    "gradian value" in {
+      assert(1.0.turn.to[Gradian].value === 400.0)
+    }
+
+    "degree value" in {
+      assert(1.0.turn.to[Degree].value === 360.0)
+    }
+
+    "radian value" in {
+      assert(1.0.turn.to[Radian].value === (2 * pi) +- ε)
+    }
+
+    "arcminute value" in {
+      assert(1.0.turn.to[Arcminute].value === 21600.0)
+    }
+
+    "arcsecond value" in {
+      assert(1.0.turn.to[Arcsecond].value === 1296000.0 +- ε)
+    }
+  }
 }
