@@ -8,7 +8,9 @@ import libra.si._
 import org.scalatest._
 
 
-class NonSISpec extends WordSpec {
+class NonSISpec extends WordSpec with Matchers {
+
+  val ε = 1E-9
 
   "degree" should {
     "show" in {
@@ -26,6 +28,14 @@ class NonSISpec extends WordSpec {
     "radian value" in {
       assert(180.0.degree.to[Radian].value === pi)
     }
+
+    "gradian value" in {
+      assert(180.0.degree.to[Gradian].value === 200.0)
+    }
+
+    "turn value" in {
+      assert(720.0.degree.to[Turn].value === 2.0)
+    }
   }
 
   "arcminute" should {
@@ -40,6 +50,18 @@ class NonSISpec extends WordSpec {
     "arcsecond value" in {
       assert(2.0.arcminute.to[Arcsecond].value === 120.0)
     }
+
+    "radian value" in {
+      assert(10800.0.arcminute.to[Radian].value === pi)
+    }
+
+    "gradian value" in {
+      assert(10800.0.arcminute.to[Gradian].value === 200.0)
+    }
+
+    "turn value" in {
+      assert(21600.0.arcminute.to[Turn].value === 1.0)
+    }
   }
 
   "arcsecond" should {
@@ -53,6 +75,18 @@ class NonSISpec extends WordSpec {
 
     "arcminute value" in {
       assert(120.0.arcsecond.to[Arcminute].value === 2.0)
+    }
+
+    "radian value" in {
+      assert(648000.0.arcsecond.to[Radian].value === pi)
+    }
+
+    "gradian value" in {
+      assert(648000.0.arcsecond.to[Gradian].value === 200.0 +- ε)
+    }
+
+    "turn value" in {
+      assert(1296000.0.arcsecond.to[Turn].value === (1.0) +- ε)
     }
   }
 
@@ -104,6 +138,7 @@ class NonSISpec extends WordSpec {
     "radian value" in {
       assert(648000.0.arcsecondsPerSecond.to[Radian].value === pi)
     }
+
   }
 
   "radians" should {
@@ -121,6 +156,67 @@ class NonSISpec extends WordSpec {
 
     "arcsecond value" in {
       assert(pi.radian.to[Arcsecond].value === 648000.0)
+    }
+
+    "gradian value" in {
+      assert(pi.radian.to[Gradian].value === 200.0)
+    }
+
+    "turn value" in {
+      assert(pi.radian.to[Turn].value === 0.5 +- ε)
+    }
+  }
+
+  "gradian" should {
+    "show" in {
+      assert(2.gradian.show === "2 gon [∠]")
+    }
+
+    "degree value" in {
+      assert(200.0.gradian.to[Degree].value === 180.0)
+    }
+
+    "radian value" in {
+      assert(200.0.gradian.to[Radian].value === pi +- ε)
+    }
+
+    "arcminute value" in {
+      assert(200.0.gradian.to[Arcminute].value === 10800.0)
+    }
+
+    "arcsecond value" in {
+      assert(200.0.gradian.to[Arcsecond].value === 648000.0 +- ε)
+    }
+
+    "turn value" in {
+      assert(400.0.gradian.to[Turn].value === 1)
+    }
+
+  }
+
+  "turn" should {
+    "show" in {
+      assert(2.turn.show === "2 tr [∠]")
+    }
+
+    "gradian value" in {
+      assert(1.0.turn.to[Gradian].value === 400.0)
+    }
+
+    "degree value" in {
+      assert(1.0.turn.to[Degree].value === 360.0)
+    }
+
+    "radian value" in {
+      assert(1.0.turn.to[Radian].value === (2 * pi) +- ε)
+    }
+
+    "arcminute value" in {
+      assert(1.0.turn.to[Arcminute].value === 21600.0)
+    }
+
+    "arcsecond value" in {
+      assert(1.0.turn.to[Arcsecond].value === 1296000.0 +- ε)
     }
   }
 }
