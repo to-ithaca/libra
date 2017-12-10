@@ -1,10 +1,10 @@
 package libra
 package ops
 
-import libra.UnitOfMeasure
+import libra.nonsi.Angle
+import shapeless.Lazy
 import spire.algebra._
 import spire.implicits._
-import spire.math.ConvertableFrom
 
 object base {
 
@@ -30,6 +30,16 @@ object base {
     def compose[OtherF <: UnitOfMeasure[D]](otherConversionFactor: ConversionFactor[A, D, OtherF, F])
                                            (implicit multiplicativeSemigroup: MultiplicativeSemigroup[A]): ConversionFactor[A, D, OtherF, T] =
       new ConversionFactor(otherConversionFactor.value * value)
+  }
+
+  object ConversionFactor {
+    implicit def inductiveAngelConversionFactor[A, From <: UnitOfMeasure[Angle], To <: UnitOfMeasure[Angle], Next <: UnitOfMeasure[Angle]](
+      implicit multiplicativeSemigroup: MultiplicativeSemigroup[A],
+      fromConversion: ConversionFactor[A, Angle, From, Next],
+      toConversion: Lazy[ConversionFactor[A, Angle, Next, To]]
+    ):ConversionFactor[A, Angle, From, To] =
+      new ConversionFactor(fromConversion.value * toConversion.value.value)
+
   }
 
   /** Derived typeclass for the conversion factor from F to T
