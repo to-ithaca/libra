@@ -33,7 +33,7 @@ object base {
   }
 
   object ConversionFactor {
-    implicit def inductiveAngelConversionFactor[A, From <: UnitOfMeasure[Angle], To <: UnitOfMeasure[Angle], Next <: UnitOfMeasure[Angle]](
+    implicit def inductiveAngleConversionFactor[A, From <: UnitOfMeasure[Angle], To <: UnitOfMeasure[Angle], Next <: UnitOfMeasure[Angle]](
       implicit multiplicativeSemigroup: MultiplicativeSemigroup[A],
       fromConversion: ConversionFactor[A, Angle, From, Next],
       toConversion: Lazy[ConversionFactor[A, Angle, Next, To]]
