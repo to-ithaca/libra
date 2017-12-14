@@ -26,11 +26,7 @@ object base {
     * @tparam F the unit to convert from
     * @tparam T the unit to convert to
     */
-  case class ConversionFactor[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](val value: A) {
-    def compose[OtherF <: UnitOfMeasure[D]](otherConversionFactor: ConversionFactor[A, D, OtherF, F])
-                                           (implicit multiplicativeSemigroup: MultiplicativeSemigroup[A]): ConversionFactor[A, D, OtherF, T] =
-      new ConversionFactor(otherConversionFactor.value * value)
-  }
+  case class ConversionFactor[A, D, F <: UnitOfMeasure[D], T <: UnitOfMeasure[D]](val value: A)
 
   object ConversionFactor {
     implicit def inductiveAngleConversionFactor[A, From <: UnitOfMeasure[Angle], To <: UnitOfMeasure[Angle], Next <: UnitOfMeasure[Angle]](
