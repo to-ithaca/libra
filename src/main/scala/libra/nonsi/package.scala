@@ -129,7 +129,10 @@ package object nonsi {
     def arcminutesPerSecond: AngularVelocityQuantity[A, Arcminute, Second] = Quantity(a)
     def arcsecondsPerSecond: AngularVelocityQuantity[A, Arcsecond, Second] = Quantity(a)
     def radian: QuantityOf[A, Angle, Radian] = Quantity(a)
+    def radiansPerSecond: AngularVelocityQuantity[A, Radian, Second] = Quantity(a)
     def gradian: QuantityOf[A, Angle, Gradian] = Quantity(a)
+    def gradiansPerSecond: AngularVelocityQuantity[A, Gradian, Second] = Quantity(a)
     def turn: QuantityOf[A, Angle, Turn] = Quantity(a)
+    def turnsPerSecond: AngularVelocityQuantity[A, Turn, Second] = Quantity(a)
   }
 }
