@@ -167,6 +167,32 @@ class NonSISpec extends WordSpec with Matchers {
     }
   }
 
+  "radiansPerSecond" should {
+    "show" in {
+      assert(2.radiansPerSecond.show === "2 rad s^-1 [∠ T^-1]")
+    }
+
+    "degreesPerSecond value" in {
+      assert(pi.radiansPerSecond.to[Degree].value === 180.0)
+    }
+
+    "arcminutesPerSecond value" in {
+      assert(pi.radiansPerSecond.to[Arcminute].value === 10800.0)
+    }
+
+    "arcsecondsPerSecond value" in {
+      assert(pi.radiansPerSecond.to[Arcsecond].value === 648000.0)
+    }
+
+    "gradiansPerSecond value" in {
+      assert(pi.radiansPerSecond.to[Gradian].value === 200.0)
+    }
+
+    "turnsPerSecond value" in {
+      assert((2.0 * pi).radiansPerSecond.to[Turn].value === 1.0 +- ε)
+    }
+  }
+
   "gradian" should {
     "show" in {
       assert(2.gradian.show === "2 gon [∠]")
@@ -194,6 +220,32 @@ class NonSISpec extends WordSpec with Matchers {
 
   }
 
+  "gradiansPerSecond" should {
+    "show" in {
+      assert(2.gradian.show === "2 gon [∠]")
+    }
+
+    "degreesPerSecond value" in {
+      assert(200.0.gradiansPerSecond.to[Degree].value === 180.0)
+    }
+
+    "radiansPerSecond value" in {
+      assert(200.0.gradiansPerSecond.to[Radian].value === pi +- ε)
+    }
+
+    "arcminutesPerSecond value" in {
+      assert(200.0.gradiansPerSecond.to[Arcminute].value === 10800.0)
+    }
+
+    "arcsecondsPerSecond value" in {
+      assert(200.0.gradiansPerSecond.to[Arcsecond].value === 648000.0 +- ε)
+    }
+
+    "turnsPerSecond value" in {
+      assert(400.0.gradiansPerSecond.to[Turn].value === 1.0)
+    }
+  }
+
   "turn" should {
     "show" in {
       assert(2.turn.show === "2 tr [∠]")
@@ -218,5 +270,32 @@ class NonSISpec extends WordSpec with Matchers {
     "arcsecond value" in {
       assert(1.0.turn.to[Arcsecond].value === 1296000.0 +- ε)
     }
+  }
+
+  "turnsPerSecond" should {
+    "show" in {
+      assert(2.turnsPerSecond.show === "2 tr s^-1 [∠ T^-1]")
+    }
+
+    "gradiansPerSecond value" in {
+      assert(1.0.turnsPerSecond.to[Gradian].value === 400.0)
+    }
+
+    "degreesPerSecond value" in {
+      assert(1.0.turnsPerSecond.to[Degree].value === 360.0)
+    }
+
+    "radiansPerSecond value" in {
+      assert(1.0.turnsPerSecond.to[Radian].value === (2 * pi) +- ε)
+    }
+
+    "arcminutesPerSecond value" in {
+      assert(1.0.turnsPerSecond.to[Arcminute].value === 21600.0)
+    }
+
+    "arcsecondsPerSecond value" in {
+      assert(1.0.turnsPerSecond.to[Arcsecond].value === 1296000.0 +- ε)
+    }
+
   }
 }
