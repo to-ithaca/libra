@@ -1,15 +1,18 @@
 import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
 import ReleaseTransformations._
 
-lazy val buildSettings = Seq(
-  organization := "com.github.to-ithaca",
+
+lazy val buildSettings = inThisBuild(Seq(
   scalaOrganization := "org.typelevel",
+  scalaVersion      := "2.12.4-bin-typelevel-4"
+)) ++ Seq(
+  organization := "com.github.to-ithaca",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := "2.12.1" :: "2.11.8" :: Nil,
-  scalaVersion := crossScalaVersions.value.head,
+  crossScalaVersions := "2.12.4" :: "2.11.1" :: Nil,
   name         := "libra"
 )
+
 
 lazy val commonScalacOptions = Seq(
   "-encoding", "UTF-8",
@@ -48,13 +51,14 @@ lazy val commonSettings = Seq(
     resolvers ++= commonResolvers,
     scalacOptions ++= commonScalacOptions,
     libraryDependencies ++= Seq(
+      scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
       "com.chuusai" %% "shapeless" % "2.3.2",
-      "eu.timepit" %% "singleton-ops" % "0.0.4",
+      "eu.timepit" %% "singleton-ops" % "0.2.2",
       "org.typelevel" %% "spire" % "0.14.1",
       "org.typelevel" %% "spire-laws" % "0.14.1" % "test",
-      "org.scalatest" %% "scalatest" % "3.0.1" % "test"
+      "org.scalatest" %% "scalatest" % "3.0.4" % "test"
     ),
-  doctestTestFramework := DoctestTestFramework.ScalaTest
+    doctestTestFramework := DoctestTestFramework.ScalaTest
 ) ++ buildSettings
 
 val publishSettings = Seq(
@@ -78,10 +82,10 @@ val publishSettings = Seq(
     setReleaseVersion,
     commitReleaseVersion,
     tagRelease,
-    ReleaseStep(action = Command.process("publishSigned", _), enableCrossBuild = true),
+    ReleaseStep(action = releaseStepCommand("publishSigned"), enableCrossBuild = true),
     setNextVersion,
     commitNextVersion,
-    ReleaseStep(action = Command.process("sonatypeReleaseAll", _), enableCrossBuild = true),
+    ReleaseStep(action = releaseStepCommand("sonatypeReleaseAll"), enableCrossBuild = true),
     pushChanges)
 )
 
