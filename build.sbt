@@ -4,12 +4,12 @@ import ReleaseTransformations._
 
 lazy val buildSettings = inThisBuild(Seq(
   scalaOrganization := "org.typelevel",
-  scalaVersion      := "2.12.4-bin-typelevel-4",
+  scalaVersion      := "2.12.4-bin-typelevel-4"
 )) ++ Seq(
   organization := "com.github.to-ithaca",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := "2.12.4" :: "2.11.8" :: Nil,
+  crossScalaVersions := "2.12.4" :: "2.11.1" :: Nil,
   name         := "libra"
 )
 
