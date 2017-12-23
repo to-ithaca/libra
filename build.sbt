@@ -61,7 +61,15 @@ lazy val commonSettings = Seq(
     doctestTestFramework := DoctestTestFramework.ScalaTest
 ) ++ buildSettings
 
+
 val publishSettings = Seq(
+  publishTo in ThisBuild := {
+    val nexus = "https://oss.sonatype.org/"
+    if (isSnapshot.value)
+      Some("snapshots" at nexus + "content/repositories/snapshots")
+    else
+      Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  },
   releaseCrossBuild := true,
   releaseIgnoreUntrackedFiles := true,
   sonatypeProfileName := "com.github.to-ithaca",
