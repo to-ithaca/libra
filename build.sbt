@@ -1,6 +1,8 @@
 import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
 import ReleaseTransformations._
 
+import sbt.sbtpgp.Compat.publishSignedConfigurationTask
+import com.typesafe.sbt.pgp.PgpKeys._
 
 lazy val buildSettings = inThisBuild(Seq(
   scalaOrganization := "org.typelevel",
@@ -69,6 +71,12 @@ val publishSettings = Seq(
       Some("snapshots" at nexus + "content/repositories/snapshots")
     else
       Some("releases"  at nexus + "service/local/staging/deploy/maven2")
+  },
+  publishSignedConfiguration  := {
+    val prev = publishSignedConfigurationTask.value
+    if(isSnapshot.value) {
+      prev.withOverwrite(true)
+    } else prev
   },
   releaseCrossBuild := true,
   releaseIgnoreUntrackedFiles := true,
