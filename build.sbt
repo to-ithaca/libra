@@ -11,7 +11,7 @@ lazy val buildSettings = inThisBuild(Seq(
   organization := "com.github.to-ithaca",
   licenses += ("Apache-2.0", url("https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := "2.12.4" :: "2.11.1" :: Nil,
+  crossScalaVersions := "2.12.4-bin-typelevel-4" :: "2.11.11-bin-typelevel-4" :: Nil,
   name         := "libra"
 )
 
