@@ -1,16 +1,15 @@
-<html><head><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><title>Libra</title><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="description" content="Dimensional analysis for Scala" /><meta name="author" content="Zainab Ali" /><meta name="og:image" content="/libra/img/poster.png" /><meta name="og:title" content="Libra" /><meta name="og:site_name" content="Libra" /><meta name="og:url" content="http://to-ithaca.github.io/libra/" /><meta name="og:type" content="website" /><meta name="og:description" content="Dimensional analysis for Scala" /><meta name="twitter:image" content="/libra/img/poster.png" /><meta name="twitter:card" content="summary_large_image" /><meta name="twitter:site" content="" /><meta name="kazari-dependencies" content="" /><meta name="kazari-resolvers" content="" /><link rel="icon" type="image/png" href="/libra/img/favicon.png" /><link rel="icon" type="image/png" sizes="16x16" href="/libra/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/libra/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/libra/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/libra/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/libra/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/libra/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/libra/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/libra/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/libra/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/libra/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/libra/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/libra/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/libra/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/libra/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/libra/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/libra/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/libra/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/libra/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/libra/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/libra/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/libra/highlight/styles/ocean.css" /><link rel="stylesheet" href="/libra/css/style.css" /><link rel="stylesheet" href="/libra/css/palette.css" /><link rel="stylesheet" href="/libra/css/codemirror.css" /><link rel="stylesheet" href="/libra/css/kazari-style.css" /><link rel="stylesheet" href="/libra/css/solarized-dark.css" /></head><body><header id="site-header"><div class="navbar-wrapper"><div class="container"><div class="row"><div class="col-xs-6"><a href="/libra/" class="brand"><div class="icon-wrapper"><span>Libra</span></div></a></div><div class="col-xs-6"><nav class="text-right"><ul class=""><li><a href="https://github.com/to-ithaca/libra"><i class="fa fa-github"></i><span class="hidden-xs">GitHub</span></a></li><li><a href="api"><i class="fa fa-file-text"></i><span class="hidden-xs">Documentation</span></a></li></ul></nav></div></div></div></div><div class="jumbotron"><div class="container"><h1 class="text-center">Dimensional analysis for Scala</h1><h2></h2><p class="text-center"><a href="https://github.com/to-ithaca/libra" class="btn btn-outline-inverse">View on GitHub</a></p></div></div><div><ul class="horizontalNav">       <li><a class="" href="/libra/docs/operations.html">Operations</a></li>  <li><a class="" href="/libra/docs/conversions.html">Conversions</a></li>  <li><a class="" href="/libra/docs/rollYourOwn.html">Roll Your Own</a></li> </ul></div></header><main id="site-main"><section class="use"><div class="container"><div id="content"><p>Libra is a dimensional analysis library based on <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It contains out of the box support for SI units for all numeric types.</p>
+<html><head><title>Libra</title><meta charset="utf-8" /><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Zainab Ali" /><meta name="description" content="Dimensional analysis for Scala" /><meta name="og:image" content="/libra/img/poster.png" /><meta name="og:title" content="Libra" /><meta name="og:site_name" content="Libra" /><meta name="og:url" content="http://to-ithaca.github.io/libra/" /><meta name="og:type" content="website" /><meta name="og:description" content="Dimensional analysis for Scala" /><link rel="icon" type="image/png" href="/libra/img/favicon.png" /><meta name="twitter:title" content="Libra" /><meta name="twitter:image" content="http://to-ithaca.github.io/libra/img/poster.png" /><meta name="twitter:description" content="Dimensional analysis for Scala" /><meta name="twitter:card" content="summary_large_image" /><link rel="icon" type="image/png" sizes="16x16" href="/libra/img/favicon16x16.png" /><link rel="icon" type="image/png" sizes="24x24" href="/libra/img/favicon24x24.png" /><link rel="icon" type="image/png" sizes="32x32" href="/libra/img/favicon32x32.png" /><link rel="icon" type="image/png" sizes="48x48" href="/libra/img/favicon48x48.png" /><link rel="icon" type="image/png" sizes="57x57" href="/libra/img/favicon57x57.png" /><link rel="icon" type="image/png" sizes="60x60" href="/libra/img/favicon60x60.png" /><link rel="icon" type="image/png" sizes="64x64" href="/libra/img/favicon64x64.png" /><link rel="icon" type="image/png" sizes="70x70" href="/libra/img/favicon70x70.png" /><link rel="icon" type="image/png" sizes="72x72" href="/libra/img/favicon72x72.png" /><link rel="icon" type="image/png" sizes="76x76" href="/libra/img/favicon76x76.png" /><link rel="icon" type="image/png" sizes="96x96" href="/libra/img/favicon96x96.png" /><link rel="icon" type="image/png" sizes="114x114" href="/libra/img/favicon114x114.png" /><link rel="icon" type="image/png" sizes="120x120" href="/libra/img/favicon120x120.png" /><link rel="icon" type="image/png" sizes="128x128" href="/libra/img/favicon128x128.png" /><link rel="icon" type="image/png" sizes="144x144" href="/libra/img/favicon144x144.png" /><link rel="icon" type="image/png" sizes="150x150" href="/libra/img/favicon150x150.png" /><link rel="icon" type="image/png" sizes="152x152" href="/libra/img/favicon152x152.png" /><link rel="icon" type="image/png" sizes="196x196" href="/libra/img/favicon196x196.png" /><link rel="icon" type="image/png" sizes="310x310" href="/libra/img/favicon310x310.png" /><link rel="icon" type="image/png" sizes="310x150" href="/libra/img/favicon310x150.png" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" /><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" /><link rel="stylesheet" href="/libra/highlight/styles/ocean.css" /><link rel="stylesheet" href="/libra/css/style.css" /><link rel="stylesheet" href="/libra/css/palette.css" /><link rel="stylesheet" href="/libra/css/codemirror.css" /><link rel="stylesheet" href="/libra/css/kazari-style.css" /><link rel="stylesheet" href="/libra/css/monokai.css" /></head><body><header id="site-header"><div class="navbar-wrapper"><div class="container"><div class="row"><div class="col-xs-6"><a href="/libra/" class="brand"><div class="icon-wrapper"><span>Libra</span></div></a></div><div class="col-xs-6"><nav class="text-right"><ul class=""><li><a href="https://github.com/to-ithaca/libra"><i class="fa fa-github"></i><span class="hidden-xs">GitHub</span></a></li><li><a href="api"><i class="fa fa-file-text"></i><span class="hidden-xs">Documentation</span></a></li></ul></nav></div></div></div></div><div class="jumbotron"><div class="container"><h1 class="text-center">Dimensional analysis for Scala</h1><h2></h2><p class="text-center"><a href="https://github.com/to-ithaca/libra" class="btn btn-outline-inverse">View on GitHub</a></p></div></div><div><ul class="horizontalNav">       <li><a class="" href="/libra/docs/operations.html">Operations</a></li>  <li><a class="" href="/libra/docs/conversions.html">Conversions</a></li>  <li><a class="" href="/libra/docs/rollYourOwn.html">Roll Your Own</a></li> </ul></div></header><main id="site-main"><section class="use"><div class="container"><div id="content"><p>Libra is a dimensional analysis library based on <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It contains out of the box support for SI units for all numeric types.</p>
 
 <h2 id="to-use">To Use</h2>
 
-<p>Libra supports JDK 8, scala versions 2.11.8 and 2.12.1.</p>
+<p>Libra supports JDK 8, scala versions 2.11.11 and 2.12.4.</p>
 
 <p>Add this to your <code class="highlighter-rouge">build.sbt</code>:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.2.0"</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.3.0"</span>
 <span class="n">scalaOrganization</span> <span class="o">:=</span> <span class="s">"org.typelevel"</span>
 <span class="n">scalacOptions</span> <span class="o">+=</span> <span class="s">"-Yliteral-types"</span>
-</code></pre>
-</div>
+</code></pre></div>
 
 <p>This adds <a href="http://typelevel.org/scala/">Typelevel Scala</a>.</p>
 
@@ -18,7 +17,7 @@
 
 <p>Example usage:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
 <span class="c1">// import spire.implicits._
 </span>
 <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
@@ -37,21 +36,20 @@
 <span class="o">(</span><span class="mf">3.0</span><span class="o">.</span><span class="n">s</span><span class="o">.</span><span class="n">to</span><span class="o">[</span><span class="kt">Millisecond</span><span class="o">]</span> <span class="o">/</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">ms</span><span class="o">).</span><span class="n">show</span>
 <span class="c1">// res3: String = 1000.0  []
 </span>
-<span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span> <span class="c1">//this should fail
+<span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span> <span class="c1">// This should fail
 // &lt;console&gt;:22: error: These quantities can't be added!
 // Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
 // Left: libra.Quantity[Int,libra.Term[libra.si.package.Length,libra.si.package.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
 // Right: libra.Quantity[Int,libra.Term[libra.si.package.Mass,libra.si.package.Kilogram,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
-//        3.m + 2.kg //this should fail
+//        3.m + 2.kg // This should fail
 //            ^
-</span></code></pre>
-</div>
+</span></code></pre></div>
 
 <h2 id="why">Why?</h2>
 <p>When we deal with numeric quantities, we often resort to <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code> or <code class="highlighter-rouge">Float</code> types.
 These are incommunicative and error prone.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
 // distance: Double = 3.0
 </span>
 <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span> <span class="c1">// 2 s
@@ -59,14 +57,13 @@ These are incommunicative and error prone.</p>
 </span>
 <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span> <span class="c1">// Oh no!
 // speed: Double = 5.0
-</span></code></pre>
-</div>
+</span></code></pre></div>
 
 <p>There’s a mistake in our formula, but we won’t know without a decent set of tests.</p>
 
 <p>Libra provides a <code class="highlighter-rouge">Quantity</code> which wraps base numeric types.  It supports <strong>compile time dimensional analysis</strong>.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
 <span class="c1">// import spire.implicits._
 </span>
 <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
@@ -89,8 +86,11 @@ These are incommunicative and error prone.</p>
 </span>
 <span class="o">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">time</span><span class="o">).</span><span class="n">show</span> <span class="c1">// Yay!
 // res6: String = 1.5 m s^-1 [L T^-1]
-</span></code></pre>
-</div>
+</span></code></pre></div>
+
+<h2 id="do-i-have-to-use-typelevel-scala">Do I have to use Typelevel Scala?</h2>
+
+<p>No, althout it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn’t been added to Lightbend Scala yet.  You can use <a href="https://github.com/milessabin/shapeless">shapeless</a> witnesses to get the same behaviour.  Take a look at the code snippets in this <a href="https://github.com/to-ithaca/libra-example">example project</a>.</p>
 
 <h2 id="credits">Credits</h2>
 
@@ -111,8 +111,9 @@ These are incommunicative and error prone.</p>
 languages:['scala','java','bash']
 });
 hljs.initHighlighting();
-             </script><script src="/libra/js/kazari.js"></script><script><script>
+             </script><script>((window.gitter = {}).chat = {}).options = {
+room: 'to-ithaca/libra'};</script><script src="https://sidecar.gitter.im/dist/sidecar.v1.js"></script><script src="/libra/js/kazari.js"></script><script>
 $(document).ready(function() {
-	kazari.KazariPlugin().decorateCode('https://scala-evaluator-212.herokuapp.com/eval', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.S2F6YXJp.Jl2eqMfw8IakJF93PjxTbrf-8YUJgX5OoOfy5JHE8Yw', '', 'solarized-dark')
+	kazari.KazariPlugin().decorateCode('https://scala-evaluator-212.herokuapp.com/eval', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.S2F6YXJp.Jl2eqMfw8IakJF93PjxTbrf-8YUJgX5OoOfy5JHE8Yw', '', 'monokai')
 })
-    </script></script></body></html>
+    </script></body></html>
