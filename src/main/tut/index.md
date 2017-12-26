@@ -6,17 +6,19 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 ## To Use
 
-Libra supports JDK 8, scala versions 2.11.8 and 2.12.1.
+Libra supports JDK 8, scala versions 2.11.11 and 2.12.4.
 
 Add this to your `build.sbt`:
 
 ```scala
-libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.2.0"
+libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.3.0"
 scalaOrganization := "org.typelevel"
 scalacOptions += "-Yliteral-types"
 ```
 
 This adds [Typelevel Scala](http://typelevel.org/scala/).
+
+
 
 ## TL;DR
 
@@ -29,7 +31,7 @@ import libra._, libra.si._
 (3.m * 2.m).show
 (1.0.km.to[Metre] + 2.0.m + 3.0.mm.to[Metre]).show
 (3.0.s.to[Millisecond] / 3.0.ms).show
-3.m + 2.kg //this should fail
+3.m + 2.kg // This should fail
 ```
 
 ## Why?
@@ -54,6 +56,11 @@ val time = 2.0.s
 distance + time
 (distance / time).show // Yay!
 ```
+
+## Do I have to use Typelevel Scala?
+
+No, althout it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn't been added to Lightbend Scala yet.  You can use [shapeless](https://github.com/milessabin/shapeless) witnesses to get the same behaviour.  Take a look at the code snippets in this [example project](https://github.com/to-ithaca/libra-example).
+
 
 ## Credits
 
