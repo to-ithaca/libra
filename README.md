@@ -1,5 +1,7 @@
 # Libra
 
+[![Join the chat at https://gitter.im/to-ithaca/libra](https://badges.gitter.im/to-ithaca/libra.svg)](https://gitter.im/to-ithaca/libra?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Typelevel incubator](https://img.shields.io/badge/typelevel-incubator-F51C2B.svg)](http://typelevel.org)
 [![Build Status](https://travis-ci.org/to-ithaca/libra.svg?branch=master)](https://travis-ci.org/to-ithaca/libra)
 [![codecov](https://codecov.io/gh/to-ithaca/libra/branch/master/graph/badge.svg)](https://codecov.io/gh/to-ithaca/libra)
