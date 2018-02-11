@@ -1,4 +1,6 @@
 package libra
+package units
+package angularVelocity
 
 import libra.ops.quantity.ConvertTo
 import ops.base.{Conversion, ConversionFactor, Show}
