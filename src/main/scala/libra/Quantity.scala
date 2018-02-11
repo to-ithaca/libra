@@ -2,6 +2,7 @@ package libra
 
 import ops.quantity._
 import shapeless._
+import shapeless.ops.hlist.Align
 import spire._, spire.algebra._, spire.math._, spire.implicits._
 
 /** Represents a dimensional quantity
@@ -20,6 +21,8 @@ import spire._, spire.algebra._, spire.math._, spire.implicits._
   * }}}
   */
 case class Quantity[A, D <: HList](val value: A) extends AnyVal {
+
+  def as[D1 <: HList](implicit ev: Align[D, D1]): Quantity[A, D1] = Quantity(value)
 
  /**
    * Adds another quantity using the spire AdditiveSemigroup.
@@ -221,12 +224,26 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     */
   def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 
+  /** Converts a quantity from one unit of measure to another
+    *
+    * @tparam U The unit of measure to convert to
+    *
+    * {{{
+    * scala> import spire.implicits._
+    * scala> import shapeless._
+    * scala> import libra._, libra.si._
+    * scala> 2.0.m.to[Centimetre]
+    * res0: Quantity[Double, Term[Length, Centimetre, Fraction[1, 1]] :: HNil] = Quantity(200.0)
+    * }}}
+    * 
+    */
   def to[U <: UnitOfMeasure[_]](implicit to: ConvertTo[Quantity[A, D], U]): to.Out = to(this)
+
 }
 
 object Quantity {
 
-  implicit def quantityModule[A, D <: HList](implicit R: Ring[A], ev: shapeless.ops.hlist.Align[D, D]): Module[Quantity[A, D], A] = {
+  implicit def quantityModule[A, D <: HList](implicit R: Ring[A], ev: Align[D, D]): Module[Quantity[A, D], A] = {
     new Module[Quantity[A, D], A] {
 
       implicit def scalar: Rng[A] = R
