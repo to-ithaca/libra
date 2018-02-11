@@ -2,10 +2,11 @@ package libra
 
 import ops.quantity._
 import shapeless._
+import shapeless.ops.hlist.Align
 import spire._, spire.algebra._, spire.math._, spire.implicits._
 
 /** Represents a dimensional quantity
-  * 
+  *
   * @tparam A the Numeric type of the quantity e.g. Int, Float, Double
   * @tparam D the dimensions
   * @param value the coefficient
@@ -14,25 +15,52 @@ import spire._, spire.algebra._, spire.math._, spire.implicits._
   * {{{
   * scala> import spire.implicits._
   * scala> import libra._, libra.si._
-  * 
-  * scala> Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil](5.5) // represents 5.5 m 
+  *
+  * scala> Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil](5.5) // represents 5.5 m
   * scala> res0: Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5.5)
   * }}}
   */
 case class Quantity[A, D <: HList](val value: A) extends AnyVal {
 
- /**
-   * Adds another quantity using the spire AdditiveSemigroup.
-   * @param q1 the quantity to add.  This must have the equivalient dimensions.
-   *
-   * {{{
-   * scala> import spire.implicits._
-   * scala> import shapeless._
-   * scala> import libra._, libra.si._
-   * scala> 3.m add 2.m
-   * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5)
-   * }}}
-   */
+  /**
+    * Aligns the dimensions of a quantity.
+    *
+    * Two quantities may have the same dimension, but have different parameter orders within their HLists. This reorders the
+    * dimensions such that the quantites have the same type.  This is useful for algebra typeclasses which expect parameters
+    * to have the same type.
+    *
+    * @tparam D1 A dimension with the same parameters but a different parameter order
+    *
+    * {{{
+    * scala> import shapeless._
+    * scala> import spire.implicits._
+    * scala> import libra._, libra.si._
+    *
+    * scala> type MetreKilogram = Term[Length, Metre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil
+    * scala> type KilogramMetre = Term[Mass, Kilogram, Fraction[1, 1]] :: Term[Length, Metre, Fraction[1, 1]] ::  HNil
+    *
+    * scala> val q0: Quantity[Double, MetreKilogram] = Quantity(2.0)
+    * scala> val q1: Quantity[Double, KilogramMetre] = Quantity(3.0)
+    *
+    * // uses spire's Signed typeclass
+    * scala> q0 compare q1.as[MetreKilogram]
+    * res0: Int = -1
+    * }}}
+    */
+  def as[D1 <: HList](implicit ev: Align[D, D1]): Quantity[A, D1] = Quantity(value)
+
+  /**
+    * Adds another quantity using the spire AdditiveSemigroup.
+    * @param q1 the quantity to add.  This must have the equivalient dimensions.
+    *
+    * {{{
+    * scala> import spire.implicits._
+    * scala> import shapeless._
+    * scala> import libra._, libra.si._
+    * scala> 3.m add 2.m
+    * res1: Quantity[Int, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5)
+    * }}}
+    */
   def add[D1 <: HList](q1: Quantity[A, D1])(implicit a: Add[Quantity[A, D], Quantity[A, D1]]): a.Out = a(this, q1)
 
   /** Negates the quantity
@@ -221,12 +249,26 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     */
   def ^[P <: Singleton with Int](pow: P)(implicit p: Power[Quantity[A, D], P]): p.Out = p(this)
 
+  /** Converts a quantity from one unit of measure to another
+    *
+    * @tparam U The unit of measure to convert to
+    *
+    * {{{
+    * scala> import spire.implicits._
+    * scala> import shapeless._
+    * scala> import libra._, libra.si._
+    * scala> 2.0.m.to[Centimetre]
+    * res0: Quantity[Double, Term[Length, Centimetre, Fraction[1, 1]] :: HNil] = Quantity(200.0)
+    * }}}
+    * 
+    */
   def to[U <: UnitOfMeasure[_]](implicit to: ConvertTo[Quantity[A, D], U]): to.Out = to(this)
+
 }
 
 object Quantity {
 
-  implicit def quantityModule[A, D <: HList](implicit R: Ring[A], ev: shapeless.ops.hlist.Align[D, D]): Module[Quantity[A, D], A] = {
+  implicit def quantityModule[A, D <: HList](implicit R: Ring[A], ev: Align[D, D]): Module[Quantity[A, D], A] = {
     new Module[Quantity[A, D], A] {
 
       implicit def scalar: Rng[A] = R

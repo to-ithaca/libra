@@ -13,6 +13,16 @@ import libra.ops.quantity._, libra.si._
 
 class QuantitySpec extends FlatSpec {
 
+  it should "align as" in {
+    type D0 = Term[Length, Metre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil
+    type D1 = Term[Mass, Kilogram, Fraction[1, 1]] :: Term[Length, Metre, Fraction[1, 1]] ::  HNil
+    type Q0 = Quantity[Int, D0]
+    type Q1 = Quantity[Int, D1]
+
+    val q0: Q0 = Quantity[Int, D0](2)
+    val q1: Q1 = q0.as[D1]
+  }
+
   it should "add" in {
     type D0 = Term[Length, Metre, Fraction[1, 1]] :: Term[Mass, Kilogram, Fraction[1, 1]] :: HNil
     type D1 = Term[Mass, Kilogram, Fraction[1, 1]] :: Term[Length, Metre, Fraction[1, 1]] ::  HNil
