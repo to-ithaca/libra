@@ -54,7 +54,7 @@ lazy val commonSettings = Seq(
     scalacOptions ++= commonScalacOptions,
     libraryDependencies ++= Seq(
       scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
-      "com.chuusai" %% "shapeless" % "2.3.2",
+      "com.chuusai" %% "shapeless" % "2.3.3",
       "eu.timepit" %% "singleton-ops" % "0.2.2",
       "org.typelevel" %% "spire" % "0.14.1",
       "org.typelevel" %% "spire-laws" % "0.14.1" % "test",
