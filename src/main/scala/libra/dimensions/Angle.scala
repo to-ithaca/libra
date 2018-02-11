@@ -1,5 +1,5 @@
 package libra
-package dimension
+package dimensions
 
 import libra.ops.quantity.ConvertTo
 import ops.base.{Conversion, ConversionFactor, Show}
