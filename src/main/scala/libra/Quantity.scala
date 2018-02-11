@@ -29,6 +29,8 @@ case class Quantity[A, D <: HList](val value: A) extends AnyVal {
     * dimensions such that the quantites have the same type.  This is useful for algebra typeclasses which expect parameters
     * to have the same type.
     *
+    * @tparam D1 A dimension with the same parameters but a different parameter order
+    *
     * {{{
     * scala> import shapeless._
     * scala> import spire.implicits._
