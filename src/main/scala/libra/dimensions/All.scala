@@ -1,4 +1,6 @@
 package libra
 package dimensions
 
-trait All extends Angle
+trait All extends AngleDimension
+    with TimeDimension
+    with MassDimension

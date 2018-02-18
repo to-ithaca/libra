@@ -11,7 +11,7 @@ import singleton.ops._
 import libra.si.{Second, Time}
 import shapeless._
 
-trait Angle {
+trait AngleDimension {
 
   type Angle
 
