@@ -1,11 +1,9 @@
 package libra
 package units
 
-import singleton.ops._
 import ops.base.{Show, ConversionFactor}
-import spire._, spire.algebra._, spire.math._, spire.implicits._
+import spire.algebra._, spire.math._, spire.implicits._
 import singleton.ops._
-import shapeless._
 
 trait MetricUnit[I <: XInt, D] extends UnitOfMeasure[D]
 

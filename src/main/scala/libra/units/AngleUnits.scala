@@ -1,14 +1,9 @@
 package libra
 package units
 
-import libra.ops.quantity.ConvertTo
-import ops.base.{Conversion, ConversionFactor, Show}
-import spire._
+import ops.base.{ConversionFactor, Show}
 import spire.algebra._
 import spire.math._
-import spire.implicits._
-import singleton.ops._
-import shapeless._
 
 trait AngleUnits {
 

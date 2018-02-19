@@ -2,9 +2,8 @@ package libra
 package units
 
 import ops.base.{Show, ConversionFactor}
-import spire._, spire.algebra._, spire.math._, spire.implicits._
+import spire.math._
 import singleton.ops._
-import shapeless._
 
 trait TimeUnits extends MetricUnitImplicits {
 

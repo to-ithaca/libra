@@ -3,7 +3,7 @@ package libra
 import ops.quantity._
 import shapeless._
 import shapeless.ops.hlist.Align
-import spire._, spire.algebra._, spire.math._, spire.implicits._
+import spire.algebra._, spire.implicits._
 
 /** Represents a dimensional quantity
   *
@@ -20,7 +20,7 @@ import spire._, spire.algebra._, spire.math._, spire.implicits._
   * scala> res0: Quantity[Double, Term[Length, Metre, Fraction[1, 1]] :: HNil] = Quantity(5.5)
   * }}}
   */
-case class Quantity[A, D <: HList](val value: A) extends AnyVal {
+case class Quantity[A, D <: HList](value: A) extends AnyVal {
 
   /**
     * Aligns the dimensions of a quantity.

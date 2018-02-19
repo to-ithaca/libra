@@ -1,12 +1,10 @@
 package libra
 package units
 
-import ops.base.{Show, ConversionFactor}
-import spire._, spire.algebra._, spire.math._, spire.implicits._
+import ops.base.Show
 import singleton.ops._
-import shapeless._
 
-trait MassUnits extends MetricUnitImplicits {
+trait  MassUnits extends MetricUnitImplicits {
 
   type Mass
 
