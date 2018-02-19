@@ -1,5 +1,5 @@
 package libra
-package dimensions
+package units
 
 import libra.ops.quantity.ConvertTo
 import ops.base.{Conversion, ConversionFactor, Show}
@@ -8,10 +8,9 @@ import spire.algebra._
 import spire.math._
 import spire.implicits._
 import singleton.ops._
-import libra.si.{Second, Time}
 import shapeless._
 
-trait AngleDimension {
+trait AngleUnits {
 
   type Angle
 

@@ -1,5 +1,5 @@
 package libra
-package dimensions
+package units
 
 import singleton.ops._
 import ops.base.{Show, ConversionFactor}

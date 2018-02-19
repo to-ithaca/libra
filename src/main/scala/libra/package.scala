@@ -1,6 +1,6 @@
 import shapeless._
 
-package object libra extends dimensions.All {
+package object libra extends units.All {
 
   /** Represents a unit in a HList of units
     *

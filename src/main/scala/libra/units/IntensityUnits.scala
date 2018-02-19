@@ -1,12 +1,12 @@
 package libra
-package dimensions
+package units
 
 import ops.base.{Show, ConversionFactor}
 import spire._, spire.algebra._, spire.math._, spire.implicits._
 import singleton.ops._
 import shapeless._
 
-trait IntensityDimension {
+trait IntensityUnits {
 
   type Intensity
 
