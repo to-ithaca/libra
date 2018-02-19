@@ -1,11 +1,6 @@
 package libra
 package implicits
 
-import ops.base.{Show, ConversionFactor}
-import spire._, spire.algebra._, spire.math._, spire.implicits._
-import singleton.ops._
-import shapeless._
-
 trait CurrentImplicits {
   implicit final class CurrentOps[A](val a: A) {
     def kA: QuantityOf[A, Current, Kiloampere] = Quantity(a)

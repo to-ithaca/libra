@@ -1,15 +1,6 @@
 package libra
 package implicits
 
-import libra.ops.quantity.ConvertTo
-import ops.base.{Conversion, ConversionFactor, Show}
-import spire._
-import spire.algebra._
-import spire.math._
-import spire.implicits._
-import singleton.ops._
-import shapeless._
-
 trait AngleImplicits {
   implicit final class AngleOps[A](val a: A) {
     def degree: QuantityOf[A, Angle, Degree] = Quantity(a)

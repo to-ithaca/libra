@@ -1,14 +1,6 @@
 package libra
 package implicits
 
-import libra.ops.quantity.ConvertTo
-import ops.base.{Conversion, ConversionFactor, Show}
-import spire._
-import spire.algebra._
-import spire.math._
-import spire.implicits._
-import singleton.ops._
-import shapeless._
 
 trait AngularVelocityImplicits {
   implicit final class AngularVelocityOps[A](val a: A) {

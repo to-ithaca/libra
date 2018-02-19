@@ -1,11 +1,6 @@
 package libra
 package implicits
 
-import ops.base.{Show, ConversionFactor}
-import spire._, spire.algebra._, spire.math._, spire.implicits._
-import singleton.ops._
-import shapeless._
-
 trait TemperatureImplicits {
 
   implicit final class TemperatureOps[A](val a: A) {
