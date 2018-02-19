@@ -1,7 +1,6 @@
 package libra
 package implicits
 
-
 trait TimeImplicits {
 
   implicit final class TimeOps[A](val a: A) {

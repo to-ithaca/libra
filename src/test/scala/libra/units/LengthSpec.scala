@@ -10,7 +10,6 @@ class LengthSpec extends WordSpec with Matchers {
 
   val ε = 1E-6
 
-
   "length" should {
 
     "km value" in {
@@ -48,7 +47,6 @@ class LengthSpec extends WordSpec with Matchers {
     "fm value" in {
       assert(3.0.fm.to[Metre].value === (3.0E-15) +- (ε * 1E-15))
     }
-
 
     "show" in {
       assert(3.km.show === ("3 km [L]"))

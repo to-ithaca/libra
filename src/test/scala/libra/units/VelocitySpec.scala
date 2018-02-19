@@ -10,7 +10,6 @@ class VelocitySpec extends WordSpec with Matchers {
 
   val ε = 1E-6
 
-
   "velocity" should {
 
     "kmps value" in {

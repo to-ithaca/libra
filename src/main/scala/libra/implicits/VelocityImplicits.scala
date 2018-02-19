@@ -1,7 +1,6 @@
 package libra
 package implicits
 
-
 trait VelocityImplicits {
 
   implicit final class SIVelocityQuantityOps[A](val a: A) {

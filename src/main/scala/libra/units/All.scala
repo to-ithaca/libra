@@ -1,7 +1,8 @@
 package libra
 package units
 
-trait All extends AngleUnits
+trait All
+    extends AngleUnits
     with TimeUnits
     with MassUnits
     with LengthUnits
