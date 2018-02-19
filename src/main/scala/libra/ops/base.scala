@@ -5,6 +5,7 @@ import libra.UnitOfMeasure
 import spire.algebra._
 import spire.implicits._
 import spire.math.ConvertableFrom
+import shapeless.Refute
 
 object base {
 
