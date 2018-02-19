@@ -1,12 +1,8 @@
 package libra
 
 import org.scalatest._
-
 import shapeless._
-
-
 import spire.implicits._
-
 import libra.ops.quantity._, libra.implicits._
 
 class QuantitySpec extends FlatSpec {

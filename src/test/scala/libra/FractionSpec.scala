@@ -1,14 +1,12 @@
 package libra
 
 import org.scalatest._
-
 import shapeless._
-
 import singleton.ops._
-
 import libra.ops.fraction._
 
 class FractionSpec extends FlatSpec {
+
   it should "find the greatest common divisor" in {
     the[GCD.Aux[6, 6, 6]]
     the[GCD.Aux[6, 3, 3]]

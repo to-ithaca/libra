@@ -4,7 +4,6 @@ package units
 import spire.implicits._
 import spire.math._
 import libra.implicits._
-
 import org.scalatest._
 
 class AngleSpec extends WordSpec with Matchers {

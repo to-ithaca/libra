@@ -2,7 +2,6 @@ package libra
 package ops
 
 import org.scalatest._
-
 import shapeless._
 import shapeless.test._
 import libra.ops.dimensions._, libra.implicits._

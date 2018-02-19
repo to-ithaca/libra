@@ -3,7 +3,6 @@ package units
 
 import spire.implicits._
 import libra.implicits._
-
 import org.scalatest._
 
 class MassSpec extends WordSpec with Matchers {

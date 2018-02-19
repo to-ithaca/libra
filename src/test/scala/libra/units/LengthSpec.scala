@@ -3,7 +3,6 @@ package units
 
 import spire.implicits._
 import libra.implicits._
-
 import org.scalatest._
 
 class LengthSpec extends WordSpec with Matchers {
