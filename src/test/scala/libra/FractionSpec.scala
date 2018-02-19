@@ -5,9 +5,6 @@ import org.scalatest._
 import shapeless._
 
 import singleton.ops._
-import singleton.ops.impl._
-
-import spire.implicits._
 
 import libra.ops.fraction._
 

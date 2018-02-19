@@ -3,7 +3,7 @@ package libra
 import org.scalatest._
 
 import shapeless._
-import spire._, spire.algebra._, spire.math._, spire.laws._, spire.laws.arb._
+import spire.algebra._, spire.math._, spire.laws._, spire.laws.arb._
 
 import org.typelevel.discipline.scalatest.Discipline
 

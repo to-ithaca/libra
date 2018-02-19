@@ -4,10 +4,8 @@ import org.scalatest._
 
 import shapeless._
 
-import singleton.ops.{Length => _, _}
-import singleton.ops.impl._
 
-import spire._, spire.algebra._, spire.math._, spire.implicits._
+import spire.implicits._
 
 import libra.ops.quantity._, libra.implicits._
 
