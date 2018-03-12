@@ -26,7 +26,7 @@ Example usage:
 
 ```tut:nofail:book
 import spire.implicits._
-import libra._, libra.si._
+import libra._, libra.implicits._
 (3.m + 2.m).show
 (3.m * 2.m).show
 (1.0.km.to[Metre] + 2.0.m + 3.0.mm.to[Metre]).show
@@ -50,7 +50,7 @@ Libra provides a `Quantity` which wraps base numeric types.  It supports **compi
 
 ```tut:nofail:book
 import spire.implicits._
-import libra._, libra.si._
+import libra._, libra.implicits._
 val distance = 3.0.m
 val time = 2.0.s
 distance + time
