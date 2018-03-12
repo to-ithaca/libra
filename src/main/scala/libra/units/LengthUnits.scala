@@ -1,10 +1,7 @@
 package libra
 package units
 
-import ops.base.Show
-import singleton.ops._
-
-trait LengthUnits extends MetricUnitImplicits {
+trait LengthUnits {
 
   type Length
 
@@ -19,7 +16,4 @@ trait LengthUnits extends MetricUnitImplicits {
   type Femtometre = MetricUnit[-15, Length]
   type Attometre = MetricUnit[-18, Length]
 
-  implicit def lengthShow: Show[Length] = Show[Length]("L")
-
-  implicit def metricLengthShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Length]] = Show(s"${s()}m")
 }

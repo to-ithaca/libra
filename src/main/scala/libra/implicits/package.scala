@@ -1,8 +1,10 @@
 package libra
 
 package object implicits
-    extends AngleImplicits
+    extends AmountImplicits
+    with AngleImplicits
     with AngularVelocityImplicits
+    with IntensityImplicits
     with TimeImplicits
     with LengthImplicits
     with MassImplicits
@@ -12,3 +14,4 @@ package object implicits
     with VelocityImplicits
     with ForceImplicits
     with MomentumImplicits
+    with MetricUnitImplicits

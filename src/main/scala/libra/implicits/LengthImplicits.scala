@@ -1,7 +1,16 @@
 package libra
 package implicits
 
+import units.MetricUnit
+import ops.base.Show
+
+import singleton.ops.{Length => _, _}
+
 trait LengthImplicits {
+
+  implicit def lengthShow: Show[Length] = Show[Length]("L")
+
+  implicit def metricLengthShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Length]] = Show(s"${s()}m")
 
   implicit final class LengthOps[A](val a: A) {
     def km: QuantityOf[A, Length, Kilometre] = Quantity(a)

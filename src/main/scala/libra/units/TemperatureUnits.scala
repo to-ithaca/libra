@@ -1,10 +1,7 @@
 package libra
 package units
 
-import ops.base.Show
-import singleton.ops._
-
-trait TemperatureUnits extends MetricUnitImplicits {
+trait TemperatureUnits {
 
   type Temperature
 
@@ -19,7 +16,4 @@ trait TemperatureUnits extends MetricUnitImplicits {
   type Femtokelvin = MetricUnit[-15, Temperature]
   type Attokelvin = MetricUnit[-18, Temperature]
 
-  implicit def temperatureShow: Show[Temperature] = Show[Temperature]("θ")
-
-  implicit def metricTemperatureShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Temperature]] = Show(s"${s()}K")
 }

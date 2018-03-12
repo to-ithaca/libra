@@ -1,7 +1,26 @@
 package libra
 package implicits
 
+import units.MetricUnit
+import ops.base.{Show, ConversionFactor}
+
+import spire.math._
+import singleton.ops._
+
 trait TimeImplicits {
+
+  implicit def timeShow: Show[Time] = Show[Time]("T")
+
+  implicit def metricTimeShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Time]] = Show(s"${s()}s")
+
+
+  implicit def dayShow: Show[Day] = Show[Day]("days")
+  implicit def hourShow: Show[Hour] = Show[Hour]("hours")
+
+  implicit def dayHourConversion[A](
+    implicit c: ConvertableTo[A]
+  ): ConversionFactor[A, Time, Day, Hour] =
+    new ConversionFactor(c.fromInt(24))
 
   implicit final class TimeOps[A](val a: A) {
     def ks: QuantityOf[A, Time, Kilosecond] = Quantity(a)

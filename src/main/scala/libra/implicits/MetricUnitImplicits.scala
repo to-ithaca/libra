@@ -1,15 +1,12 @@
 package libra
-package units
+package implicits
 
+import units.MetricUnit
 import ops.base.{Show, ConversionFactor}
+
 import spire.algebra._, spire.math._, spire.implicits._
 import singleton.ops._
 
-trait MetricUnit[I <: XInt, D] extends UnitOfMeasure[D]
-
-// not sure where to put these
-// If this is inherited by each trait individually, then we can't have separate imports
-// I think that's fine.  There's no reason why people shouldn't import the whole thing
 trait MetricUnitImplicits {
 
   implicit val killoShow: Show[3] = Show("k")
@@ -30,4 +27,5 @@ trait MetricUnitImplicits {
     pt: SafeInt[PT]
   ): ConversionFactor[A, D, MetricUnit[PF, D], MetricUnit[PT, D]] =
     new ConversionFactor(c.fromInt(10).pow(pf - pt))
+
 }

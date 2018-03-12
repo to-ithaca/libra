@@ -1,10 +1,7 @@
 package libra
 package units
 
-import ops.base.Show
-import singleton.ops._
-
-trait  MassUnits extends MetricUnitImplicits {
+trait MassUnits {
 
   type Mass
 
@@ -19,7 +16,4 @@ trait  MassUnits extends MetricUnitImplicits {
   type Femtogram = MetricUnit[-15, Mass]
   type Attogram = MetricUnit[-18, Mass]
 
-  implicit def massShow: Show[Mass] = Show[Mass]("M")
-
-  implicit def metricMassShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Mass]] = Show(s"${s()}g")
 }

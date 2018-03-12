@@ -1,7 +1,16 @@
 package libra
 package implicits
 
+import units.MetricUnit
+import ops.base.Show
+
+import singleton.ops._
+
 trait TemperatureImplicits {
+
+  implicit def temperatureShow: Show[Temperature] = Show[Temperature]("θ")
+
+  implicit def metricTemperatureShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Temperature]] = Show(s"${s()}K")
 
   implicit final class TemperatureOps[A](val a: A) {
     def kK: QuantityOf[A, Temperature, Kilokelvin] = Quantity(a)

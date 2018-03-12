@@ -1,10 +1,7 @@
 package libra
 package units
 
-import ops.base.Show
-import singleton.ops._
-
-trait CurrentUnits extends MetricUnitImplicits {
+trait CurrentUnits {
 
   type Current
 
@@ -19,7 +16,4 @@ trait CurrentUnits extends MetricUnitImplicits {
   type Femtoampere = MetricUnit[-15, Current]
   type Attoampere = MetricUnit[-18, Current]
 
-  implicit def currentShow: Show[Current] = Show[Current]("I")
-
-  implicit def metricCurrentShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Current]] = Show(s"${s()}A")
 }

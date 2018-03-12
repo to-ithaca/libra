@@ -1,7 +1,16 @@
 package libra
 package implicits
 
+import units.MetricUnit
+import ops.base.Show
+
+import singleton.ops._
+
 trait MassImplicits {
+
+  implicit def massShow: Show[Mass] = Show[Mass]("M")
+
+  implicit def metricMassShow[I <: XInt](implicit s: Show[I]): Show[MetricUnit[I, Mass]] = Show(s"${s()}g")
 
   implicit final class MassOps[A](val a: A) {
     def kg: QuantityOf[A, Mass, Kilogram] = Quantity(a)
