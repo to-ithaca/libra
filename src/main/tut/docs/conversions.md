@@ -16,7 +16,7 @@ Here's how you convert quantities:
 
 ```tut
 import spire.implicits._
-import libra._, libra.si._
+import libra._, libra.implicits._
 
 3.0.km.to[Metre].show
 ```

@@ -10,7 +10,7 @@ Be sure to import spire's implicits
 
 ```tut
 import spire.implicits._
-import libra._, libra.si._
+import libra._, libra.implicits._
 ```
 
 ### Addition
