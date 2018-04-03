@@ -2,7 +2,7 @@
 
 <p>Let’s say we want to code up a game of <a href="http://www.catan.com/game/catan">Catan</a>.  SI units don’t cut the mustard, so let’s make our own.  Our base dimensions are going to be <code class="highlighter-rouge">Stone</code>, <code class="highlighter-rouge">Wood</code>, <code class="highlighter-rouge">Wheat</code>, <code class="highlighter-rouge">Sheep</code> and <code class="highlighter-rouge">Time</code>.</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="k">_</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">base</span><span class="o">.</span><span class="k">_</span>
 <span class="c1">// import libra._
 // import libra.ops.base._
 </span>
@@ -58,7 +58,7 @@
 </span>
 <span class="n">flocks</span><span class="o">.</span><span class="n">show</span>
 <span class="c1">// res0: String = 32.0 Log [W]
-</span></code></pre></div>
+</span></code></pre></div></div>
 </section></div></div></div></div><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="/libra/highlight/highlight.pack.js"></script><script>hljs.configure({
 languages:['scala','java','bash']
 });

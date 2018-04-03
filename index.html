@@ -6,10 +6,10 @@
 
 <p>Add this to your <code class="highlighter-rouge">build.sbt</code>:</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.3.0"</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.3.0"</span>
 <span class="n">scalaOrganization</span> <span class="o">:=</span> <span class="s">"org.typelevel"</span>
 <span class="n">scalacOptions</span> <span class="o">+=</span> <span class="s">"-Yliteral-types"</span>
-</code></pre></div>
+</code></pre></div></div>
 
 <p>This adds <a href="http://typelevel.org/scala/">Typelevel Scala</a>.</p>
 
@@ -17,12 +17,12 @@
 
 <p>Example usage:</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
 <span class="c1">// import spire.implicits._
 </span>
-<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
+<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">implicits</span><span class="o">.</span><span class="k">_</span>
 <span class="c1">// import libra._
-// import libra.si._
+// import libra.implicits._
 </span>
 <span class="o">(</span><span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">m</span><span class="o">).</span><span class="n">show</span>
 <span class="c1">// res0: String = 5 m [L]
@@ -39,17 +39,17 @@
 <span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">2.</span><span class="n">kg</span> <span class="c1">// This should fail
 // &lt;console&gt;:22: error: These quantities can't be added!
 // Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
-// Left: libra.Quantity[Int,libra.Term[libra.si.package.Length,libra.si.package.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
-// Right: libra.Quantity[Int,libra.Term[libra.si.package.Mass,libra.si.package.Kilogram,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Left: libra.Quantity[Int,libra.Term[libra.Length,libra.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Right: libra.Quantity[Int,libra.Term[libra.Mass,libra.Kilogram,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
 //        3.m + 2.kg // This should fail
 //            ^
-</span></code></pre></div>
+</span></code></pre></div></div>
 
 <h2 id="why">Why?</h2>
 <p>When we deal with numeric quantities, we often resort to <code class="highlighter-rouge">Int</code>, <code class="highlighter-rouge">Double</code> or <code class="highlighter-rouge">Float</code> types.
 These are incommunicative and error prone.</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span> <span class="c1">// 3 m
 // distance: Double = 3.0
 </span>
 <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span> <span class="c1">// 2 s
@@ -57,36 +57,36 @@ These are incommunicative and error prone.</p>
 </span>
 <span class="k">val</span> <span class="n">speed</span> <span class="k">=</span> <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span> <span class="c1">// Oh no!
 // speed: Double = 5.0
-</span></code></pre></div>
+</span></code></pre></div></div>
 
 <p>There’s a mistake in our formula, but we won’t know without a decent set of tests.</p>
 
 <p>Libra provides a <code class="highlighter-rouge">Quantity</code> which wraps base numeric types.  It supports <strong>compile time dimensional analysis</strong>.</p>
 
-<div class="language-scala highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nn">spire.implicits._</span>
 <span class="c1">// import spire.implicits._
 </span>
-<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">si</span><span class="o">.</span><span class="k">_</span>
+<span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">implicits</span><span class="o">.</span><span class="k">_</span>
 <span class="c1">// import libra._
-// import libra.si._
+// import libra.implicits._
 </span>
 <span class="k">val</span> <span class="n">distance</span> <span class="k">=</span> <span class="mf">3.0</span><span class="o">.</span><span class="n">m</span>
-<span class="c1">// distance: libra.QuantityOf[Double,libra.si.package.Length,libra.si.package.Metre] = Quantity(3.0)
+<span class="c1">// distance: libra.QuantityOf[Double,libra.Length,libra.Metre] = Quantity(3.0)
 </span>
 <span class="k">val</span> <span class="n">time</span> <span class="k">=</span> <span class="mf">2.0</span><span class="o">.</span><span class="n">s</span>
-<span class="c1">// time: libra.QuantityOf[Double,libra.si.package.Time,libra.si.package.Second] = Quantity(2.0)
+<span class="c1">// time: libra.QuantityOf[Double,libra.Time,libra.Second] = Quantity(2.0)
 </span>
 <span class="n">distance</span> <span class="o">+</span> <span class="n">time</span>
 <span class="c1">// &lt;console&gt;:33: error: These quantities can't be added!
 // Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
-// Left: libra.Quantity[Double,libra.Term[libra.si.package.Length,libra.si.package.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
-// Right: libra.Quantity[Double,libra.Term[libra.si.package.Time,libra.si.package.Second,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Left: libra.Quantity[Double,libra.Term[libra.Length,libra.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
+// Right: libra.Quantity[Double,libra.Term[libra.Time,libra.Second,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
 //        distance + time
 //                 ^
 </span>
 <span class="o">(</span><span class="n">distance</span> <span class="o">/</span> <span class="n">time</span><span class="o">).</span><span class="n">show</span> <span class="c1">// Yay!
 // res6: String = 1.5 m s^-1 [L T^-1]
-</span></code></pre></div>
+</span></code></pre></div></div>
 
 <h2 id="do-i-have-to-use-typelevel-scala">Do I have to use Typelevel Scala?</h2>
 
