@@ -11,7 +11,7 @@ Libra supports JDK 8, scala versions 2.11.11 and 2.12.4.
 Add this to your `build.sbt`:
 
 ```scala
-libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.3.0"
+libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.4.0"
 scalaOrganization := "org.typelevel"
 scalacOptions += "-Yliteral-types"
 ```
