@@ -16,6 +16,7 @@ Take a look at the [guide](https://to-ithaca.github.io/libra/) for what it is an
 
 libra | shapeless | spire | singleton-ops
 ------|-----------|-------|--------------
+0.4.0 | 2.3.3 | 0.14.1 | 0.2.2
 0.3.0 | 2.3.2 | 0.14.1 | 0.2.2
 0.2.0 | 2.3.2 | 0.13.0 | 0.0.3
 

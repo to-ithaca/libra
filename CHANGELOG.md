@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.4.0 (02/04/2018)
+
+This release brings a huge revamp to the internal package structure, making Libra a lot easier to extend with new units.  The imports are now:
+
+```scala
+import libra._
+import libra.implicits._
+```
+
+### Upgrades
+
+Shapeless has been upgraded to 2.3.3
+
+### Notable PRs
+
+* [#60](https://github.com/to-ithaca/libra/pull/60) Refactor package structure
+* [#59](https://github.com/to-ithaca/libra/pull/59) Add `as` method to align quantities of the same dimension
+* [#58](https://github.com/to-ithaca/libra/pull/58) Upgrade shapeless to 2.3.3
+
+
 ## v0.3.0 (26/12/2017)
 
 This release has been very long in coming, and brings a whole host of changes, the most notable being the removal of the user dependency on Typelevel Scala and the new angular units.
