@@ -59,7 +59,7 @@ distance + time
 
 ## Do I have to use Typelevel Scala?
 
-No, althout it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn't been added to Lightbend Scala yet.  You can use [shapeless](https://github.com/milessabin/shapeless) witnesses to get the same behaviour.  Take a look at the code snippets in this [example project](https://github.com/to-ithaca/libra-example).
+No, although it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn't been added to Lightbend Scala yet.  You can use [shapeless](https://github.com/milessabin/shapeless) witnesses to get the same behaviour.  Take a look at the code snippets in this [example project](https://github.com/to-ithaca/libra-example).
 
 
 ## Credits
