@@ -34,6 +34,22 @@ Libra is build using [sbt](http://www.scala-sbt.org/).  Run `sbt`, and then `com
 
 Travis will run tests with every pull request, but running them locally with `sbt test` might save you some time.
 
+### Docs
+
+Libra uses [sbt-microsites](https://github.com/47deg/sbt-microsites) to generate its site and docs.  This uses [jekyll](https://jekyllrb.com/) to build and serve the site.
+
+The microsite can be built and served using:
+
+```sh
+sbt makeMicrosite
+cd target/site
+jekyll serve
+```
+
+You can check it by navigating to http://localhost:4000/libra/
+
+More information on setting up and building can be found in the [sbt-microsites guide](https://47deg.github.io/sbt-microsites/docs/index.html).
+
 ### Make a pull request
 
 Once you've got some code you want to contribute, you can [make a pull request](https://github.com/to-ithaca/libra/pulls/new).
@@ -56,4 +72,5 @@ This document is heavily based on the [http4s contributor guide](https://github.
 The following people have helped made Libra great:
 
 - [Łukasz Drygała](https://github.com/ldrygala)
-
+- [Daniela Sfregola](https://github.com/DanielaSfregola)
+- [Enric Sangrà Navarro](https://github.com/enricsangra)
