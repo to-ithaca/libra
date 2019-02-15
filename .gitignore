@@ -25,3 +25,8 @@ project/plugins/project/
 
 # Emacs specific
 \#*#
+
+# Bloop, Metals
+.bloop/
+project/.bloop
+.metals/
