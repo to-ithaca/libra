@@ -6,14 +6,13 @@ import com.typesafe.sbt.pgp.PgpKeys._
 
 lazy val buildSettings = inThisBuild(
   Seq(
-    scalaOrganization := "org.typelevel",
-    scalaVersion := "2.12.4-bin-typelevel-4"
+    scalaVersion := "2.12.8"
   )) ++ Seq(
   organization := "com.github.to-ithaca",
   licenses += ("Apache-2.0", url(
     "https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := "2.12.4-bin-typelevel-4" :: "2.11.11-bin-typelevel-4" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.11.11" :: Nil,
   name := "libra"
 )
 
@@ -26,7 +25,6 @@ lazy val commonScalacOptions = Seq(
   "-language:experimental.macros",
   "-language:postfixOps",
   "-Ypartial-unification",
-  "-Yliteral-types"
 )
 
 lazy val commonResolvers = Seq(

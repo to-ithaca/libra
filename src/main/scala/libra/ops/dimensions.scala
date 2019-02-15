@@ -157,7 +157,7 @@ object dimensions {
                                              T <: HList,
                                              TOut <: HList,
                                              Out0 <: HList](
-        implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
+        implicit ev0: fraction.Multiply.Aux[F, Fraction[P, W.`1`.T], PF],
         ev1: Aux[P, T, TOut],
         ev2: fraction.Valid[PF]
     ): Aux[P, Term[D, U, F] :: T, Term[D, U, PF] :: TOut] =
@@ -173,7 +173,7 @@ object dimensions {
                                                T <: HList,
                                                TOut <: HList,
                                                Out0 <: HList](
-        implicit ev0: fraction.Multiply.Aux[F, Fraction[P, 1], PF],
+        implicit ev0: fraction.Multiply.Aux[F, Fraction[P, W.`1`.T], PF],
         ev1: Aux[P, T, TOut],
         ev2: Refute[fraction.Valid[PF]]
     ): Aux[P, Term[D, U, F] :: T, TOut] = new Power[P, Term[D, U, F] :: T] {
@@ -202,7 +202,7 @@ object dimensions {
                                        PF <: Fraction[_, _],
                                        T <: HList,
                                        TOut <: HList](
-        implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
+        implicit ev0: fraction.Multiply.Aux[F, Fraction[W.`1`.T, P], PF],
         ev1: Aux[P, T, TOut],
         ev2: fraction.Valid[PF]
     ): Aux[P, Term[D, U, F] :: T, Term[D, U, PF] :: TOut] =
@@ -217,7 +217,7 @@ object dimensions {
                                               PF <: Fraction[_, _],
                                               T <: HList,
                                               TOut <: HList](
-        implicit ev0: fraction.Multiply.Aux[F, Fraction[1, P], PF],
+        implicit ev0: fraction.Multiply.Aux[F, Fraction[W.`1`.T, P], PF],
         ev1: Aux[P, T, TOut],
         ev2: Refute[fraction.Valid[PF]]
     ): Aux[P, Term[D, U, F] :: T, TOut] = new Root[P, Term[D, U, F] :: T] {
@@ -285,7 +285,7 @@ object dimensions {
                                                 T <: HList](
         implicit showDimension: base.Show[D],
         showTail: ShowDimension[T],
-        ev0: Require[FD != 1],
+        ev0: Require[FD != W.`1`.T],
         numerator: SafeInt[FN],
         denominator: SafeInt[FD]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
@@ -300,7 +300,7 @@ object dimensions {
                                                  T <: HList](
         implicit showDimension: base.Show[D],
         showTail: ShowDimension[T],
-        ev0: Require[FD == 1],
+        ev0: Require[FD == W.`1`.T],
         ev1: LowPriority,
         numerator: SafeInt[FN]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
@@ -315,8 +315,8 @@ object dimensions {
                                                  T <: HList](
         implicit showDimension: base.Show[D],
         showTail: ShowDimension[T],
-        ev0: Require[FD == 1],
-        ev1: Require[FN == 1],
+        ev0: Require[FD == W.`1`.T],
+        ev1: Require[FN == W.`1`.T],
         numerator: SafeInt[FN],
         denominator: SafeInt[FD]) =
       new ShowDimension[Term[D, U, Fraction[FN, FD]] :: T] {
@@ -341,7 +341,7 @@ object dimensions {
                                            T <: HList](
         implicit showUnit: base.Show[U],
         showTail: ShowUnit[T],
-        ev0: Require[FD != 1],
+        ev0: Require[FD != W.`1`.T],
         numerator: SafeInt[FN],
         denominator: SafeInt[FD]) =
       new ShowUnit[Term[D, U, Fraction[FN, FD]] :: T] {
@@ -356,7 +356,7 @@ object dimensions {
                                             T <: HList](
         implicit showUnit: base.Show[U],
         showTail: ShowUnit[T],
-        ev0: Require[FD == 1],
+        ev0: Require[FD == W.`1`.T],
         ev1: LowPriority,
         numerator: SafeInt[FN],
         denominator: SafeInt[FD]) =
@@ -371,8 +371,8 @@ object dimensions {
                                             T <: HList](
         implicit showUnit: base.Show[U],
         showTail: ShowUnit[T],
-        ev0: Require[FD == 1],
-        ev1: Require[FN == 1],
+        ev0: Require[FD == W.`1`.T],
+        ev1: Require[FN == W.`1`.T],
         numerator: SafeInt[FN],
         denominator: SafeInt[FD]) =
       new ShowUnit[Term[D, U, Fraction[FN, FD]] :: T] {

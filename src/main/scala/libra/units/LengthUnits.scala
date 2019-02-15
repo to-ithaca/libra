@@ -1,19 +1,21 @@
 package libra
 package units
 
+import shapeless.{ Witness => W }
+
 trait LengthUnits {
 
   type Length
 
-  type Kilometre = MetricUnit[3, Length]
-  type Metre = MetricUnit[0, Length]
-  type Decimetre = MetricUnit[-1, Length]
-  type Centimetre = MetricUnit[-2, Length]
-  type Millimetre = MetricUnit[-3, Length]
-  type Micrometre = MetricUnit[-6, Length]
-  type Nanometre = MetricUnit[-9, Length]
-  type Picometre = MetricUnit[-12, Length]
-  type Femtometre = MetricUnit[-15, Length]
-  type Attometre = MetricUnit[-18, Length]
+  type Kilometre  = MetricUnit[W.`  3`.T, Length]
+  type Metre      = MetricUnit[W.`  0`.T, Length]
+  type Decimetre  = MetricUnit[W.` -1`.T, Length]
+  type Centimetre = MetricUnit[W.` -2`.T, Length]
+  type Millimetre = MetricUnit[W.` -3`.T, Length]
+  type Micrometre = MetricUnit[W.` -6`.T, Length]
+  type Nanometre  = MetricUnit[W.` -9`.T, Length]
+  type Picometre  = MetricUnit[W.`-12`.T, Length]
+  type Femtometre = MetricUnit[W.`-15`.T, Length]
+  type Attometre  = MetricUnit[W.`-18`.T, Length]
 
 }

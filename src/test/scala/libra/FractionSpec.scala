@@ -1,43 +1,43 @@
 package libra
 
 import org.scalatest._
-import shapeless._
+import shapeless.{ Witness => W, _ }
 import singleton.ops._
 import libra.ops.fraction._
 
 class FractionSpec extends FlatSpec {
 
   it should "find the greatest common divisor" in {
-    the[GCD.Aux[6, 6, 6]]
-    the[GCD.Aux[6, 3, 3]]
-    the[GCD.Aux[12, 8, 4]]
-    the[GCD.Aux[7, 5, 1]]
-    the[GCD.Aux[5, 7, 1]]
+    the[GCD.Aux[W.` 6`.T, W.`6`.T, W.`6`.T]]
+    the[GCD.Aux[W.` 6`.T, W.`3`.T, W.`3`.T]]
+    the[GCD.Aux[W.`12`.T, W.`8`.T, W.`4`.T]]
+    the[GCD.Aux[W.` 7`.T, W.`5`.T, W.`1`.T]]
+    the[GCD.Aux[W.` 5`.T, W.`7`.T, W.`1`.T]]
   }
 
   it should "negate" in {
-    the[Negate.Aux[Fraction[1, 1], Fraction[-1, 1]]]
+    the[Negate.Aux[Fraction[W.`1`.T, W.`1`.T], Fraction[W.`-1`.T, W.`1`.T]]]
   }
 
   it should "simplify" in {
-    the[Simplify.Aux[Fraction[12, 8], Fraction[3, 2]]]
-    the[Simplify.Aux[Fraction[8, 12], Fraction[2, 3]]]
-    the[Simplify.Aux[Fraction[-8, 12], Fraction[-2, 3]]]
-    the[Simplify.Aux[Fraction[1, 1], Fraction[1, 1]]]
+    the[Simplify.Aux[Fraction[W.`12`.T, W.` 8`.T], Fraction[W.` 3`.T, W.`2`.T]]]
+    the[Simplify.Aux[Fraction[W.` 8`.T, W.`12`.T], Fraction[W.` 2`.T, W.`3`.T]]]
+    the[Simplify.Aux[Fraction[W.`-8`.T, W.`12`.T], Fraction[W.`-2`.T, W.`3`.T]]]
+    the[Simplify.Aux[Fraction[W.` 1`.T, W.` 1`.T], Fraction[W.` 1`.T, W.`1`.T]]]
   }
 
   it should "add" in {
-    the[Add.Aux[Fraction[1, 3], Fraction[2, 3], Fraction[1, 1]]]
-    the[Add.Aux[Fraction[1, 3], Fraction[-2, 3], Fraction[-1, 3]]]
-    the[Add.Aux[Fraction[1, 1], Fraction[-1, 1], Fraction[0, 1]]]
-    the[Add.Aux[Fraction[1, 1], Fraction[1, 1], Fraction[2, 1]]]
+    the[Add.Aux[Fraction[W.`1`.T, W.`3`.T], Fraction[W.` 2`.T, W.`3`.T], Fraction[W.` 1`.T, W.`1`.T]]]
+    the[Add.Aux[Fraction[W.`1`.T, W.`3`.T], Fraction[W.`-2`.T, W.`3`.T], Fraction[W.`-1`.T, W.`3`.T]]]
+    the[Add.Aux[Fraction[W.`1`.T, W.`1`.T], Fraction[W.`-1`.T, W.`1`.T], Fraction[W.` 0`.T, W.`1`.T]]]
+    the[Add.Aux[Fraction[W.`1`.T, W.`1`.T], Fraction[W.` 1`.T, W.`1`.T], Fraction[W.` 2`.T, W.`1`.T]]]
   }
 
   it should "subtract" in {
-    the[Subtract.Aux[Fraction[2, 3], Fraction[-1, 3], Fraction[1, 1]]]
+    the[Subtract.Aux[Fraction[W.`2`.T, W.`3`.T], Fraction[W.`-1`.T, W.`3`.T], Fraction[W.`1`.T, W.`1`.T]]]
   }
 
   it should "multiply" in {
-    the[Multiply.Aux[Fraction[2, 3], Fraction[4, 3], Fraction[8, 9]]]
+    the[Multiply.Aux[Fraction[W.`2`.T, W.`3`.T], Fraction[W.`4`.T, W.`3`.T], Fraction[W.`8`.T, W.`9`.T]]]
   }
 }

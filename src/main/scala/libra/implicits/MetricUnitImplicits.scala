@@ -9,16 +9,16 @@ import singleton.ops._
 
 trait MetricUnitImplicits {
 
-  implicit val killoShow: Show[3] = Show("k")
-  implicit val zeroShow: Show[0] = Show("")
-  implicit val deciShow: Show[-1] = Show("d")
-  implicit val centiShow: Show[-2] = Show("c")
-  implicit val milliShow: Show[-3] = Show("m")
-  implicit val microShow: Show[-6] = Show("μ")
-  implicit val nanoShow: Show[-9] = Show("n")
-  implicit val picoShow: Show[-12] = Show("p")
-  implicit val femtoShow: Show[-15] = Show("f")
-  implicit val attoShow: Show[-18] = Show("a")
+  implicit val killoShow: Show[W.`  3`.T] = Show("k")
+  implicit val zeroShow:  Show[W.`  0`.T] = Show("")
+  implicit val deciShow:  Show[W.` -1`.T] = Show("d")
+  implicit val centiShow: Show[W.` -2`.T] = Show("c")
+  implicit val milliShow: Show[W.` -3`.T] = Show("m")
+  implicit val microShow: Show[W.` -6`.T] = Show("μ")
+  implicit val nanoShow:  Show[W.` -9`.T] = Show("n")
+  implicit val picoShow:  Show[W.`-12`.T] = Show("p")
+  implicit val femtoShow: Show[W.`-15`.T] = Show("f")
+  implicit val attoShow:  Show[W.`-18`.T] = Show("a")
 
   implicit def metricConversion[A, D, PF <: XInt, PT <: XInt](
     implicit c: ConvertableTo[A],

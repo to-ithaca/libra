@@ -21,7 +21,7 @@ object fraction {
     implicit def fractionBaseGCD[A <: XInt, B <: XInt, Rem <: XInt](
         implicit ev0: Require[A >= B],
         ev1: OpInt.Aux[A % B, Rem],
-        ev2: Require[Rem == 0]): Aux[A, B, B] = new GCD[A, B] {
+        ev2: Require[Rem == W.`0`.T]): Aux[A, B, B] = new GCD[A, B] {
       type Out = B
     }
 
@@ -31,7 +31,7 @@ object fraction {
                                     D <: XInt](
         implicit ev0: Require[A >= B],
         ev1: OpInt.Aux[A % B, Rem],
-        ev2: Require[Rem != 0],
+        ev2: Require[Rem != W.`0`.T],
         ev3: Aux[B, Rem, D]): Aux[A, B, D] = new GCD[A, B] {
       type Out = D
     }
@@ -57,7 +57,7 @@ object fraction {
     }
 
     implicit def fractionNegate[N <: XInt, D <: XInt, NN <: XInt](
-        implicit ev: OpInt.Aux[0 - N, NN]
+        implicit ev: OpInt.Aux[W.`0`.T - N, NN]
     ): Aux[Fraction[N, D], Fraction[NN, D]] = new Negate[Fraction[N, D]] {
       type Out = Fraction[NN, D]
     }
@@ -78,7 +78,7 @@ object fraction {
                                           C <: XInt,
                                           SN <: XInt,
                                           SD <: XInt](
-        implicit ev0: Require[N > 0],
+        implicit ev0: Require[N > W.`0`.T],
         gcd: GCD.Aux[N, D, C],
         n: OpInt.Aux[N / C, SN],
         d: OpInt.Aux[D / C, SD]
@@ -91,7 +91,7 @@ object fraction {
                                           F <: Fraction[_, _],
                                           SNF <: Fraction[_, _],
                                           SF <: Fraction[_, _]](
-        implicit ev: Require[N < 0],
+        implicit ev: Require[N < W.`0`.T],
         ev1: Negate.Aux[Fraction[N, D], F],
         ev2: Aux[F, SNF],
         ev3: Negate.Aux[SNF, SF]): Aux[Fraction[N, D], SF] =
@@ -100,8 +100,8 @@ object fraction {
       }
 
     implicit def fractionSimplifyZero[D <: XInt]
-      : Aux[Fraction[0, D], Fraction[0, D]] = new Simplify[Fraction[0, D]] {
-      type Out = Fraction[0, D]
+      : Aux[Fraction[W.`0`.T, D], Fraction[W.`0`.T, D]] = new Simplify[Fraction[W.`0`.T, D]] {
+      type Out = Fraction[W.`0`.T, D]
     }
   }
 
@@ -184,8 +184,8 @@ object fraction {
 
   object Valid {
     implicit def valid[FN <: XInt, FD <: XInt](
-        implicit ev0: Require[FN != 0],
-        ev1: Require[FD != 0]): Valid[Fraction[FN, FD]] =
+        implicit ev0: Require[FN != W.`0`.T],
+        ev1: Require[FD != W.`0`.T]): Valid[Fraction[FN, FD]] =
       new Valid[Fraction[FN, FD]] {}
   }
 }
