@@ -285,12 +285,12 @@ case class Quantity[A, D <: HList](value: A) extends AnyVal {
 
 object Quantity {
 
-  implicit def quantityModule[A, D <: HList](
-      implicit R: Ring[A],
-      ev: Align[D, D]): Module[Quantity[A, D], A] = {
-    new Module[Quantity[A, D], A] {
+  implicit def quantityCModule[A, D <: HList](
+      implicit R: CRing[A],
+      ev: Align[D, D]): CModule[Quantity[A, D], A] = {
+    new CModule[Quantity[A, D], A] {
 
-      implicit def scalar: Rng[A] = R
+      val scalar: CRing[A] = R
 
       def negate(x: Quantity[A, D]): Quantity[A, D] = x.negate
       def zero: Quantity[A, D] = Quantity(R.zero)

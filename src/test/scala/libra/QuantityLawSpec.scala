@@ -21,7 +21,7 @@ class QuantityLawSpec extends FunSuite with Discipline {
     implicitly[Order[Quantity[Double, HNil]]]
     implicitly[Eq[Quantity[Double, HNil]]]
     implicitly[Signed[Quantity[Double, HNil]]]
-    implicitly[Module[Quantity[Double, HNil], Double]]
+    implicitly[CModule[Quantity[Double, HNil], Double]]
     implicitly[AdditiveSemigroup[Quantity[Double, HNil]]]
     implicitly[AdditiveMonoid[Quantity[Double, HNil]]]
     implicitly[AdditiveGroup[Quantity[Double, HNil]]]
