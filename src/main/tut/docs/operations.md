@@ -9,6 +9,7 @@ position: 1
 Be sure to import spire's implicits
 
 ```tut
+import shapeless.syntax.singleton._
 import spire.implicits._
 import libra._, libra.implicits._
 ```
@@ -62,7 +63,7 @@ You can use euclidean division for discrete numbers:
 Here's how you raise quantities to a power:
 
 ```tut:book
-(3.0.m^(3)).show
+(3.0.m^(3.narrow)).show
 ```
 
 ### Inverse

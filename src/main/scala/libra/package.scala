@@ -1,4 +1,4 @@
-import shapeless._
+import shapeless.{ Witness => W, _ }
 
 package object libra extends units.All {
 
@@ -14,24 +14,24 @@ package object libra extends units.All {
   type TermValue[U <: UnitOfMeasure[_], E <: Fraction[_, _]] = (U, E)
 
   /** Aliases a quantity with single unit */
-  type QuantityOf[A, D, U <: UnitOfMeasure[D]] = Quantity[A, Term[D, U, Fraction[1, 1]] :: HNil]
+  type QuantityOf[A, D, U <: UnitOfMeasure[D]] = Quantity[A, Term[D, U, Fraction[W.`1`.T, W.`1`.T]] :: HNil]
 
 
   /** Aliases to composite units */
 
   // They have to go somewhere, so may as well go here
   type VelocityQuantity[A, L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
-    Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
+    Quantity[A, Term[Length, L, Fraction[W.`1`.T, W.`1`.T]] :: Term[Time, T, Fraction[W.`-1`.T, W.`1`.T]] :: HNil]
 
   type AccelerationQuantity[A, L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
-    Quantity[A, Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
+    Quantity[A, Term[Length, L, Fraction[W.`1`.T, W.`1`.T]] :: Term[Time, T, Fraction[W.`-2`.T, W.`1`.T]] :: HNil]
 
   type MomentumQuantity[A, M <: UnitOfMeasure[Mass], L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
-    Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
+    Quantity[A, Term[Mass, M, Fraction[W.`1`.T, W.`1`.T]] :: Term[Length, L, Fraction[W.`1`.T, W.`1`.T]] :: Term[Time, T, Fraction[W.`-1`.T, W.`1`.T]] :: HNil]
 
   type ForceQuantity[A, M <: UnitOfMeasure[Mass], L <: UnitOfMeasure[Length], T <: UnitOfMeasure[Time]] =
-    Quantity[A, Term[Mass, M, Fraction[1, 1]] :: Term[Length, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-2, 1]] :: HNil]
+    Quantity[A, Term[Mass, M, Fraction[W.`1`.T, W.`1`.T]] :: Term[Length, L, Fraction[W.`1`.T, W.`1`.T]] :: Term[Time, T, Fraction[W.`-2`.T, W.`1`.T]] :: HNil]
 
   type AngularVelocityQuantity[A, L <: UnitOfMeasure[Angle], T <: UnitOfMeasure[Time]] =
-    Quantity[A, Term[Angle, L, Fraction[1, 1]] :: Term[Time, T, Fraction[-1, 1]] :: HNil]
+    Quantity[A, Term[Angle, L, Fraction[W.`1`.T, W.`1`.T]] :: Term[Time, T, Fraction[W.`-1`.T, W.`1`.T]] :: HNil]
 }

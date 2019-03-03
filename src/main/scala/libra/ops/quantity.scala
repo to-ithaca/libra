@@ -144,7 +144,7 @@ Right: ${R}""")
       new EuclideanDivide[Quantity[A, LD], Quantity[A, RD]] {
         type Out = Quantity[A, DOut]
         def apply(l: Quantity[A, LD], r: Quantity[A, RD]): Out =
-          Quantity[A, DOut](l.value /~ r.value)
+          Quantity[A, DOut](l.value equot r.value)
       }
   }
 
