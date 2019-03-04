@@ -1,5 +1,20 @@
 # Changelog
 
+## v0.5.0 (04/03/2019)
+
+Libra has been revived!
+
+This release drops Typelevel Scala as a result of [some long-standing issues](https://github.com/typelevel/scala/issues/166).  Integer literals in type signatures must now be referred through through a shapeless `Witness`.
+
+The Lightbend Scala versions are `2.11.11` and `2.12.8`.
+
+Thank you **@tpolecat** for undertaking this stellar task :stars: !
+
+### Notable PRs
+
+* [#67] (https://github.com/to-ithaca/libra/pull/67) Update dependencies, remove TLS
+
+
 ## v0.4.0 (02/04/2018)
 
 This release brings a huge revamp to the internal package structure, making Libra a lot easier to extend with new units.  The imports are now:

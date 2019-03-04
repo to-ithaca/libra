@@ -118,7 +118,7 @@ val publishSettings = Seq(
 )
 
 lazy val mimaSettings = Seq(
-  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.4.0")
+  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.5.0")
 )
 
 lazy val root = (project in file("."))
