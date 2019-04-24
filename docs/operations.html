@@ -2,7 +2,10 @@
 
 <p>Be sure to import spire’s implicits</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spire.implicits._</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">shapeless.syntax.singleton._</span>
+<span class="k">import</span> <span class="nn">shapeless.syntax.singleton._</span>
+
+<span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">spire.implicits._</span>
 <span class="k">import</span> <span class="nn">spire.implicits._</span>
 
 <span class="n">scala</span><span class="o">&gt;</span> <span class="k">import</span> <span class="nn">libra._</span><span class="o">,</span> <span class="n">libra</span><span class="o">.</span><span class="n">implicits</span><span class="o">.</span><span class="k">_</span>
@@ -28,7 +31,7 @@ Here we’re using spire’s rationals:</p>
 <p>But you can only add quantities of the same dimension:</p>
 
 <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="mf">3.</span><span class="n">m</span> <span class="o">+</span> <span class="mf">4.</span><span class="n">kg</span>
-<span class="c1">// &lt;console&gt;:22: error: These quantities can't be added!
+<span class="c1">// &lt;console&gt;:25: error: These quantities can't be added!
 // Most likely they have different dimensions.  If not, make sure that there's an implicit AdditiveSemigroup in scope.
 // Left: libra.Quantity[Int,libra.Term[libra.Length,libra.Metre,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
 // Right: libra.Quantity[Int,libra.Term[libra.Mass,libra.Kilogram,libra.Fraction[Int(1),Int(1)]] :: shapeless.HNil]
@@ -63,7 +66,7 @@ Here we’re using spire’s rationals:</p>
 <h3 id="power">Power</h3>
 <p>Here’s how you raise quantities to a power:</p>
 
-<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="mf">3.0</span><span class="o">.</span><span class="n">m</span><span class="o">^(</span><span class="mi">3</span><span class="o">)).</span><span class="n">show</span>
+<div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">(</span><span class="mf">3.0</span><span class="o">.</span><span class="n">m</span><span class="o">^(</span><span class="mf">3.</span><span class="n">narrow</span><span class="o">)).</span><span class="n">show</span>
 <span class="c1">// res7: String = 27.0 m^3 [L^3]
 </span></code></pre></div></div>
 

@@ -7,11 +7,7 @@
 <p>Add this to your <code class="highlighter-rouge">build.sbt</code>:</p>
 
 <div class="language-scala highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">libraryDependencies</span> <span class="o">+=</span> <span class="s">"com.github.to-ithaca"</span> <span class="o">%%</span> <span class="s">"libra"</span> <span class="o">%</span> <span class="s">"0.4.0"</span>
-<span class="n">scalaOrganization</span> <span class="o">:=</span> <span class="s">"org.typelevel"</span>
-<span class="n">scalacOptions</span> <span class="o">+=</span> <span class="s">"-Yliteral-types"</span>
 </code></pre></div></div>
-
-<p>This adds <a href="http://typelevel.org/scala/">Typelevel Scala</a>.</p>
 
 <h2 id="tldr">TL;DR</h2>
 
@@ -88,13 +84,9 @@ These are incommunicative and error prone.</p>
 // res6: String = 1.5 m s^-1 [L T^-1]
 </span></code></pre></div></div>
 
-<h2 id="do-i-have-to-use-typelevel-scala">Do I have to use Typelevel Scala?</h2>
-
-<p>No, although it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn’t been added to Lightbend Scala yet.  You can use <a href="https://github.com/milessabin/shapeless">shapeless</a> witnesses to get the same behaviour.  Take a look at the code snippets in this <a href="https://github.com/to-ithaca/libra-example">example project</a>.</p>
-
 <h2 id="credits">Credits</h2>
 
-<p>Libra makes heavy use of <a href="https://github.com/typelevel/scala">Typelevel Scala</a>, <a href="https://github.com/milessabin/shapeless">shapeless</a>, <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It wouldn’t be possible without these projects, their authors and contributors, so if you like Libra, please check them out.</p>
+<p>In its incubation, Libra made heavy use of <a href="https://github.com/typelevel/scala">Typelevel Scala</a>, <a href="https://github.com/milessabin/shapeless">shapeless</a> and still makes use of <a href="https://github.com/non/spire">spire</a> and <a href="https://github.com/fthomas/singleton-ops">singleton-ops</a>.  It wouldn’t be possible without these projects, their authors and contributors, so if you like Libra, please check them out.</p>
 
 <p>Libra also uses:</p>
 
