@@ -7,7 +7,7 @@ As an open source project, Libra gladly welcomes contributions.  We're really ha
 ## Raise an issue
 
 If you have found a bug, or have an idea for something new, please don't hesitate to [raise an issue](https://github.com/to-ithaca/libra/issues/new).
-We'll discuss your idea on the issue, and someone else might decide to implement it.  
+We'll discuss your idea on the issue, and someone else might decide to implement it.
 
 ## Submit a pull request
 Libra uses the [fork and pull](https://help.github.com/articles/about-pull-requests/) model for contributions.
@@ -74,3 +74,4 @@ The following people have helped made Libra great:
 - [Łukasz Drygała](https://github.com/ldrygala)
 - [Daniela Sfregola](https://github.com/DanielaSfregola)
 - [Enric Sangrà Navarro](https://github.com/enricsangra)
+- [Rob Norris](https://github.com/tpolecat)

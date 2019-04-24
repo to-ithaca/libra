@@ -12,13 +12,7 @@ Add this to your `build.sbt`:
 
 ```scala
 libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.4.0"
-scalaOrganization := "org.typelevel"
-scalacOptions += "-Yliteral-types"
 ```
-
-This adds [Typelevel Scala](http://typelevel.org/scala/).
-
-
 
 ## TL;DR
 
@@ -57,14 +51,9 @@ distance + time
 (distance / time).show // Yay!
 ```
 
-## Do I have to use Typelevel Scala?
-
-No, although it does make the syntax nicer.  Libra uses Typelevel Scala for literal types in type position.  This hasn't been added to Lightbend Scala yet.  You can use [shapeless](https://github.com/milessabin/shapeless) witnesses to get the same behaviour.  Take a look at the code snippets in this [example project](https://github.com/to-ithaca/libra-example).
-
-
 ## Credits
 
-Libra makes heavy use of [Typelevel Scala](https://github.com/typelevel/scala), [shapeless](https://github.com/milessabin/shapeless), [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It wouldn't be possible without these projects, their authors and contributors, so if you like Libra, please check them out.
+In its incubation, Libra made heavy use of [Typelevel Scala](https://github.com/typelevel/scala), [shapeless](https://github.com/milessabin/shapeless) and still makes use of [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It wouldn't be possible without these projects, their authors and contributors, so if you like Libra, please check them out.
 
 Libra also uses:
 
