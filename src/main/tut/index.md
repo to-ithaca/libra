@@ -6,7 +6,7 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 ## To Use
 
-Libra supports JDK 8, scala versions 2.11.11 and 2.12.4.
+Libra supports JDK 8, scala versions 2.11.11 and 2.12.8.
 
 Add this to your `build.sbt`:
 
@@ -53,7 +53,7 @@ distance + time
 
 ## Credits
 
-In its incubation, Libra made heavy use of [Typelevel Scala](https://github.com/typelevel/scala), [shapeless](https://github.com/milessabin/shapeless) and still makes use of [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It wouldn't be possible without these projects, their authors and contributors, so if you like Libra, please check them out.
+In its incubation, Libra made heavy use of [Typelevel Scala](https://github.com/typelevel/scala).  It still makes use of [shapeless](https://github.com/milessabin/shapeless), [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It wouldn't be possible without these projects, their authors and contributors, so if you like Libra, please check them out.
 
 Libra also uses:
 
