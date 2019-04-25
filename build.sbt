@@ -59,7 +59,7 @@ lazy val commonSettings = Seq(
     "eu.timepit" %% "singleton-ops" % "0.3.1",
     "org.typelevel" %% "spire" % "0.16.1",
     "org.typelevel" %% "spire-laws" % "0.16.1" % "test",
-    "org.scalatest" %% "scalatest" % "3.0.7" % "test"
+    "org.scalatest" %% "scalatest" % "3.0.6" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest
 ) ++ buildSettings
