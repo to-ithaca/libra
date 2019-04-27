@@ -57,9 +57,9 @@ lazy val commonSettings = Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %% "shapeless" % "2.3.3",
     "eu.timepit" %% "singleton-ops" % "0.3.1",
-    "org.typelevel" %% "spire" % "0.16.0",
-    "org.typelevel" %% "spire-laws" % "0.16.0" % "test",
-    "org.scalatest" %% "scalatest" % "3.0.5" % "test"
+    "org.typelevel" %% "spire" % "0.16.1",
+    "org.typelevel" %% "spire-laws" % "0.16.1" % "test",
+    "org.scalatest" %% "scalatest" % "3.0.6" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest
 ) ++ buildSettings

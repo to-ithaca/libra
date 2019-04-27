@@ -20,6 +20,12 @@ project/plugins/project/
 .ensime
 .ensime_cache/
 
+# IntelliJ specific
+.idea
+
+# Metals specific
+.bloop
+
 # Unix specific
 *~
 
