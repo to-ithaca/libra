@@ -6,13 +6,13 @@ import com.typesafe.sbt.pgp.PgpKeys._
 
 lazy val buildSettings = inThisBuild(
   Seq(
-    scalaVersion := "2.12.8"
+    scalaVersion := "2.13.0"
   )) ++ Seq(
   organization := "com.github.to-ithaca",
   licenses += ("Apache-2.0", url(
     "https://www.apache.org/licenses/LICENSE-2.0.html")),
   homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := scalaVersion.value :: "2.11.11" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.8" :: "2.11.11" :: Nil,
   name := "libra"
 )
 
@@ -23,8 +23,7 @@ lazy val commonScalacOptions = Seq(
   "-language:higherKinds",
   "-language:implicitConversions",
   "-language:experimental.macros",
-  "-language:postfixOps",
-  "-Ypartial-unification",
+  "-language:postfixOps"
 )
 
 lazy val commonResolvers = Seq(
@@ -56,10 +55,10 @@ lazy val commonSettings = Seq(
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %% "shapeless" % "2.3.3",
-    "eu.timepit" %% "singleton-ops" % "0.3.1",
-    "org.typelevel" %% "spire" % "0.16.1",
-    "org.typelevel" %% "spire-laws" % "0.16.1" % "test",
-    "org.scalatest" %% "scalatest" % "3.0.6" % "test"
+    "eu.timepit" %% "singleton-ops" % "0.4.0",
+    "org.typelevel" %% "spire" % "0.17.0-M1",
+    "org.typelevel" %% "spire-laws" % "0.17.0-M1" % "test",
+    "org.scalatest" %% "scalatest" % "3.0.8" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest
 ) ++ buildSettings
