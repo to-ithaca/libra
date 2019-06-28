@@ -120,9 +120,21 @@ lazy val mimaSettings = Seq(
   mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.5.0")
 )
 
-lazy val root = (project in file("."))
+lazy val core = (project in file("core"))
   .settings(commonSettings)
   .settings(publishSettings)
-  .settings(siteSettings)
   .settings(mimaSettings)
+
+lazy val docsSettings = Seq(
+  publishArtifact := false,
+  scalaVersion := "2.12.8",
+  crossScalaVersions := "2.12.8" :: "2.11.11" :: Nil,
+)
+
+lazy val docs = (project in file("docs"))
+  .settings(commonSettings)
+  .settings(publishSettings)
+  .settings(mimaSettings)
+  .settings(siteSettings)
+  .settings(docsSettings)
   .enablePlugins(MicrositesPlugin)
