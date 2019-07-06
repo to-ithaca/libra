@@ -75,7 +75,7 @@ lazy val coreSettings = Seq(
     "org.scalatest" %% "scalatest" % "3.0.8" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
-  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.5.0")
+  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
 )
 
 lazy val core = (project in file("core"))

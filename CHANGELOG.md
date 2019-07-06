@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.6.0 (06/07/2019)
+
+Libra has been released for `2.13.0`!
+
+### Notable PRs
+
+* [#71] (https://github.com/to-ithaca/libra/pull/71) Upgrade to Scala 2.13
+
 ## v0.5.0 (04/03/2019)
 
 Libra has been revived!
