@@ -118,9 +118,7 @@ lazy val docs = (project in file("docs"))
   .dependsOn(core)
 
 lazy val rootSettings = Seq(
-  // The root project shouldn't be published
   crossScalaVersions := Nil,
-  publish / skip := true,
 )
 
 lazy val root = project
