@@ -30,39 +30,38 @@ lazy val buildSettings = inThisBuild(
   )
 )
 
-val releaseSettings = inThisBuild(
-  Seq(
-    publishTo := {
-      val nexus = "https://oss.sonatype.org/"
-      Some("releases" at nexus + "service/local/staging/deploy/maven2")
-    },
-    releaseCrossBuild := true,
-    releaseIgnoreUntrackedFiles := true,
-    sonatypeProfileName := "com.github.to-ithaca",
-    credentials ++= (for {
-      username <- Option(System.getenv().get("SONATYPE_USERNAME"))
-      password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-    } yield
-      Credentials("Sonatype Nexus Repository Manager",
-                  "oss.sonatype.org",
-                  username,
-                  password)).toSeq,
-    releaseProcess := Seq[ReleaseStep](
-      checkSnapshotDependencies,
-      inquireVersions,
-      runClean,
-      releaseStepCommandAndRemaining("+test"),
-      setReleaseVersion,
-      commitReleaseVersion,
-      tagRelease,
-      releaseStepCommandAndRemaining("+publishSigned"),
-      setNextVersion,
-      commitNextVersion,
-      releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
-      pushChanges,
-      releaseStepCommand("++2.12.8 docs/makeMicrosite")
-    )
-  ))
+val releaseSettings = Seq(
+  publishTo := {
+    val nexus = "https://oss.sonatype.org/"
+    Some("releases" at nexus + "service/local/staging/deploy/maven2")
+  },
+  releaseCrossBuild := true,
+  releaseIgnoreUntrackedFiles := true,
+  sonatypeProfileName := "com.github.to-ithaca",
+  credentials ++= (for {
+    username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+    password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+  } yield
+    Credentials("Sonatype Nexus Repository Manager",
+                "oss.sonatype.org",
+                username,
+                password)).toSeq,
+  releaseProcess := Seq[ReleaseStep](
+    checkSnapshotDependencies,
+    inquireVersions,
+    runClean,
+    releaseStepCommandAndRemaining("+test"),
+    setReleaseVersion,
+    commitReleaseVersion,
+    tagRelease,
+    releaseStepCommandAndRemaining("+publishSigned"),
+    setNextVersion,
+    commitNextVersion,
+    releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
+    pushChanges,
+    releaseStepCommand("++2.12.8 docs/makeMicrosite")
+  )
+)
 
 // scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
