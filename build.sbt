@@ -27,8 +27,6 @@ lazy val buildSettings = inThisBuild(
       "-language:experimental.macros",
       "-language:postfixOps"
     ),
-    // Debug the build for the ci machine
-    // logLevel := Level.Debug
   )
 )
 
