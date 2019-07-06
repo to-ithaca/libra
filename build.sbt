@@ -59,7 +59,7 @@ val releaseSettings = Seq(
     commitNextVersion,
     releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
     pushChanges,
-    releaseStepCommand("++2.12.8 docs/makeMicrosite")
+    releaseStepCommand("++2.12.8 docs/publishMicrosite")
   )
 )
 
