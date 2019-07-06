@@ -2,6 +2,7 @@ language: scala
 scala:
 - 2.11.11
 - 2.12.8
+- 2.13.0
 jdk:
 - oraclejdk8
 branches:
@@ -18,7 +19,10 @@ install:
 before_script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi
 script:
-- sbt ++$TRAVIS_SCALA_VERSION clean compile coverage test makeMicrosite coverageReport
+- if [ $TRAVIS_SCALA_VERSION = '2.12.8' ];
+    then sbt ++$TRAVIS_SCALA_VERSION ciMicrosite;
+    else sbt ++$TRAVIS_SCALA_VERSION ci;
+  fi
 - find $HOME/.sbt -name "*.lock" | xargs rm
 - find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
 after_success:

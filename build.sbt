@@ -1,36 +1,89 @@
-import xerial.sbt.Sonatype.autoImport.sonatypeProfileName
 import ReleaseTransformations._
-
-import sbt.sbtpgp.Compat.publishSignedConfigurationTask
-import com.typesafe.sbt.pgp.PgpKeys._
 
 lazy val buildSettings = inThisBuild(
   Seq(
-    scalaVersion := "2.12.8"
-  )) ++ Seq(
-  organization := "com.github.to-ithaca",
-  licenses += ("Apache-2.0", url(
-    "https://www.apache.org/licenses/LICENSE-2.0.html")),
-  homepage := Some(url("https://to-ithaca.github.io/libra/")),
-  crossScalaVersions := scalaVersion.value :: "2.11.11" :: Nil,
-  name := "libra"
+    organization := "com.github.to-ithaca",
+    homepage := Some(url("https://to-ithaca.github.io/libra/")),
+    licenses += ("Apache-2.0", url(
+      "https://www.apache.org/licenses/LICENSE-2.0.html")),
+    developers += Developer("zainab-ali",
+                            "Zainab Ali",
+                            "",
+                            url("http://github.com/zainab-ali")),
+    scmInfo := Some(
+      ScmInfo(url("https://github.com/to-ithaca/libra"),
+              "git@github.com:to-ithaca/libra.git")),
+    scalaVersion := "2.13.0",
+    resolvers := Seq(
+      Resolver.sonatypeRepo("releases"),
+      Resolver.bintrayRepo("fthomas", "maven")
+    ),
+    scalacOptions ++= Seq(
+      "-encoding",
+      "UTF-8",
+      "-language:existentials",
+      "-language:higherKinds",
+      "-language:implicitConversions",
+      "-language:experimental.macros",
+      "-language:postfixOps"
+    ),
+    // Debug the build for the ci machine
+    // logLevel := Level.Debug
+  )
 )
 
-lazy val commonScalacOptions = Seq(
-  "-encoding",
-  "UTF-8",
-  "-language:existentials",
-  "-language:higherKinds",
-  "-language:implicitConversions",
-  "-language:experimental.macros",
-  "-language:postfixOps",
-  "-Ypartial-unification",
+val releaseSettings = inThisBuild(
+  Seq(
+    publishTo := {
+      val nexus = "https://oss.sonatype.org/"
+      Some("releases" at nexus + "service/local/staging/deploy/maven2")
+    },
+    releaseCrossBuild := true,
+    releaseIgnoreUntrackedFiles := true,
+    sonatypeProfileName := "com.github.to-ithaca",
+    credentials ++= (for {
+      username <- Option(System.getenv().get("SONATYPE_USERNAME"))
+      password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
+    } yield
+      Credentials("Sonatype Nexus Repository Manager",
+                  "oss.sonatype.org",
+                  username,
+                  password)).toSeq,
+    releaseProcess := Seq[ReleaseStep](
+      checkSnapshotDependencies,
+      inquireVersions,
+      runClean,
+      releaseStepCommandAndRemaining("+test"),
+      setReleaseVersion,
+      commitReleaseVersion,
+      tagRelease,
+      releaseStepCommandAndRemaining("+publishSigned"),
+      setNextVersion,
+      commitNextVersion,
+      releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
+      pushChanges,
+      releaseStepCommand("++2.12.8 docs/makeMicrosite")
+    )
+  ))
+
+// scalacOptions += "-Ypartial-unification"
+lazy val coreSettings = Seq(
+  crossScalaVersions := scalaVersion.value :: "2.12.8" :: "2.11.11" :: Nil,
+  libraryDependencies ++= Seq(
+    scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
+    "com.chuusai" %% "shapeless" % "2.3.3",
+    "eu.timepit" %% "singleton-ops" % "0.4.0",
+    "org.typelevel" %% "spire" % "0.17.0-M1",
+    "org.typelevel" %% "spire-laws" % "0.17.0-M1" % "test",
+    "org.scalatest" %% "scalatest" % "3.0.8" % "test"
+  ),
+  doctestTestFramework := DoctestTestFramework.ScalaTest,
+  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.5.0")
 )
 
-lazy val commonResolvers = Seq(
-  Resolver.sonatypeRepo("releases"),
-  Resolver.bintrayRepo("fthomas", "maven")
-)
+lazy val core = (project in file("core"))
+  .settings(name := "libra")
+  .settings(coreSettings)
 
 lazy val docsMappingsAPIDir = settingKey[String](
   "Name of subdirectory in site target directory for api docs")
@@ -50,80 +103,37 @@ lazy val siteSettings = Seq(
   autoAPIMappings := true
 )
 
-lazy val commonSettings = Seq(
-  resolvers ++= commonResolvers,
-  scalacOptions ++= commonScalacOptions,
-  libraryDependencies ++= Seq(
-    scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
-    "com.chuusai" %% "shapeless" % "2.3.3",
-    "eu.timepit" %% "singleton-ops" % "0.3.1",
-    "org.typelevel" %% "spire" % "0.16.1",
-    "org.typelevel" %% "spire-laws" % "0.16.1" % "test",
-    "org.scalatest" %% "scalatest" % "3.0.6" % "test"
-  ),
-  doctestTestFramework := DoctestTestFramework.ScalaTest
-) ++ buildSettings
-
-val publishSettings = Seq(
-  publishTo in ThisBuild := {
-    val nexus = "https://oss.sonatype.org/"
-    if (isSnapshot.value)
-      Some("snapshots" at nexus + "content/repositories/snapshots")
-    else
-      Some("releases" at nexus + "service/local/staging/deploy/maven2")
-  },
-  publishSignedConfiguration := {
-    val prev = publishSignedConfigurationTask.value
-    if (isSnapshot.value) {
-      prev.withOverwrite(true)
-    } else prev
-  },
-  releaseCrossBuild := true,
-  releaseIgnoreUntrackedFiles := true,
-  sonatypeProfileName := "com.github.to-ithaca",
-  developers += Developer("zainab-ali",
-                          "Zainab Ali",
-                          "",
-                          url("http://github.com/zainab-ali")),
-  licenses := Seq(
-    "Apache-2.0" -> url("https://www.apache.org/licenses/LICENSE-2.0.html")),
-  homepage := Some(url("http://to-ithaca.github.io/libra/")),
-  scmInfo := Some(
-    ScmInfo(url("https://github.com/to-ithaca/libra"),
-            "git@github.com:to-ithaca/libra.git")),
-  credentials ++= (for {
-    username <- Option(System.getenv().get("SONATYPE_USERNAME"))
-    password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-  } yield
-    Credentials("Sonatype Nexus Repository Manager",
-                "oss.sonatype.org",
-                username,
-                password)).toSeq,
-  releaseProcess := Seq[ReleaseStep](
-    checkSnapshotDependencies,
-    inquireVersions,
-    runClean,
-    runTest,
-    setReleaseVersion,
-    commitReleaseVersion,
-    tagRelease,
-    ReleaseStep(action = releaseStepCommand("publishSigned"),
-                enableCrossBuild = true),
-    setNextVersion,
-    commitNextVersion,
-    ReleaseStep(action = releaseStepCommand("sonatypeReleaseAll"),
-                enableCrossBuild = true),
-    pushChanges
-  )
+lazy val docsSettings = Seq(
+  publishArtifact := false,
+  // sbt-microsites depends on mdoc, which hasn't been published for 2.13.0 yet
+  // @see https://github.com/scalameta/mdoc/issues/156
+  // We use tut to compile sources, but if we use 2.13.0 sbt tries to pull in
+  // mdoc anyway
+  scalaVersion := "2.12.8",
+  crossScalaVersions := "2.12.8" :: "2.11.11" :: Nil,
 )
 
-lazy val mimaSettings = Seq(
-  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.5.0")
-)
-
-lazy val root = (project in file("."))
-  .settings(commonSettings)
-  .settings(publishSettings)
+lazy val docs = (project in file("docs"))
+  .settings(name := "docs")
   .settings(siteSettings)
-  .settings(mimaSettings)
+  .settings(docsSettings)
   .enablePlugins(MicrositesPlugin)
+  .dependsOn(core)
+
+lazy val rootSettings = Seq(
+  // The root project shouldn't be published
+  crossScalaVersions := Nil,
+  publish / skip := true,
+)
+
+lazy val root = project
+  .in(file("."))
+  .settings(buildSettings)
+  .settings(releaseSettings)
+  .settings(rootSettings)
+  .aggregate(core, docs)
+
+addCommandAlias("ci", "; clean ; compile ; coverage ; test ; coverageReport")
+addCommandAlias(
+  "ciMicrosite",
+  "; clean ; compile ; coverage ; test ; coverageReport ; makeMicrosite")
