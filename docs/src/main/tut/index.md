@@ -6,7 +6,7 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 ## To Use
 
-Libra supports JDK 8, scala versions 2.11.11 and 2.12.8.
+Libra supports JDK 8, scala versions 2.11.11, 2.12.8 and 2.13.0.
 
 Add this to your `build.sbt`:
 
