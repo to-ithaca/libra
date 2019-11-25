@@ -128,7 +128,7 @@ lazy val root = project
   .settings(rootSettings)
   .aggregate(core, docs)
 
-addCommandAlias("ci", "; clean ; compile ; coverage ; test ; coverageReport")
+addCommandAlias("ci", "; project core ; clean ; compile ; coverage ; test ; coverageReport")
 addCommandAlias(
   "ciMicrosite",
   "; clean ; compile ; coverage ; test ; coverageReport ; makeMicrosite")
