@@ -1,4 +1,4 @@
-addSbtPlugin("com.github.tkawachi" % "sbt-doctest" % "0.7.2")
+addSbtPlugin("com.github.tkawachi" % "sbt-doctest" % "0.9.6")
 addSbtPlugin("org.tpolecat" % "tut-plugin" % "0.6.13")
 addSbtPlugin("com.47deg" % "sbt-microsites" % "0.9.1")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.0")
