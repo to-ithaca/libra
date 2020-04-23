@@ -13,7 +13,7 @@ lazy val buildSettings = inThisBuild(
     scmInfo := Some(
       ScmInfo(url("https://github.com/to-ithaca/libra"),
               "git@github.com:to-ithaca/libra.git")),
-    scalaVersion := "2.13.0",
+    scalaVersion := "2.13.2",
     resolvers := Seq(
       Resolver.sonatypeRepo("releases"),
       Resolver.bintrayRepo("fthomas", "maven")
@@ -59,13 +59,13 @@ val releaseSettings = Seq(
     commitNextVersion,
     releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
     pushChanges,
-    releaseStepCommand("++2.12.8 docs/publishMicrosite")
+    releaseStepCommand("docs/publishMicrosite")
   )
 )
 
 // scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
-  crossScalaVersions := scalaVersion.value :: "2.12.8" :: "2.11.11" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.11" :: "2.11.12" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %% "shapeless" % "2.3.3",

@@ -1,8 +1,8 @@
 language: scala
 scala:
-- 2.11.11
-- 2.12.8
-- 2.13.0
+- 2.11.12
+- 2.12.11
+- 2.13.2
 jdk:
 - openjdk8
 branches:
@@ -19,7 +19,7 @@ install:
 before_script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi
 script:
-- if [ $TRAVIS_SCALA_VERSION = '2.12.8' ];
+- if [ $TRAVIS_SCALA_VERSION = '2.12.11' ];
     then sbt ++$TRAVIS_SCALA_VERSION ciMicrosite;
     else sbt ++$TRAVIS_SCALA_VERSION ci;
   fi
