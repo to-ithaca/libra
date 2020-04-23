@@ -102,12 +102,6 @@ lazy val siteSettings = Seq(
 
 lazy val docsSettings = Seq(
   publishArtifact := false,
-  // sbt-microsites depends on mdoc, which hasn't been published for 2.13.0 yet
-  // @see https://github.com/scalameta/mdoc/issues/156
-  // We use tut to compile sources, but if we use 2.13.0 sbt tries to pull in
-  // mdoc anyway
-  scalaVersion := "2.12.8",
-  crossScalaVersions := "2.12.8" :: "2.11.11" :: Nil,
 )
 
 lazy val docs = (project in file("docs"))
