@@ -1,4 +1,5 @@
 import ReleaseTransformations._
+import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 lazy val buildSettings = inThisBuild(
   Seq(
@@ -68,19 +69,27 @@ lazy val coreSettings = Seq(
   crossScalaVersions := scalaVersion.value :: "2.12.11" :: "2.11.12" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
-    "com.chuusai" %% "shapeless" % "2.3.3",
-    "eu.timepit" %% "singleton-ops" % "0.5.0",
-    "org.typelevel" %% "spire" % "0.17.0-M1",
-    "org.typelevel" %% "spire-laws" % "0.17.0-M1" % "test",
-    "org.scalatest" %% "scalatest" % "3.1.1" % "test"
+    "com.chuusai" %%% "shapeless" % "2.3.3",
+    "eu.timepit" %%% "singleton-ops" % "0.4.3",
+    "org.typelevel" %%% "spire" % "0.17.0-M1",
+    "org.typelevel" %%% "spire-laws" % "0.17.0-M1" % "test",
+    "org.scalatest" %%% "scalatest" % "3.1.1" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
   mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
 )
 
-lazy val core = (project in file("core"))
-  .settings(name := "libra")
-  .settings(coreSettings)
+lazy val jsSettings = Seq(
+  doctestGenTests := Seq.empty
+)
+
+lazy val core =
+  crossProject(JSPlatform, JVMPlatform)
+    .crossType(CrossType.Pure)
+    .in(file("core"))
+    .settings(name := "libra")
+    .settings(coreSettings)
+    .settings(jsSettings)
 
 lazy val docsMappingsAPIDir = settingKey[String](
   "Name of subdirectory in site target directory for api docs")
@@ -109,7 +118,7 @@ lazy val docs = (project in file("docs"))
   .settings(siteSettings)
   .settings(docsSettings)
   .enablePlugins(MicrositesPlugin)
-  .dependsOn(core)
+  .dependsOn(core.jvm)
 
 lazy val rootSettings = Seq(
   crossScalaVersions := Nil,
@@ -120,7 +129,7 @@ lazy val root = project
   .settings(buildSettings)
   .settings(releaseSettings)
   .settings(rootSettings)
-  .aggregate(core, docs)
+  .aggregate(core.jvm, core.js, docs)
 
 addCommandAlias("ci", "; project core ; clean ; compile ; coverage ; test ; coverageReport")
 addCommandAlias(
