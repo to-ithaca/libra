@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: docs
 ---
 
 Libra is a dimensional analysis library based on [shapeless](https://github.com/milessabin/shapeless), [spire](https://github.com/non/spire) and [singleton-ops](https://github.com/fthomas/singleton-ops).  It contains out of the box support for SI units for all numeric types.
