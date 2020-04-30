@@ -14,7 +14,7 @@ You can convert between quantities of different units, provided that they have t
 ### Basic conversion
 Here's how you convert quantities:
 
-```tut
+```scala mdoc
 import spire.implicits._
 import libra._, libra.implicits._
 
@@ -25,6 +25,6 @@ import libra._, libra.implicits._
 
 You can compose conversions together:
 
-```tut:book
+```scala mdoc
 (3.0.km / 1.0.s).to[Centimetre].to[Millisecond].show
 ```

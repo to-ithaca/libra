@@ -8,7 +8,7 @@ position: 1
 
 Be sure to import spire's implicits
 
-```tut
+```scala mdoc
 import shapeless.syntax.singleton._
 import spire.implicits._
 import libra._, libra.implicits._
@@ -18,65 +18,65 @@ import libra._, libra.implicits._
 
 Here is how you add quantities:
 
-```tut:book
+```scala mdoc
 (3.m + 2.m).show
 ```
 
 You can add quantities for any kind of number type, provided there's an `AdditiveSemigroup` for them.
 Here we're using spire's rationals:
 
-```tut:book
+```scala mdoc
 (r"1/3".m + r"2/3".m).show
 ```
 
 But you can only add quantities of the same dimension:
 
-```tut:nofail:book
+```scala mdoc:fail
 3.m + 4.kg
 ```
 
 Subtraction is just the same:
 
-```tut:book
+```scala mdoc
 (3.m - 2.m).show
 ```
 
 ### Multiplication
 Here's how you multiply quantities:
 
-```tut:book
+```scala mdoc
 (3.m * 2.kg).show
 ```
 You can also divide quantities:
 
-```tut:book
+```scala mdoc
 (3.0.m / 2.0.kg).show
 ```
 
 You can use euclidean division for discrete numbers:
 
-```tut:book
+```scala mdoc
 (3.m /~ 2.kg).show
 ```
 
 ### Power
 Here's how you raise quantities to a power:
 
-```tut:book
+```scala mdoc
 (3.0.m^(3.narrow)).show
 ```
 
 ### Inverse
 You can also invert quantities:
 
-```tut:book
+```scala mdoc
 3.0.m.invert.show
 ```
 
 ### Scalar multiplication
 You can multiply by scalar values:
 
-```tut:book
+```scala mdoc
 (3.m :* 3).show
 (3 *: 3.m).show
 ```
@@ -84,6 +84,6 @@ You can multiply by scalar values:
 ### Extracting the base value
 Here's how you extract the value as a numeric in base units:
 
-```tut:book
+```scala mdoc
 3.km.value
 ```

@@ -24,7 +24,7 @@ libraryDependencies += "com.github.to-ithaca" %%% "libra" % "0.6.0"
 
 Example usage:
 
-```tut:nofail:book
+```scala mdoc:fail:reset
 import spire.implicits._
 import libra._, libra.implicits._
 (3.m + 2.m).show
@@ -38,7 +38,7 @@ import libra._, libra.implicits._
 When we deal with numeric quantities, we often resort to `Int`, `Double` or `Float` types.
 These are incommunicative and error prone.
 
-```tut:book
+```scala mdoc:reset
 val distance = 3.0 // 3 m
 val time = 2.0 // 2 s
 val speed = distance + time // Oh no!
@@ -48,7 +48,7 @@ There's a mistake in our formula, but we won't know without a decent set of test
 
 Libra provides a `Quantity` which wraps base numeric types.  It supports **compile time dimensional analysis**.
 
-```tut:nofail:book
+```scala mdoc:fail:reset
 import spire.implicits._
 import libra._, libra.implicits._
 val distance = 3.0.m
