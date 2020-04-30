@@ -19,7 +19,7 @@ install:
 before_script:
 - if [ $TRAVIS_PULL_REQUEST = 'false' ]; then git checkout -qf $TRAVIS_BRANCH; fi
 script:
-- if [ $TRAVIS_SCALA_VERSION = '2.12.11' ];
+- if [ $TRAVIS_SCALA_VERSION = '2.13.2' ];
     then sbt ++$TRAVIS_SCALA_VERSION ciMicrosite;
     else sbt ++$TRAVIS_SCALA_VERSION ci;
   fi
