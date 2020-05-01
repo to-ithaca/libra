@@ -94,8 +94,8 @@ class QuantitySpec extends FlatSpec {
     type Q = Quantity[Double, Term[Length, Metre, Fraction[W.`1`.T, W.`1`.T]] :: Term[Mass, Kilogram, Fraction[W.`1`.T, W.`1`.T]] :: HNil]
     the[Show[Q]]
 
-    val q = Quantity[Double, Term[Length, Metre, Fraction[W.`1`.T, W.`1`.T]] :: Term[Mass, Kilogram, Fraction[W.`1`.T, W.`1`.T]] :: HNil](2.1)
-    assert(q.show == "2.1 m kg [L M]")
+    val q = Quantity[Double, Term[Length, Metre, Fraction[W.`1`.T, W.`1`.T]] :: Term[Mass, Kilogram, Fraction[W.`1`.T, W.`1`.T]] :: HNil](2.0)
+    assert(q.show == "2.0 m kg [L M]")
   }
 
   it should "convert" in {
