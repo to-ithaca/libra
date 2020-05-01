@@ -6,18 +6,12 @@ Libra is a dimensional analysis library based on [shapeless](https://github.com/
 
 ## To Use
 
-Libra supports JDK 8, scala versions 2.11.12, 2.12.11 and 2.13.2. The supported Scala.js version is 0.6.32
+Libra supports JDK 8, scala versions 2.11.12, 2.12.11 and 2.13.2.
 
 Add this to your `build.sbt`:
 
 ```scala
 libraryDependencies += "com.github.to-ithaca" %% "libra" % "0.6.0"
-```
-
-For Scala.js, add this to your `build.sbt`:
-
-```scala
-libraryDependencies += "com.github.to-ithaca" %%% "libra" % "0.6.0"
 ```
 
 ## TL;DR
