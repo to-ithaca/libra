@@ -131,7 +131,29 @@ lazy val root = project
   .settings(rootSettings)
   .aggregate(core.jvm, core.js, docs)
 
-addCommandAlias("ci", "; project core ; clean ; compile ; coverage ; test ; coverageReport")
+addCommandAlias("ci",
+  List(
+    "project coreJS",
+    "clean",
+    "compile",
+    "coverage",
+    "test",
+    "project coreJVM",
+    "clean",
+    "compile",
+    "coverage",
+    "test",
+    "coverageReport"
+  ).mkString(" ; ")
+)
 addCommandAlias(
   "ciMicrosite",
-  "; clean ; compile ; coverage ; test ; coverageReport ; makeMicrosite")
+  List(
+    "clean",
+    "compile",
+    "coverage",
+    "test",
+    "coverageReport",
+    "makeMicrosite"
+  ).mkString(" ; ")
+)
