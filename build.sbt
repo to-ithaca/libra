@@ -13,7 +13,7 @@ lazy val buildSettings = inThisBuild(
     scmInfo := Some(
       ScmInfo(url("https://github.com/to-ithaca/libra"),
               "git@github.com:to-ithaca/libra.git")),
-    scalaVersion := "2.13.0",
+    scalaVersion := "2.13.2",
     resolvers := Seq(
       Resolver.sonatypeRepo("releases"),
       Resolver.bintrayRepo("fthomas", "maven")
@@ -59,13 +59,13 @@ val releaseSettings = Seq(
     commitNextVersion,
     releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
     pushChanges,
-    releaseStepCommand("++2.12.8 docs/publishMicrosite")
+    releaseStepCommand("docs/publishMicrosite")
   )
 )
 
 // scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
-  crossScalaVersions := scalaVersion.value :: "2.12.8" :: "2.11.11" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.11" :: "2.11.12" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %% "shapeless" % "2.3.3",
@@ -102,12 +102,6 @@ lazy val siteSettings = Seq(
 
 lazy val docsSettings = Seq(
   publishArtifact := false,
-  // sbt-microsites depends on mdoc, which hasn't been published for 2.13.0 yet
-  // @see https://github.com/scalameta/mdoc/issues/156
-  // We use tut to compile sources, but if we use 2.13.0 sbt tries to pull in
-  // mdoc anyway
-  scalaVersion := "2.12.8",
-  crossScalaVersions := "2.12.8" :: "2.11.11" :: Nil,
 )
 
 lazy val docs = (project in file("docs"))

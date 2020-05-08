@@ -8,7 +8,7 @@ position: 3
 
 Let's say we want to code up a game of [Catan](http://www.catan.com/game/catan).  SI units don't cut the mustard, so let's make our own.  Our base dimensions are going to be `Stone`, `Wood`, `Wheat`, `Sheep` and `Time`.
 
-```tut:book
+```scala mdoc
 import libra._, libra.ops.base._
 
 object catan {
@@ -40,7 +40,7 @@ object catan {
   
   
   //implicit conversions would be useful too
-  implicit final class CatanOps[A](val a: A) extends AnyVal {
+  implicit final class CatanOps[A](val a: A) {
      def logs: QuantityOf[A, Wood, Log] = Quantity(a)
      def rocks: QuantityOf[A, Stone, Rock] = Quantity(a)
      def flocks: QuantityOf[A, Sheep, Flock] = Quantity(a)

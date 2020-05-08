@@ -36,3 +36,6 @@ project/plugins/project/
 .bloop/
 project/.bloop
 .metals/
+
+# Jekyll specific
+.jekyll-cache
