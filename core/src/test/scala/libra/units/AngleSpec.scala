@@ -6,7 +6,7 @@ import spire.math._
 import libra.implicits._
 import org.scalatest._
 
-class AngleSpec extends WordSpec with Matchers {
+class AngleSpec extends wordspec.AnyWordSpec with matchers.should.Matchers {
 
   val ε = 1E-9
 

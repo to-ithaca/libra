@@ -5,7 +5,7 @@ import shapeless.{ Witness => W, _ }
 import spire.implicits._
 import libra.ops.quantity._, libra.implicits._
 
-class QuantitySpec extends FlatSpec {
+class QuantitySpec extends flatspec.AnyFlatSpec {
 
   it should "align as" in {
     type D0 = Term[Length, Metre, Fraction[W.`1`.T, W.`1`.T]] :: Term[Mass, Kilogram, Fraction[W.`1`.T, W.`1`.T]] :: HNil

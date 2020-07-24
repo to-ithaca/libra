@@ -5,7 +5,7 @@ import shapeless.{ Witness => W, _ }
 import singleton.ops._
 import libra.ops.fraction._
 
-class FractionSpec extends FlatSpec {
+class FractionSpec extends flatspec.AnyFlatSpec {
 
   it should "find the greatest common divisor" in {
     the[GCD.Aux[W.` 6`.T, W.`6`.T, W.`6`.T]]

@@ -7,7 +7,7 @@ import org.typelevel.discipline.scalatest.Discipline
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalacheck.Arbitrary._
 
-class QuantityLawSpec extends FunSuite with Discipline {
+class QuantityLawSpec extends funsuite.AnyFunSuite with Discipline {
 
   implicit def quantityArbitrary[A, D <: HList](
       implicit ev: Arbitrary[A]): Arbitrary[Quantity[A, D]] =
