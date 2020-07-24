@@ -66,7 +66,7 @@ val releaseSettings = Seq(
 
 // scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
-  crossScalaVersions := scalaVersion.value :: "2.12.11" :: "2.11.12" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.11" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %%% "shapeless" % "2.3.3",
