@@ -71,8 +71,8 @@ lazy val coreSettings = Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %%% "shapeless" % "2.3.3",
     "eu.timepit" %%% "singleton-ops" % "0.4.3",
-    "org.typelevel" %%% "spire" % "0.17.0-M1",
-    "org.typelevel" %%% "spire-laws" % "0.17.0-M1" % "test",
+    "org.typelevel" %%% "spire" % "0.17.0-RC1",
+    "org.typelevel" %%% "spire-laws" % "0.17.0-RC1" % "test",
     "org.scalatest" %%% "scalatest" % "3.2.0" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
