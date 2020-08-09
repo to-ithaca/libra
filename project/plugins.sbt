@@ -1,4 +1,4 @@
-addSbtPlugin("com.github.tkawachi" % "sbt-doctest" % "0.9.6")
+addSbtPlugin("com.github.tkawachi" % "sbt-doctest" % "0.9.7")
 addSbtPlugin("com.47deg" % "sbt-microsites" % "1.1.5")
 addSbtPlugin("org.scoverage" % "sbt-scoverage" % "1.6.1")
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "2.0")
