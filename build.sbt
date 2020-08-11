@@ -73,7 +73,7 @@ lazy val coreSettings = Seq(
     "eu.timepit" %%% "singleton-ops" % "0.4.3",
     "org.typelevel" %%% "spire" % "0.17.0-M1",
     "org.typelevel" %%% "spire-laws" % "0.17.0-M1" % "test",
-    "org.scalatest" %%% "scalatest" % "3.1.1" % "test"
+    "org.scalatest" %%% "scalatest" % "3.1.3" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
   mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
