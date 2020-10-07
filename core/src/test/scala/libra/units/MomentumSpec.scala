@@ -5,7 +5,7 @@ import spire.implicits._
 import libra.implicits._
 import org.scalatest._
 
-class MomentumSpec extends WordSpec with Matchers {
+class MomentumSpec extends wordspec.AnyWordSpec with matchers.should.Matchers {
 
   "momentum" should {
 

@@ -1,13 +1,14 @@
 package libra
 
 import org.scalatest._
+import org.scalatestplus.scalacheck.Checkers
 import shapeless._
 import spire.algebra._, spire.math._, spire.laws._, spire.laws.arb._
-import org.typelevel.discipline.scalatest.Discipline
+import org.typelevel.discipline.scalatest.FunSuiteDiscipline
 import org.scalacheck.{Arbitrary, Gen}
 import org.scalacheck.Arbitrary._
 
-class QuantityLawSpec extends FunSuite with Discipline {
+class QuantityLawSpec extends funsuite.AnyFunSuite with FunSuiteDiscipline with Checkers {
 
   implicit def quantityArbitrary[A, D <: HList](
       implicit ev: Arbitrary[A]): Arbitrary[Quantity[A, D]] =

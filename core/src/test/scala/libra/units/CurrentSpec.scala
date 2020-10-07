@@ -5,7 +5,7 @@ import spire.implicits._
 import libra.implicits._
 import org.scalatest._
 
-class CurrentSpec extends WordSpec with Matchers {
+class CurrentSpec extends wordspec.AnyWordSpec with matchers.should.Matchers {
 
   val ε = 1E-6
 

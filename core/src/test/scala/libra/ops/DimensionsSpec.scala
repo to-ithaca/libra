@@ -7,7 +7,7 @@ import shapeless.test._
 import libra.ops.dimensions._, libra.implicits._
 import spire.implicits._
 
-class DimensionsSpec extends FlatSpec {
+class DimensionsSpec extends flatspec.AnyFlatSpec {
 
   it should "multiply" in {
 
