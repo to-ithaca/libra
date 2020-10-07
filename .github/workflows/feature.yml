@@ -24,4 +24,4 @@ jobs:
     - name: Install Jekyll
       run: gem install jekyll -v 3.2.1
     - name: Run tests
-      run: sbt ++${{ matrix.scala }} clean compile coverage test makeMicrosite coverageReport
+      run: sbt ++${{ matrix.scala }} feature

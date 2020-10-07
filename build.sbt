@@ -131,7 +131,7 @@ lazy val root = project
   .settings(rootSettings)
   .aggregate(core.jvm, core.js, docs)
 
-addCommandAlias("ci",
+addCommandAlias("feature",
   List(
     "project coreJS",
     "clean",
