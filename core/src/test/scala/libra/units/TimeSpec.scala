@@ -5,7 +5,7 @@ import spire.implicits._
 import libra.implicits._
 import org.scalatest._
 
-class TimeSpec extends WordSpec with Matchers {
+class TimeSpec extends wordspec.AnyWordSpec with matchers.should.Matchers {
 
   val ε = 1E-6
 

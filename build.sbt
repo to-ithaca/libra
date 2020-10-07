@@ -66,14 +66,14 @@ val releaseSettings = Seq(
 
 // scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
-  crossScalaVersions := scalaVersion.value :: "2.12.11" :: "2.11.12" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.11" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %%% "shapeless" % "2.3.3",
     "eu.timepit" %%% "singleton-ops" % "0.4.3",
-    "org.typelevel" %%% "spire" % "0.17.0-M1",
-    "org.typelevel" %%% "spire-laws" % "0.17.0-M1" % "test",
-    "org.scalatest" %%% "scalatest" % "3.1.1" % "test"
+    "org.typelevel" %%% "spire" % "0.17.0-RC1",
+    "org.typelevel" %%% "spire-laws" % "0.17.0-RC1" % "test",
+    "org.scalatest" %%% "scalatest" % "3.2.0" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
   mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
@@ -131,7 +131,7 @@ lazy val root = project
   .settings(rootSettings)
   .aggregate(core.jvm, core.js, docs)
 
-addCommandAlias("ci",
+addCommandAlias("feature",
   List(
     "project coreJS",
     "clean",
@@ -147,13 +147,10 @@ addCommandAlias("ci",
   ).mkString(" ; ")
 )
 addCommandAlias(
-  "ciMicrosite",
+  "featureMicrosite",
   List(
     "clean",
     "compile",
-    "coverage",
-    "test",
-    "coverageReport",
     "makeMicrosite"
   ).mkString(" ; ")
 )

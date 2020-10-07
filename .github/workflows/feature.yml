@@ -1,0 +1,31 @@
+name: Feature CI
+
+on:
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          scala: [2.12.11, 2.13.2]
+    steps:
+    - uses: actions/checkout@v2
+    - uses: olafurpg/setup-scala@v5
+    - name: Run tests
+      run: sbt ++${{ matrix.scala }} feature
+
+  microsite:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: olafurpg/setup-scala@v5
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.6'
+    - name: Install Jekyll
+      run: gem install jekyll -v 3.2.1
+    - name: Build microsite
+      run: sbt featureMicrosite
