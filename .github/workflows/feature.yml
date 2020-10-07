@@ -17,7 +17,7 @@ jobs:
         java-version: 1.8
     - uses: actions/setup-ruby@v1
       with:
-        ruby-version: '2.2.3'
+        ruby-version: '2.6'
     - name: Install Jekyll
       run: gem install jekyll -v 3.2.1
     - name: Run tests
