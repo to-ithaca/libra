@@ -147,13 +147,10 @@ addCommandAlias("feature",
   ).mkString(" ; ")
 )
 addCommandAlias(
-  "ciMicrosite",
+  "featureMicrosite",
   List(
     "clean",
     "compile",
-    "coverage",
-    "test",
-    "coverageReport",
     "makeMicrosite"
   ).mkString(" ; ")
 )
