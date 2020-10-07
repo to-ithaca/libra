@@ -5,7 +5,7 @@ Testing GitHub actions workflow
 [![Join the chat at https://gitter.im/to-ithaca/libra](https://badges.gitter.im/to-ithaca/libra.svg)](https://gitter.im/to-ithaca/libra?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 [![Typelevel incubator](https://img.shields.io/badge/typelevel-incubator-F51C2B.svg)](http://typelevel.org)
-[![Build Status](https://travis-ci.org/to-ithaca/libra.svg?branch=master)](https://travis-ci.org/to-ithaca/libra)
+[![Build Status](https://github.com/to-ithaca/libra/workflows/Main%20CI/badge.svg)](https://github.com/to-ithaca/libra/actions?query=workflow%3A%22Main+CI%22)
 [![codecov](https://codecov.io/gh/to-ithaca/libra/branch/master/graph/badge.svg)](https://codecov.io/gh/to-ithaca/libra)
 [![Nexus](https://img.shields.io/nexus/r/https/oss.sonatype.org/com.github.to-ithaca/libra_2.13.svg)](https://oss.sonatype.org/content/groups/public/com/github/to-ithaca/libra_2.13/)
 
