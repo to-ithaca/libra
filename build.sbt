@@ -70,7 +70,7 @@ lazy val coreSettings = Seq(
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %%% "shapeless" % "2.3.3",
-    "eu.timepit" %%% "singleton-ops" % "0.4.3",
+    "eu.timepit" %%% "singleton-ops" % "0.5.1",
     "org.typelevel" %%% "spire" % "0.17.0-RC1",
     "org.typelevel" %%% "spire-laws" % "0.17.0-RC1" % "test",
     "org.scalatest" %%% "scalatest" % "3.2.2" % "test"
@@ -136,7 +136,6 @@ addCommandAlias("feature",
     "project coreJS",
     "clean",
     "compile",
-    "coverage",
     "test",
     "project coreJVM",
     "clean",
