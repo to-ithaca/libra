@@ -8,6 +8,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+          scala: [2.12.11, 2.11.12, 2.13.2]
 
     steps:
     - uses: actions/checkout@v2
@@ -21,4 +24,4 @@ jobs:
     - name: Install Jekyll
       run: gem install jekyll -v 3.2.1
     - name: Run tests
-      run: sbt clean compile coverage test makeMicrosite coverageReport
+      run: sbt ++${{ matrix.scala }} clean compile coverage test makeMicrosite coverageReport
