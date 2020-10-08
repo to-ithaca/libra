@@ -1,4 +1,3 @@
-import ReleaseTransformations._
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 lazy val buildSettings = inThisBuild(
@@ -31,40 +30,6 @@ lazy val buildSettings = inThisBuild(
   )
 )
 
-val releaseSettings = Seq(
-  publishTo := {
-    val nexus = "https://oss.sonatype.org/"
-    Some("releases" at nexus + "service/local/staging/deploy/maven2")
-  },
-  releaseCrossBuild := true,
-  releaseIgnoreUntrackedFiles := true,
-  sonatypeProfileName := "com.github.to-ithaca",
-  credentials ++= (for {
-    username <- Option(System.getenv().get("SONATYPE_USERNAME"))
-    password <- Option(System.getenv().get("SONATYPE_PASSWORD"))
-  } yield
-    Credentials("Sonatype Nexus Repository Manager",
-                "oss.sonatype.org",
-                username,
-                password)).toSeq,
-  releaseProcess := Seq[ReleaseStep](
-    checkSnapshotDependencies,
-    inquireVersions,
-    runClean,
-    releaseStepCommandAndRemaining("+test"),
-    setReleaseVersion,
-    commitReleaseVersion,
-    tagRelease,
-    releaseStepCommandAndRemaining("+publishSigned"),
-    setNextVersion,
-    commitNextVersion,
-    releaseStepCommandAndRemaining("+sonatypeReleaseAll"),
-    pushChanges,
-    releaseStepCommand("docs/publishMicrosite")
-  )
-)
-
-// scalacOptions += "-Ypartial-unification"
 lazy val coreSettings = Seq(
   crossScalaVersions := scalaVersion.value :: "2.12.11" :: Nil,
   libraryDependencies ++= Seq(
@@ -76,7 +41,8 @@ lazy val coreSettings = Seq(
     "org.scalatest" %%% "scalatest" % "3.2.2" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
-  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
+  mimaPreviousArtifacts := previousStableVersion.value
+    .map(organization.value %% moduleName.value % _).toSet
 )
 
 lazy val jsSettings = Seq(
@@ -127,7 +93,6 @@ lazy val rootSettings = Seq(
 lazy val root = project
   .in(file("."))
   .settings(buildSettings)
-  .settings(releaseSettings)
   .settings(rootSettings)
   .aggregate(core.jvm, core.js, docs)
 
