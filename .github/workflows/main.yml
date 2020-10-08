@@ -5,6 +5,20 @@ on:
     branches: [ master ]
 
 jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check environment
+      run: |
+        echo $PGP_PASSPHRASE | wc
+        echo $PGP_SECRET | wc
+        echo $SONATYPE_PASSWORD | wc
+        echo $SONATYPE_USERNAME | wc
+      env:
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+        SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+        PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+        PGP_SECRET: ${{ secrets.PGP_SECRET }}
   build:
     runs-on: ubuntu-latest
     strategy:
@@ -38,7 +52,7 @@ jobs:
     - name: Release
       run: sbt ci-release
       env:
-        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSPHRASE }}
+        SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
         SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
         PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
         PGP_SECRET: ${{ secrets.PGP_SECRET }}
