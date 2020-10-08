@@ -41,7 +41,8 @@ lazy val coreSettings = Seq(
     "org.scalatest" %%% "scalatest" % "3.2.2" % "test"
   ),
   doctestTestFramework := DoctestTestFramework.ScalaTest,
-  mimaPreviousArtifacts := Set("com.github.to-ithaca" %% "libra" % "0.6.0")
+  mimaPreviousArtifacts := previousStableVersion.value
+    .map(organization.value %% moduleName.value % _).toSet
 )
 
 lazy val jsSettings = Seq(
