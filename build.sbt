@@ -13,7 +13,7 @@ lazy val buildSettings = inThisBuild(
     scmInfo := Some(
       ScmInfo(url("https://github.com/to-ithaca/libra"),
               "git@github.com:to-ithaca/libra.git")),
-    scalaVersion := "2.13.2",
+    scalaVersion := "2.13.8",
     resolvers := Seq(
       Resolver.sonatypeRepo("releases"),
       Resolver.bintrayRepo("fthomas", "maven")
