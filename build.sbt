@@ -34,7 +34,7 @@ lazy val coreSettings = Seq(
   crossScalaVersions := scalaVersion.value :: "2.12.11" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
-    "com.chuusai" %%% "shapeless" % "2.3.3",
+    "com.chuusai" %%% "shapeless" % "2.3.10",
     "eu.timepit" %%% "singleton-ops" % "0.5.2",
     "org.typelevel" %%% "spire" % "0.17.0",
     "org.typelevel" %%% "spire-laws" % "0.17.0" % "test",
