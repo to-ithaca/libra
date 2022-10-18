@@ -31,7 +31,7 @@ lazy val buildSettings = inThisBuild(
 )
 
 lazy val coreSettings = Seq(
-  crossScalaVersions := scalaVersion.value :: "2.12.11" :: Nil,
+  crossScalaVersions := scalaVersion.value :: "2.12.17" :: Nil,
   libraryDependencies ++= Seq(
     scalaOrganization.value % "scala-reflect" % scalaVersion.value % "provided",
     "com.chuusai" %%% "shapeless" % "2.3.3",
